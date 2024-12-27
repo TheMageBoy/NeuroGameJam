@@ -1,20 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://1wtvusvixp7q"]
+[gd_scene load_steps=2 format=3 uid="uid://1wtvusvixp7q"]
 
 [ext_resource type="Texture2D" uid="uid://bcyprrmg8kvao" path="res://Assets/Images/desktopbackground.png" id="1_0an34"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_h4scb"]
-diffuse_texture = ExtResource("1_0an34")
-
-[node name="Control" type="Control"]
-layout_mode = 3
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="CanvasLayer" type="CanvasLayer"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 1391.0
-offset_bottom = 928.0
-scale = Vector2(0.345, 0.345)
-texture = SubResource("CanvasTexture_h4scb")
+offset_right = 480.0
+offset_bottom = 320.0
+texture = ExtResource("1_0an34")
+expand_mode = 1
