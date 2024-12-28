@@ -38,18 +38,8 @@ layout_mode = 2
 icon = ExtResource("3_fplqu")
 flat = true
 
-[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/HBoxContainer" index="1"]
-custom_minimum_size = Vector2(39.86, 24.555)
+[node name="Button2" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer" index="1"]
 layout_mode = 2
-size_flags_vertical = 4
-text = "77"
-
-[node name="Button2" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer" index="2"]
-layout_mode = 2
+size_flags_horizontal = 0
 icon = ExtResource("2_uomhn")
 flat = true
-
-[node name="RichTextLabel2" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/HBoxContainer" index="3"]
-custom_minimum_size = Vector2(30.89, 0)
-layout_mode = 2
-text = "67"

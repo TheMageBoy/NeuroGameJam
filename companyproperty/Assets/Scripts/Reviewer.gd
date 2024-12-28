@@ -5,13 +5,11 @@ extends Content
 @onready var review: RichTextLabel = $HBoxContainer/VBoxContainer/RichTextLabel
 @onready var button: Button = $HBoxContainer/VBoxContainer/HBoxContainer/Button
 @onready var button_2: Button = $HBoxContainer/VBoxContainer/HBoxContainer/Button2
-@onready var likes: RichTextLabel = $HBoxContainer/VBoxContainer/HBoxContainer/RichTextLabel
-@onready var dislikes: RichTextLabel = $HBoxContainer/VBoxContainer/HBoxContainer/RichTextLabel2
 
 var negative : bool
 var outcome : bool
 
-var negativeswords : PackedStringArray = ["good","amazing","great","awesome","works"]
+var negativeswords : PackedStringArray = ["sucks","garbage","shit","fuck","shot","screw"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -35,7 +33,6 @@ func _ready():
 
 func like():
 	outcome = true;
-	likes.text = var_to_str(str_to_var(likes.text)+1)
 	if (negative == outcome):
 		emit_signal("task_finish")
 	else:
@@ -44,7 +41,6 @@ func like():
 
 func dislike():
 	outcome = false;
-	dislikes.text = var_to_str(str_to_var(likes.text)+1)
 	if (negative == outcome):
 		emit_signal("task_finish")
 	else:
