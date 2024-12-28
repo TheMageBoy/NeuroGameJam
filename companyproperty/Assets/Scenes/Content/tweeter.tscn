@@ -1,11 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bsmgy4pkxadgq"]
+[gd_scene load_steps=9 format=3 uid="uid://br5725aqf673j"]
 
-[ext_resource type="PackedScene" uid="uid://pyfywe1pr3uu" path="res://Assets/Scenes/content_class.tscn" id="1_1d6ue"]
-[ext_resource type="Script" path="res://Assets/Scripts/Tweeter.gd" id="2_1yxrj"]
-[ext_resource type="Texture2D" uid="uid://c53dw4gr1e82w" path="res://Assets/Sprites/Icons/console.png" id="3_puq6i"]
-[ext_resource type="Texture2D" uid="uid://c7ervjooy5isa" path="res://Assets/Images/Comment.png" id="4_w1nqe"]
-[ext_resource type="Texture2D" uid="uid://rgj564te0pum" path="res://Assets/Images/Repost.png" id="5_gmwln"]
-[ext_resource type="Texture2D" uid="uid://ctwkdoufnm015" path="res://Assets/Images/Like.png" id="6_f20yo"]
+[ext_resource type="PackedScene" uid="uid://pyfywe1pr3uu" path="res://Assets/Scenes/content_class.tscn" id="1_ymwgs"]
+[ext_resource type="Texture2D" path="res://Assets/Sprites/Icon_Console.png" id="2_5uurt"]
+[ext_resource type="Script" path="res://Assets/Scripts/Tweeter.gd" id="2_e3wdd"]
+[ext_resource type="Texture2D" uid="uid://c7ervjooy5isa" path="res://Assets/Images/Comment.png" id="4_gr0ap"]
+[ext_resource type="Texture2D" uid="uid://rgj564te0pum" path="res://Assets/Images/Repost.png" id="5_cy22n"]
+[ext_resource type="Texture2D" uid="uid://ctwkdoufnm015" path="res://Assets/Images/Like.png" id="6_lfoox"]
 
 [sub_resource type="Theme" id="Theme_ev51e"]
 RichTextLabel/colors/default_color = Color(0.351563, 0.351563, 0.351563, 1)
@@ -14,23 +14,20 @@ RichTextLabel/font_sizes/normal_font_size = 17
 [sub_resource type="Theme" id="Theme_cw071"]
 RichTextLabel/font_sizes/normal_font_size = 12
 
-[node name="Control" instance=ExtResource("1_1d6ue")]
-script = ExtResource("2_1yxrj")
+[node name="Control" instance=ExtResource("1_ymwgs")]
+script = ExtResource("2_e3wdd")
 text = "I saw a beautiful bird outside my window today! I inveited it to come stream with me, but it just looked confused. Animals... why can't they be more like... me?"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." index="0"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 0
+offset_right = 448.0
+offset_bottom = 184.0
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer" index="0"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.14
-texture = ExtResource("3_puq6i")
+texture = ExtResource("2_5uurt")
 expand_mode = 1
 stretch_mode = 2
 
@@ -62,7 +59,7 @@ layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer" index="0"]
 layout_mode = 2
-texture = ExtResource("4_w1nqe")
+texture = ExtResource("4_gr0ap")
 expand_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer" index="1"]
@@ -73,7 +70,7 @@ text = "43"
 
 [node name="TextureRect2" type="TextureRect" parent="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer" index="2"]
 layout_mode = 2
-texture = ExtResource("5_gmwln")
+texture = ExtResource("5_cy22n")
 expand_mode = 2
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer" index="3"]
@@ -83,7 +80,7 @@ text = "170"
 
 [node name="TextureRect3" type="TextureRect" parent="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer" index="4"]
 layout_mode = 2
-texture = ExtResource("6_f20yo")
+texture = ExtResource("6_lfoox")
 expand_mode = 2
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer" index="5"]
