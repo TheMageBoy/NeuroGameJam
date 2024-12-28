@@ -11,38 +11,42 @@ var outcome : bool
 
 var negativeswords : PackedStringArray = ["sucks","garbage","shit","fuck","shot","screw"]
 
-# Called when the node enters the scene tree for the first time.
+signal next
+var score := 0
 func _ready():
-	var file = FileAccess.open("res://Assets/Reviews.txt",FileAccess.READ)
-	
-	var texts = file.get_as_text();
-	var texts2 = texts.split("\n");
-	var integer = randi() % (texts2.size()-1);
-	#print(integer)
-	#print(texts2[integer])
-	review.text = texts2[integer];
-	
-	for words in negativeswords:
-		if (review.text.contains(words)):
-			negative = true;
-		else:
-			negative = false;
-	
 	button.connect("pressed",Callable(self,"like"))
 	button_2.connect("pressed",Callable(self,"dislike"))
+	for _index in 3:
+		var file = FileAccess.open("res://Assets/Reviews.txt",FileAccess.READ)
+		
+		var texts = file.get_as_text();
+		var texts2 = texts.split("\n");
+		var integer = randi() % (texts2.size()-1);
+		#print(integer)
+		#print(texts2[integer])
+		review.text = texts2[integer];
+		
+		for words in negativeswords:
+			if (review.text.to_lower().contains(words)):
+				negative = true;
+			else:
+				negative = false;
+		await next
+	finish_review()
 
 func like():
-	outcome = true;
-	if (negative == outcome):
-		emit_signal("task_finish")
-	else:
-		emit_signal("task_fail")
-	button.disabled = true
-	button_2.disabled = true
+	if (negative == true):
+		score += 1
+	emit_signal("next")
 
 func dislike():
-	outcome = false;
-	if (negative == outcome):
+	if (negative == false):
+		score += 1
+	emit_signal("next")
+
+
+func finish_review():
+	if score > 2:
 		emit_signal("task_finish")
 	else:
 		emit_signal("task_fail")
