@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://1wtvusvixp7q"]
+[gd_scene load_steps=3 format=3 uid="uid://1wtvusvixp7q"]
 
 [ext_resource type="Texture2D" uid="uid://bcyprrmg8kvao" path="res://Assets/Images/desktopbackground.png" id="1_0an34"]
+[ext_resource type="Script" path="res://Assets/Scripts/UI_Icon.gd" id="2_h77i7"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -9,3 +10,14 @@ offset_right = 480.0
 offset_bottom = 320.0
 texture = ExtResource("1_0an34")
 expand_mode = 1
+
+[node name="Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("2_h77i7")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 77.0
+offset_top = 32.0
+offset_right = 182.0
+offset_bottom = 102.0
