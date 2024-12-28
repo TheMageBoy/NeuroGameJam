@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://fgh1qatdaqp6"]
+[gd_scene load_steps=8 format=3 uid="uid://bl2snid78qdda"]
 
 [ext_resource type="Texture2D" uid="uid://c8rbm0cxa2d7m" path="res://Assets/Sprites/Background_Notebook.png" id="1_hatk8"]
 [ext_resource type="Texture2D" uid="uid://bvdjr7tvjd1rl" path="res://Assets/Sprites/Icon_Paper.png" id="2_ak4cm"]
