@@ -3,7 +3,25 @@
 [ext_resource type="Texture2D" uid="uid://bcyprrmg8kvao" path="res://Assets/Images/desktopbackground.png" id="1_0an34"]
 [ext_resource type="Script" path="res://Assets/Scripts/UI_Icon.gd" id="2_h77i7"]
 [ext_resource type="Script" path="res://Assets/Scripts/UI_Window.gd" id="3_rnds1"]
-[ext_resource type="Script" path="res://Assets/Scripts/X_Button.gd" id="4_fo3j6"]
+
+[sub_resource type="GDScript" id="GDScript_gxla8"]
+script/source = "extends Node
+
+var uiwindow = null
+
+func _ready():
+	var button = Button.new()
+	#button.text = \"Click me\"
+	button.pressed.connect(self._button_pressed)
+	add_child(button)
+	uiwindow = get_parent() #temporary; pass in in init
+	
+func initialize(parent):
+	uiwindow = parent
+
+func _button_pressed():
+	uiwindow.close();
+"
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -14,8 +32,10 @@ texture = ExtResource("1_0an34")
 expand_mode = 1
 
 [node name="Button" type="Button" parent="."]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 29.0
+offset_top = 33.0
+offset_right = 49.0
+offset_bottom = 53.0
 script = ExtResource("2_h77i7")
 
 [node name="WindowRoot" type="Node" parent="."]
@@ -31,4 +51,4 @@ metadata/_edit_use_anchors_ = true
 [node name="Button" type="Button" parent="WindowRoot/Panel"]
 offset_right = 8.0
 offset_bottom = 8.0
-script = ExtResource("4_fo3j6")
+script = SubResource("GDScript_gxla8")

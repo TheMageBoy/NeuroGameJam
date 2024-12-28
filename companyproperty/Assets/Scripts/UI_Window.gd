@@ -10,8 +10,16 @@ var offset = Vector2()
 var mouse_over = false;
 var last_higlihted = false; # for if input will register to the current window
 
+var x_button = null
+
 @onready var node: Node = $".."
 @onready var panel: Panel = $"."
+
+func _ready():
+	# X
+	x_button = Button.new()
+	x_button.pressed.connect(self.x_button_pressed)
+	add_child(x_button)
 
 func _input(event: InputEvent):
 	
@@ -34,7 +42,10 @@ func mouse_within(point):
 	var x2 = x + self.size.x
 	var y2 = y + self.size.y
 	return point.x >= x and point.x <= x2 and point.y >= y and point.y <= y2
-	
-	
-func close() -> void:
-	print("put window closes method")
+
+# ------------------------------------------
+# X Button
+# ------------------------------------------
+
+func x_button_pressed():
+	self.queue_free()
