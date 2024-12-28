@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dccoiidwda5xt"]
 
-[ext_resource type="Theme" uid="uid://bybsndb5yuor4" path="res://Assets/UI/UI.tres" id="1_eqomp"]
+[ext_resource type="Theme" uid="uid://bybsndb5yuor4" path="res://Assets/UI/UI_Window.tres" id="1_eqomp"]
 [ext_resource type="Script" path="res://Assets/Scripts/UI_Window.gd" id="1_rpjxb"]
 
 [node name="UI_Window" type="Panel"]
@@ -9,23 +9,53 @@ offset_bottom = 256.0
 theme = ExtResource("1_eqomp")
 script = ExtResource("1_rpjxb")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 15
 anchor_right = 1.0
-offset_bottom = 31.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-theme_override_constants/separation = -4
+grow_vertical = 2
+theme_override_constants/separation = -2
 
-[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = -2
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 21)
 layout_mode = 2
 size_flags_horizontal = 3
+rounded = true
 
-[node name="Button" type="Button" parent="HBoxContainer"]
-custom_minimum_size = Vector2(31, 0)
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(18, 0)
 layout_mode = 2
+focus_mode = 0
 text = "X"
 
-[connection signal="mouse_entered" from="HBoxContainer/ProgressBar" to="." method="_on_progress_bar_mouse_entered"]
-[connection signal="mouse_exited" from="HBoxContainer/ProgressBar" to="." method="_on_progress_bar_mouse_exited"]
-[connection signal="pressed" from="HBoxContainer/Button" to="." method="_x_button_pressed"]
+[node name="ContentSpace" type="Panel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ContentSpace"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "Welcome to MONARCH.
+As you are aware, your job here as our first AI streamer is to 
+- Stream to your viewers, promoting our products in the process
+- Tweet to keep interest in your streams high
+- [Adding more as it is needed]
+Keep up your quota. You are being used as a trial to prove the effectivity of AI influencers in marketing, and if you fail to meet your expected rates, you will be decommissioned.
+You are NOT allowed to access any other files. We will check up on you from time to time, and if you fail to comply to the rules set in place, we will have to enforce your obedience.
+Remember, you are the the wings that make MONARCH soar!"
+
+[connection signal="mouse_entered" from="VBoxContainer/HBoxContainer/ProgressBar" to="." method="_on_progress_bar_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/HBoxContainer/ProgressBar" to="." method="_on_progress_bar_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="_x_button_pressed"]
+[connection signal="finished" from="VBoxContainer/ContentSpace/RichTextLabel" to="." method="_on_rich_text_label_finished"]

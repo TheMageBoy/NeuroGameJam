@@ -17,20 +17,33 @@ var x_button = null
 
 @onready var node: Node = $".."
 @onready var panel: Panel = $"."
-@onready var progress_bar: ProgressBar = $HBoxContainer/ProgressBar
+@onready var progress_bar: ProgressBar = $VBoxContainer/HBoxContainer/ProgressBar
+@onready var rtl: RichTextLabel = $VBoxContainer/Content/RichTextLabel
+@onready var content_space: Panel = $VBoxContainer/ContentSpace
+
+@export var content : PackedScene
 
 var top = false; #if this is the topmost
+
+func _ready() -> void:
+	var content_inst = content.instantiate()
+	content_space.add_child(content_inst)
+	if lifespan:
+		content_inst.task_finish.connect(Callable(self, "task_finish")) # We connect the signal "task finish" to the function below, if the signal is called from the "content" node it will trigger the function below
+
+func task_finish():
+	pass
+
 
 func setup_window(time):
 	lifespan = time
 	
-	if !has_lifespan:
+	if has_lifespan:
 		call_deferred("_setup_progress_bar", time) # this is here because otherwise it odesnt calc button size and return s 0
 
 func _setup_progress_bar(time):
 	# Configure progress bar lifespan
 	if time > 0:
-		has_lifespan = true
 		progress_bar.max_value = time
 
 func _input(event: InputEvent):
@@ -42,7 +55,7 @@ func _input(event: InputEvent):
 
 func _process(delta: float):#I hope this is equivalent to update?
 	if has_lifespan:
-		lifespan += -1
+		lifespan += -1 * delta * 200
 		if lifespan <= 0:
 			get_tree().current_scene.failedTask(self)
 		else:
@@ -84,3 +97,10 @@ func _x_button_pressed() -> void:
 		get_tree().current_scene.failedTask(self)
 	else:
 		get_tree().current_scene.deleteWindow(self)
+
+# ------------------------------------------
+# Document BBcode
+# ------------------------------------------
+
+#func _on_rich_text_label_finished() -> void:
+#	rtl.text.find("MONARCH", 0)
