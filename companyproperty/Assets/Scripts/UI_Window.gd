@@ -1,7 +1,9 @@
 extends Node
 
-var has_lifespan = false # timed events
-var lifespan = 0
+class_name UI_Window
+
+var lifespan = 0 #miliseconds; 0 if no lifespan
+var startlife = 0
 
 var dragging = false
 var drag_pos = Vector2()
@@ -11,17 +13,30 @@ var mouse_over = false;
 var last_higlihted = false; # for if input will register to the current window
 
 var x_button = null
+var progress_bar = null
 
 @onready var node: Node = $".."
 @onready var panel: Panel = $"."
 
 var top = false; #if this is the topmost
 
-func setup_window():
+func setup_window(time):
+	lifespan = time
+	startlife = Time.get_ticks_msec()
 	# X
 	x_button = Button.new()
+	x_button.text = "X"
 	x_button.pressed.connect(self.x_button_pressed)
+	var button_size = x_button.size.x
+	x_button.position.x = 0
 	add_child(x_button)
+	# progress bar
+	progress_bar = ProgressBar.new()
+	progress_bar.size.x = self.size.x - button_size
+	#if lifespan > 0:
+	#	progress_bar.value = 100
+	add_child(progress_bar)
+		
 
 func _input(event: InputEvent):
 	if event is InputEventMouseButton:
@@ -30,6 +45,14 @@ func _input(event: InputEvent):
 			dragging = true;#Toggle Dragging when clicked
 
 func _process(delta: float):#I hope this is equivalent to update?
+	#if lifespan > 0:
+	#	var percent = 100 * (Time.get_ticks_msec() - startlife)/lifespan
+	#	if percent < 0:
+	#		get_tree().current_scene.failedTask(self)
+	#		get_tree().current_scene.deleteWindow(self)
+	#	else:
+	#		progress_bar.value = percent
+		
 	if !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		dragging = false;
 	if dragging == true:

@@ -21,3 +21,12 @@ offset_bottom = 53.0
 script = ExtResource("2_h77i7")
 
 [node name="WindowRoot" type="Node" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -8.0
+offset_top = 332.0
+offset_right = 472.0
+offset_bottom = 359.0
+max_value = 10000.0
+step = 1.0
+value = 10000.0
