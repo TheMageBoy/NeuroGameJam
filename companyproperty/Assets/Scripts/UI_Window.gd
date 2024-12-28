@@ -31,7 +31,7 @@ func _ready() -> void:
 	content_space.add_child(content_inst)
 	if lifespan:
 		content_inst.task_finish.connect(Callable(self, "task_finish")) # We connect the signal "task finish" to the function below, if the signal is called from the "content" node it will trigger the function below
-
+		
 func task_finish():
 	pass
 

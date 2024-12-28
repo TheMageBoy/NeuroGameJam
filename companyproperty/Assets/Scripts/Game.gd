@@ -3,17 +3,51 @@ extends Node
 var window_array = []
 var quota = 10000
 var rate = 10 # -quota per second
-@export var progress_bar: Node = null
 @onready var window_node: Control = $WindowNode
+@onready var desktop_files: GridContainer = $Background/DesktopFiles
+
+@export var progress_bar: Node = null
 
 const UI_WINDOW = preload("res://Assets/Scenes/UI_Window.tscn")
 
-func createWindow(size, is_task : bool):
+var files := [
+	{
+		"name": "READ ME",
+		"icon": "paper",
+		"content": "test_content",
+		"size": Vector2i(256, 256)
+	},
+	{
+		"name": "homework",
+		"icon": "paper",
+		"content": "test_content",
+		"size": Vector2i(256, 256)
+	},
+	{
+		"name": "terminal",
+		"icon": "console",
+		"content": "test_content",
+		"size": Vector2i(256, 256)
+	}
+]
+
+const FILE = preload("res://Assets/Scenes/File.tscn")
+
+func _ready() -> void:
+	for file : Dictionary in files: # this loads the files into the desktop
+		var file_inst := FILE.instantiate()
+		desktop_files.add_child(file_inst)
+		file_inst.rts.text = "[center]"+file["name"]
+		file_inst.icon_sprite.texture = load("res://Assets/Sprites/Icons/"+file["icon"]+".png")
+		file_inst.content = load("res://Assets/Scenes/Content/"+file["content"]+".tscn")
+		file_inst.connect("pressed", Callable(self, "createWindow").bind(file["size"], false, file_inst.content))
+
+func createWindow(size, is_task : bool, content):
 	var new_window = UI_WINDOW.instantiate()
 	#var panel_script = load("res://Assets/Scripts/UI_Window.gd")
 	new_window.size = size
 	new_window.has_lifespan = is_task
-	
+	new_window.content = content
 	#new_window.set_script(panel_script)
 	new_window.setup_window(3000)
 	window_node.add_child(new_window)
@@ -51,8 +85,8 @@ func failedTask(window):
 	deleteWindow(window)
 
 
-func _on_task_window_button_pressed() -> void:
-	createWindow(Vector2(100,100), true)
-
-func _on_text_window_button_pressed() -> void:
-	createWindow(Vector2(256,256), false)
+#func _on_task_window_button_pressed() -> void:
+#	createWindow(Vector2(100,100), true, )
+#
+#func _on_text_window_button_pressed() -> void:
+#	createWindow(Vector2(256,256), false)

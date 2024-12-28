@@ -1,10 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://1wtvusvixp7q"]
+[gd_scene load_steps=8 format=3 uid="uid://1wtvusvixp7q"]
 
 [ext_resource type="Texture2D" uid="uid://bcyprrmg8kvao" path="res://Assets/Images/desktopbackground.png" id="1_0an34"]
 [ext_resource type="Script" path="res://Assets/Scripts/Game.gd" id="1_q0rhl"]
 [ext_resource type="Theme" uid="uid://b16v6553fw8j2" path="res://Assets/UI/UI_Files.tres" id="3_p3ufb"]
-[ext_resource type="Texture2D" uid="uid://c53dw4gr1e82w" path="res://Assets/Sprites/Icon_Console.png" id="4_j8hbq"]
-[ext_resource type="Texture2D" uid="uid://bvdjr7tvjd1rl" path="res://Assets/Sprites/Icon_Paper.png" id="5_7cta6"]
+[ext_resource type="Texture2D" uid="uid://c53dw4gr1e82w" path="res://Assets/Sprites/Icons/console.png" id="4_j8hbq"]
+[ext_resource type="Texture2D" uid="uid://bvdjr7tvjd1rl" path="res://Assets/Sprites/Icons/paper.png" id="5_7cta6"]
+[ext_resource type="Shader" path="res://Assets/Sprites/Crt.gdshader" id="6_ayg08"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mnhvw"]
+shader = ExtResource("6_ayg08")
+shader_parameter/resolution = Vector2(720, 480)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/warp_amount = 0.1
+shader_parameter/noise_amount = 0.03
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.1
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.6
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/aberation_amount = 0.5
+shader_parameter/roll_line_amount = 0.3
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_q0rhl")
@@ -18,7 +36,7 @@ grow_vertical = 2
 texture = ExtResource("1_0an34")
 expand_mode = 1
 
-[node name="GridContainer" type="GridContainer" parent="Background"]
+[node name="DesktopFiles" type="GridContainer" parent="Background"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,16 +45,17 @@ offset_right = -480.0
 offset_bottom = -320.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(2, 2)
 theme = ExtResource("3_p3ufb")
 columns = 10
 
-[node name="TaskWindowButton" type="Button" parent="Background/GridContainer"]
+[node name="TaskWindowButton" type="Button" parent="Background/DesktopFiles"]
+visible = false
 layout_mode = 2
 focus_mode = 0
 icon = ExtResource("4_j8hbq")
 
-[node name="TextWindowButton" type="Button" parent="Background/GridContainer"]
+[node name="TextWindowButton" type="Button" parent="Background/DesktopFiles"]
+visible = false
 layout_mode = 2
 focus_mode = 0
 icon = ExtResource("5_7cta6")
@@ -57,5 +76,14 @@ value = 10000.0
 layout_mode = 3
 anchors_preset = 0
 
-[connection signal="pressed" from="Background/GridContainer/TaskWindowButton" to="." method="_on_task_window_button_pressed"]
-[connection signal="pressed" from="Background/GridContainer/TextWindowButton" to="." method="_on_text_window_button_pressed"]
+[node name="Panel" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_mnhvw")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[connection signal="pressed" from="Background/DesktopFiles/TaskWindowButton" to="." method="_on_task_window_button_pressed"]
+[connection signal="pressed" from="Background/DesktopFiles/TextWindowButton" to="." method="_on_text_window_button_pressed"]

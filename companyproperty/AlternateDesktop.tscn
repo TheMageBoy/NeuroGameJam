@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://fgh1qatdaqp6"]
 
 [ext_resource type="Texture2D" uid="uid://c8rbm0cxa2d7m" path="res://Assets/Sprites/Background_Notebook.png" id="1_hatk8"]
-[ext_resource type="Texture2D" uid="uid://bvdjr7tvjd1rl" path="res://Assets/Sprites/Icon_Paper.png" id="2_ak4cm"]
+[ext_resource type="Texture2D" uid="uid://bvdjr7tvjd1rl" path="res://Assets/Sprites/Icons/paper.png" id="2_ak4cm"]
 [ext_resource type="Texture2D" uid="uid://bbhjq4e1dgdlw" path="res://Assets/Sprites/Taskbar.png" id="2_t65et"]
 [ext_resource type="Script" path="res://Assets/Code/Controller.gd" id="4_ju2vr"]
-[ext_resource type="Texture2D" uid="uid://c53dw4gr1e82w" path="res://Assets/Sprites/Icon_Console.png" id="4_m8401"]
+[ext_resource type="Texture2D" uid="uid://c53dw4gr1e82w" path="res://Assets/Sprites/Icons/console.png" id="4_m8401"]
 [ext_resource type="Script" path="res://Assets/Code/ProgramClick.gd" id="5_yk2bd"]
 [ext_resource type="Texture2D" uid="uid://cefaocad4cd8d" path="res://Assets/Sprites/Background_Console.png" id="7_c8gx7"]
 

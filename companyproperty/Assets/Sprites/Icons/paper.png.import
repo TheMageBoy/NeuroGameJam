@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c53dw4gr1e82w"
-path="res://.godot/imported/Icon_Console.png-4f8a74c6696497e8fd0f3c7ec55870d5.ctex"
+uid="uid://bvdjr7tvjd1rl"
+path="res://.godot/imported/paper.png-d9b8d8a0e4610dac5cccbd197136cd0e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Icon_Console.png"
-dest_files=["res://.godot/imported/Icon_Console.png-4f8a74c6696497e8fd0f3c7ec55870d5.ctex"]
+source_file="res://Assets/Sprites/Icons/paper.png"
+dest_files=["res://.godot/imported/paper.png-d9b8d8a0e4610dac5cccbd197136cd0e.ctex"]
 
 [params]
 
