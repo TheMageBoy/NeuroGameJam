@@ -1,6 +1,7 @@
 extends Control
 class_name Content # extend this to a control node otherwise error
 signal task_finish # call this when task complete using "emit_signal("task_finish")"
+signal task_failed
 var content_self = null
 
 

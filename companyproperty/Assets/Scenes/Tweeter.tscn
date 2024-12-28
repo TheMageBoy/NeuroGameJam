@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://br5725aqf673j"]
 
 [ext_resource type="PackedScene" uid="uid://pyfywe1pr3uu" path="res://Assets/Scenes/content_class.tscn" id="1_ymwgs"]
-[ext_resource type="Texture2D" uid="uid://c53dw4gr1e82w" path="res://Assets/Sprites/Icon_Console.png" id="2_5uurt"]
+[ext_resource type="Texture2D" path="res://Assets/Sprites/Icon_Console.png" id="2_5uurt"]
 [ext_resource type="Script" path="res://Assets/Scripts/Tweeter.gd" id="2_e3wdd"]
 [ext_resource type="Texture2D" uid="uid://c7ervjooy5isa" path="res://Assets/Images/Comment.png" id="4_gr0ap"]
 [ext_resource type="Texture2D" uid="uid://rgj564te0pum" path="res://Assets/Images/Repost.png" id="5_cy22n"]
