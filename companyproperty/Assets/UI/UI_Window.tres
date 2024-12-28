@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://bybsndb5yuor4"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://bybsndb5yuor4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rtl0u"]
 bg_color = Color(0.635294, 0.113725, 0.137255, 1)
@@ -8,8 +8,7 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kxr44"]
-bg_color = Color(0.821789, 0.821789, 0.821788, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_61bqk"]
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -24,7 +23,22 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kxr44"]
+bg_color = Color(0.821789, 0.821789, 0.821788, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
 [sub_resource type="FontVariation" id="FontVariation_jt5on"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqbd4"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kd0gf"]
 bg_color = Color(0.859347, 0.364694, 0.866815, 1)
@@ -70,13 +84,13 @@ corner_radius_bottom_left = 3
 Button/colors/font_color = Color(0, 0, 0, 1)
 Button/font_sizes/font_size = 12
 Button/styles/hover = SubResource("StyleBoxFlat_rtl0u")
-Button/styles/normal = SubResource("StyleBoxFlat_kxr44")
+Button/styles/normal = SubResource("StyleBoxFlat_61bqk")
 Button/styles/pressed = SubResource("StyleBoxFlat_g4pgt")
 Panel/styles/panel = SubResource("StyleBoxFlat_kxr44")
 ProgressBar/colors/font_color = Color(0, 0, 0, 1)
 ProgressBar/font_sizes/font_size = 12
 ProgressBar/fonts/font = SubResource("FontVariation_jt5on")
-ProgressBar/styles/background = SubResource("StyleBoxFlat_kxr44")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_gqbd4")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_kd0gf")
 RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
 RichTextLabel/font_sizes/normal_font_size = 14

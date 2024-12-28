@@ -1,7 +1,7 @@
 extends Node
-
 class_name UI_Window
 
+var work_task := false
 var focus := false
 var has_lifespan = false
 var lifespan = 0 #miliseconds; 0 if no lifespan
@@ -13,12 +13,9 @@ var offset = Vector2()
 var mouse_over = false;
 var last_higlihted = false; # for if input will register to the current window
 
-var x_button = null
-
 @onready var node: Node = $".."
 @onready var panel: Panel = $"."
 @onready var progress_bar: ProgressBar = $VBoxContainer/HBoxContainer/ProgressBar
-@onready var rtl: RichTextLabel = $VBoxContainer/Content/RichTextLabel
 @onready var content_space: Panel = $VBoxContainer/ContentSpace
 
 @export var content : PackedScene
@@ -33,7 +30,9 @@ func _ready() -> void:
 		content_inst.task_finish.connect(Callable(self, "task_finish")) # We connect the signal "task finish" to the function below, if the signal is called from the "content" node it will trigger the function below
 		
 func task_finish():
-	pass
+	has_lifespan = false
+	get_tree().current_scene.AP.play("TaskComplete")
+	print("TASK FINISHED")
 
 
 func setup_window(time):
@@ -53,6 +52,8 @@ func _input(event: InputEvent):
 			offset = panel.get_screen_position() - get_viewport().get_mouse_position();
 			dragging = true;#Toggle Dragging when clicked
 			get_parent().move_child(self, get_parent().get_child_count()-1)
+		if event.button_index == MOUSE_BUTTON_LEFT and !event.pressed and dragging:
+			dragging = false;
 
 func _process(delta: float):#I hope this is equivalent to update?
 	if has_lifespan:
@@ -62,8 +63,6 @@ func _process(delta: float):#I hope this is equivalent to update?
 		else:
 			progress_bar.value = lifespan
 		
-	if !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		dragging = false;
 	if dragging == true:
 		drag_pos = get_viewport().get_mouse_position() + offset;#Drag position is set to mouse position
 		panel.global_position = drag_pos#Thus, set transform position to drag position
@@ -98,10 +97,3 @@ func _x_button_pressed() -> void:
 		get_tree().current_scene.failedTask(self)
 	else:
 		get_tree().current_scene.deleteWindow(self)
-
-# ------------------------------------------
-# Document BBcode
-# ------------------------------------------
-
-#func _on_rich_text_label_finished() -> void:
-#	rtl.text.find("MONARCH", 0)

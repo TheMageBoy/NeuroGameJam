@@ -15,6 +15,10 @@ run/main_scene="res://Base.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+AudioManager="*res://Assets/Scenes/audio_manager.gd"
+
 [display]
 
 window/size/viewport_width=960
@@ -27,11 +31,12 @@ window/stretch/scale_mode="integer"
 [file_customization]
 
 folder_colors={
-"res://Assets/Code/": "teal",
+"res://Assets/Code/": "yellow",
 "res://Assets/Images/": "pink",
-"res://Assets/Scenes/": "orange",
+"res://Assets/Scenes/": "red",
 "res://Assets/Scripts/": "purple",
-"res://Assets/Sprites/": "blue"
+"res://Assets/Sounds/": "blue",
+"res://Assets/Sprites/": "green"
 }
 
 [rendering]
