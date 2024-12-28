@@ -2,8 +2,8 @@ extends Node
 
 class_name UI_Window
 
+var has_lifespan = false
 var lifespan = 0 #miliseconds; 0 if no lifespan
-var startlife = 0
 
 var dragging = false
 var drag_pos = Vector2()
@@ -22,36 +22,44 @@ var top = false; #if this is the topmost
 
 func setup_window(time):
 	lifespan = time
-	startlife = Time.get_ticks_msec()
-	# X
+	
 	x_button = Button.new()
 	x_button.text = "X"
 	x_button.pressed.connect(self.x_button_pressed)
-	var button_size = x_button.size.x
-	x_button.position.x = 0
 	add_child(x_button)
-	# progress bar
+	
+	if !has_lifespan:
+		call_deferred("_setup_progress_bar", time) # this is here because otherwise it odesnt calc button size and return s 0
+
+func _setup_progress_bar(time):
+	var button_size = x_button.size.x
+	print("Button size:", button_size)
+	
+	# Create the progress bar
 	progress_bar = ProgressBar.new()
 	progress_bar.size.x = self.size.x - button_size
-	#if lifespan > 0:
-	#	progress_bar.value = 100
+	progress_bar.position.x = button_size
+	
+	# Configure progress bar lifespan
+	if time > 0:
+		has_lifespan = true
+		progress_bar.max_value = time
+
 	add_child(progress_bar)
-		
 
 func _input(event: InputEvent):
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and !dragging and mouse_within(get_viewport().get_mouse_position()) and top:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and !dragging and mouse_within(get_viewport().get_mouse_position()):
 			offset = panel.get_screen_position() - get_viewport().get_mouse_position();
 			dragging = true;#Toggle Dragging when clicked
 
 func _process(delta: float):#I hope this is equivalent to update?
-	#if lifespan > 0:
-	#	var percent = 100 * (Time.get_ticks_msec() - startlife)/lifespan
-	#	if percent < 0:
-	#		get_tree().current_scene.failedTask(self)
-	#		get_tree().current_scene.deleteWindow(self)
-	#	else:
-	#		progress_bar.value = percent
+	if has_lifespan:
+		lifespan += -1
+		if lifespan <= 0:
+			get_tree().current_scene.failedTask(self)
+		else:
+			progress_bar.value = lifespan
 		
 	if !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		dragging = false;
@@ -72,4 +80,8 @@ func mouse_within(point):
 # ------------------------------------------
 
 func x_button_pressed():
-	get_tree().current_scene.deleteWindow(self)
+	#autofails if you try to X out of a task window (failed task closes it)
+	if has_lifespan:
+		get_tree().current_scene.failedTask(self)
+	else:
+		get_tree().current_scene.deleteWindow(self)

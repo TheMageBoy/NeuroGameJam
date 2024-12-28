@@ -10,7 +10,7 @@ func createWindow(size):
 	var panel_script = load("res://Assets/Scripts/UI_Window.gd")
 	new_window.size = size
 	new_window.set_script(panel_script)
-	new_window.setup_window(30)
+	new_window.setup_window(3000)
 	add_child(new_window)
 	window_array.append(new_window)
 	updateAllWindows()
@@ -25,9 +25,9 @@ func updateAllWindows():
 		i += 1
 	window_array.back().top = true
 
-func _process(delta: float) -> void:
-	quota += -rate
-	progress_bar.value = quota
+#func _process(delta: float) -> void:
+	#quota += -rate
+	#progress_bar.value = quota
 
 func deleteWindow(window): #deletes a window after passing itself in
 	window_array.erase(window)
@@ -39,5 +39,6 @@ func move_to_top(window):
 	window_array.append(window)
 	updateAllWindows()
 
-func failedTask():
+func failedTask(window):
 	print("RAN OUT OF TIME ON TASK")
+	deleteWindow(window)

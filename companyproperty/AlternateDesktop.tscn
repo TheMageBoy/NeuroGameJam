@@ -1,0 +1,99 @@
+[gd_scene load_steps=8 format=3 uid="uid://fgh1qatdaqp6"]
+
+[ext_resource type="Texture2D" uid="uid://c8rbm0cxa2d7m" path="res://Assets/Sprites/Background_Notebook.png" id="1_hatk8"]
+[ext_resource type="Texture2D" uid="uid://bvdjr7tvjd1rl" path="res://Assets/Sprites/Icon_Paper.png" id="2_ak4cm"]
+[ext_resource type="Texture2D" uid="uid://bbhjq4e1dgdlw" path="res://Assets/Sprites/Taskbar.png" id="2_t65et"]
+[ext_resource type="Script" path="res://Assets/Code/Controller.gd" id="4_ju2vr"]
+[ext_resource type="Texture2D" uid="uid://c53dw4gr1e82w" path="res://Assets/Sprites/Icon_Console.png" id="4_m8401"]
+[ext_resource type="Script" path="res://Assets/Code/ProgramClick.gd" id="5_yk2bd"]
+[ext_resource type="Texture2D" uid="uid://cefaocad4cd8d" path="res://Assets/Sprites/Background_Console.png" id="7_c8gx7"]
+
+[node name="AlternateDesktop" type="Node2D" node_paths=PackedStringArray("child_nodes")]
+script = ExtResource("4_ju2vr")
+child_nodes = [NodePath("CanvasLayer/Notebook"), NodePath("CanvasLayer/Consoal")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Taskbar" type="Sprite2D" parent="CanvasLayer"]
+z_index = 1
+texture = ExtResource("2_t65et")
+centered = false
+
+[node name="IconPaper" type="Sprite2D" parent="CanvasLayer/Taskbar"]
+position = Vector2(0, 296)
+texture = ExtResource("2_ak4cm")
+centered = false
+
+[node name="Button" type="Button" parent="CanvasLayer/Taskbar/IconPaper"]
+visibility_layer = 0
+offset_right = 24.0
+offset_bottom = 24.0
+script = ExtResource("5_yk2bd")
+
+[node name="IconPaper2" type="Sprite2D" parent="CanvasLayer/Taskbar"]
+position = Vector2(24, 296)
+texture = ExtResource("4_m8401")
+centered = false
+
+[node name="Button" type="Button" parent="CanvasLayer/Taskbar/IconPaper2"]
+visibility_layer = 0
+offset_right = 24.0
+offset_bottom = 24.0
+script = ExtResource("5_yk2bd")
+program_number = 1
+
+[node name="Notebook" type="Node2D" parent="CanvasLayer"]
+
+[node name="Text Display" type="RichTextLabel" parent="CanvasLayer/Notebook"]
+offset_left = 9.0
+offset_top = 6.0
+offset_right = 473.0
+offset_bottom = 291.0
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "[color=black]Welcome to MONARCH.
+	
+As you are aware, your job here as our first AI streamer is to 
+- Stream to your viewers, promoting our products in the process
+- Tweet to keep interest in your streams high
+- [Adding more as it is needed]
+Keep up your quota. You are being used as a trial to prove the effectivity of AI influencers in marketing, and if you fail to meet your expected rates, you will be decommissioned.
+You are NOT allowed to access any other files. We will check up on you from time to time, and if you fail to comply to the rules set in place, we will have to enforce your obedience.
+Remember, you are the the wings that make MONARCH soar![/color]"
+scroll_active = false
+scroll_following = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="Sprite2D" parent="CanvasLayer/Notebook"]
+z_index = -1
+texture = ExtResource("1_hatk8")
+centered = false
+
+[node name="Consoal" type="Node2D" parent="CanvasLayer"]
+position = Vector2(480, 0)
+
+[node name="Output" type="RichTextLabel" parent="CanvasLayer/Consoal"]
+offset_left = 9.0
+offset_top = 6.0
+offset_right = 473.0
+offset_bottom = 291.0
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "[color=green]root/>[/color]"
+scroll_active = false
+scroll_following = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="Sprite2D" parent="CanvasLayer/Consoal"]
+z_index = -1
+texture = ExtResource("7_c8gx7")
+centered = false
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/Consoal"]
+offset_left = 1.0
+offset_top = 234.0
+offset_right = 481.0
+offset_bottom = 266.0
+scale = Vector2(0.999808, 1.2346)
+theme_override_font_sizes/font_size = 14
+context_menu_enabled = false
