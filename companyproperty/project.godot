@@ -24,6 +24,16 @@ window/stretch/aspect="ignore"
 window/stretch/scale=2.0
 window/stretch/scale_mode="integer"
 
+[file_customization]
+
+folder_colors={
+"res://Assets/Code/": "teal",
+"res://Assets/Images/": "pink",
+"res://Assets/Scenes/": "orange",
+"res://Assets/Scripts/": "purple",
+"res://Assets/Sprites/": "blue"
+}
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

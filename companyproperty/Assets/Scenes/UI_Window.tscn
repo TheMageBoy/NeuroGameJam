@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://dccoiidwda5xt"]
+
+[ext_resource type="Theme" uid="uid://bybsndb5yuor4" path="res://Assets/UI/UI.tres" id="1_eqomp"]
+[ext_resource type="Script" path="res://Assets/Scripts/UI_Window.gd" id="1_rpjxb"]
+
+[node name="UI_Window" type="Panel"]
+offset_right = 256.0
+offset_bottom = 256.0
+theme = ExtResource("1_eqomp")
+script = ExtResource("1_rpjxb")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
+theme_override_constants/separation = -4
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(31, 0)
+layout_mode = 2
+text = "X"
+
+[connection signal="mouse_entered" from="HBoxContainer/ProgressBar" to="." method="_on_progress_bar_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/ProgressBar" to="." method="_on_progress_bar_mouse_exited"]
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_x_button_pressed"]
