@@ -15,19 +15,19 @@ var x_button = null
 @onready var node: Node = $".."
 @onready var panel: Panel = $"."
 
-func _ready():
+var top = false; #if this is the topmost
+
+func setup_window():
 	# X
 	x_button = Button.new()
 	x_button.pressed.connect(self.x_button_pressed)
 	add_child(x_button)
 
 func _input(event: InputEvent):
-	
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and !dragging && mouse_within(get_viewport().get_mouse_position()):
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and !dragging and mouse_within(get_viewport().get_mouse_position()) and top:
 			offset = panel.get_screen_position() - get_viewport().get_mouse_position();
 			dragging = true;#Toggle Dragging when clicked
-			#print("Clicking");
 
 func _process(delta: float):#I hope this is equivalent to update?
 	if !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
@@ -41,6 +41,7 @@ func mouse_within(point):
 	var y = panel.global_position.y
 	var x2 = x + self.size.x
 	var y2 = y + self.size.y
+	#TODO: make a check if it is the topmost
 	return point.x >= x and point.x <= x2 and point.y >= y and point.y <= y2
 
 # ------------------------------------------
@@ -48,4 +49,4 @@ func mouse_within(point):
 # ------------------------------------------
 
 func x_button_pressed():
-	self.queue_free()
+	get_tree().current_scene.deleteWindow(self)

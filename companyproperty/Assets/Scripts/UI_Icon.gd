@@ -1,4 +1,4 @@
 extends Button
 
 func _pressed():
-	print("Hello world!") # Create a window
+	get_tree().current_scene.createWindow(Vector2(100,100));

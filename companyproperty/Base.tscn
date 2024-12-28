@@ -1,29 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://1wtvusvixp7q"]
+[gd_scene load_steps=4 format=3 uid="uid://1wtvusvixp7q"]
 
 [ext_resource type="Texture2D" uid="uid://bcyprrmg8kvao" path="res://Assets/Images/desktopbackground.png" id="1_0an34"]
+[ext_resource type="Script" path="res://Assets/Scripts/Game.gd" id="1_q0rhl"]
 [ext_resource type="Script" path="res://Assets/Scripts/UI_Icon.gd" id="2_h77i7"]
-[ext_resource type="Script" path="res://Assets/Scripts/UI_Window.gd" id="3_rnds1"]
-
-[sub_resource type="GDScript" id="GDScript_gxla8"]
-script/source = "extends Node
-
-var uiwindow = null
-
-func _ready():
-	var button = Button.new()
-	#button.text = \"Click me\"
-	button.pressed.connect(self._button_pressed)
-	add_child(button)
-	uiwindow = get_parent() #temporary; pass in in init
-	
-func initialize(parent):
-	uiwindow = parent
-
-func _button_pressed():
-	uiwindow.close();
-"
 
 [node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_q0rhl")
 
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 480.0
@@ -39,16 +21,3 @@ offset_bottom = 53.0
 script = ExtResource("2_h77i7")
 
 [node name="WindowRoot" type="Node" parent="."]
-
-[node name="Panel" type="Panel" parent="WindowRoot"]
-offset_left = 77.0
-offset_top = 32.0
-offset_right = 182.0
-offset_bottom = 102.0
-script = ExtResource("3_rnds1")
-metadata/_edit_use_anchors_ = true
-
-[node name="Button" type="Button" parent="WindowRoot/Panel"]
-offset_right = 8.0
-offset_bottom = 8.0
-script = SubResource("GDScript_gxla8")
