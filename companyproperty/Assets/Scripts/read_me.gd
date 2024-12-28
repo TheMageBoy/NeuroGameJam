@@ -5,9 +5,9 @@ func _enter_tree() -> void:
 	pass
 
 func _exit_tree() -> void:
-	for index in 2:
+	for index in 3:
 		get_tree().current_scene.unlock_file()
-		get_tree().current_scene.checking = false
+	get_tree().current_scene.checking = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

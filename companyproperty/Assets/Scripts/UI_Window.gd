@@ -50,6 +50,8 @@ func task_fail():
 	game.rtl.text = "[center][b][color=red]- TASK FAIL -"
 	AudioManager.play(BUZZER)
 	game.AP.play("TaskFail")
+	await game.AP.animation_finished
+	game.AP.play("RESET")
 	print("TASK FAILED")
 
 func setup_window(time):

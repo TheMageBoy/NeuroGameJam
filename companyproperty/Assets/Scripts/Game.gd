@@ -37,7 +37,7 @@ var files := [
 		"content": "tweeter",
 		"size": Vector2i(512, 160),
 		"life_span": true,
-		"visible": true
+		"visible": false
 	},
 	{
 		"name": "reviewer",
@@ -51,7 +51,10 @@ var files := [
 
 const FILE = preload("res://Assets/Scenes/File.tscn")
 
+const MONARCH = preload("res://Assets/Sounds/BGM/MONARCH.mp3")
 func _ready() -> void:
+	AudioManager.play_bgm(MONARCH)
+	
 	for file : Dictionary in files: # this loads the files into the desktop
 		var file_inst := FILE.instantiate()
 		desktop_files.add_child(file_inst)
@@ -101,9 +104,9 @@ func unlock_file():
 # # # # # # # # #
 
 var check_timer := 10.0
-var checking := true
+var checking := true # this is just for when the sound is playing
 func _process(delta: float) -> void:
-	if eye.visible:
+	if eye.visible: # this is the more important part
 		check_on_task()
 	if !checking:
 		check_timer -= delta *2
@@ -111,11 +114,11 @@ func _process(delta: float) -> void:
 			checking = true
 			check_queue()
 
-const STEPS = preload("res://Assets/Sounds/SFX/steps.wav")
+const STEPS = preload("res://Assets/Sounds/SFX/steps.wav") # SFX
 func check_queue():
-	var stream := AudioManager.play(STEPS)
+	var stream := AudioManager.play(STEPS) # Audiomanager
 	await get_tree().create_timer(5).timeout
-	eye.visible = true
+	eye.visible = true # refer to the when I said that was the important part
 	eye_AP.play_backwards("Fade")
 	await stream.finished
 	if checking:
@@ -129,7 +132,7 @@ func check_queue():
 func check_on_task(): # so we can see if neuro is off task
 	for window in window_node.get_children():
 		if !window.work_task:
-			print("LIFE LOST, AHHHHH")
+			print("LIFE LOST, AHHHHH") #There is no consequence atm
 			checking = false
 			check_timer = randf_range(30, 120)
 			eye_AP.play("Fade")
