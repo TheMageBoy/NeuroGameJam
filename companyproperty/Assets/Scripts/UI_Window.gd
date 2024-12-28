@@ -1,6 +1,8 @@
 extends Node
 class_name UI_Window
 
+@onready var game = get_tree().current_scene
+
 var work_task := false
 var focus := false
 var has_lifespan = false
@@ -19,6 +21,7 @@ var last_higlihted = false; # for if input will register to the current window
 @onready var content_space: Panel = $VBoxContainer/ContentSpace
 
 @export var content : PackedScene
+var content_node = null
 
 var top = false; #if this is the topmost
 
@@ -26,14 +29,28 @@ func _ready() -> void:
 	var content_inst : Content = content.instantiate()
 	content_inst.content_self = self
 	content_space.add_child(content_inst)
+	content_node = content_inst
 	if lifespan:
 		content_inst.task_finish.connect(Callable(self, "task_finish")) # We connect the signal "task finish" to the function below, if the signal is called from the "content" node it will trigger the function below
-		
+		content_inst.task_fail.connect(Callable(self, "task_fail"))
+
+const TASKCOMPLETE = preload("res://Assets/Sounds/SFX/taskcomplete.mp3")
 func task_finish():
+	content_node.triggered = true
 	has_lifespan = false
-	get_tree().current_scene.AP.play("TaskComplete")
+	game.rtl.text = "[center][b]- TASK COMPLETE -"
+	AudioManager.play(TASKCOMPLETE)
+	game.AP.play("TaskComplete")
 	print("TASK FINISHED")
 
+const BUZZER = preload("res://Assets/Sounds/SFX/buzzer.mp3")
+func task_fail():
+	content_node.triggered = true
+	has_lifespan = false
+	game.rtl.text = "[center][b][color=red]- TASK FAIL -"
+	AudioManager.play(BUZZER)
+	game.AP.play("TaskFail")
+	print("TASK FAILED")
 
 func setup_window(time):
 	lifespan = time
@@ -60,6 +77,7 @@ func _process(delta: float):#I hope this is equivalent to update?
 		lifespan += -1 * delta * 200
 		if lifespan <= 0:
 			get_tree().current_scene.failedTask(self)
+			task_fail()
 		else:
 			progress_bar.value = lifespan
 		

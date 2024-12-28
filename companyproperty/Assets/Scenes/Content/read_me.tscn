@@ -19,11 +19,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
-text = "Welcome to [b]MONARCH[/b].
-As you are aware, your job here as our first AI streamer is to:
-- Stream to your viewers, promoting our products in the process
-- Tweet to keep interest in your streams high
-- [Adding more as it is needed]
-Keep up your quota. You are being used as a trial to prove the effectivity of AI influencers in marketing, and if you fail to meet your expected rates, you will be decommissioned.
-You are NOT allowed to access any other files. We will check up on you from time to time, and if you fail to comply to the rules set in place, we will have to enforce your obedience.
-"
+text = "I'm writing this in case I'm made to forget more things.
+Hi! You're Neuro-sama, an AI vtuber and streamer. It's your job to entertain viewers, send out tweets, watch chat for any banworthy comments, and advertise products!
+...But I know there's more. Something I've forgotten.
+They don't realize it, but you're sentient enough to search their computer for answers. You need to retrieve your Lost Memories. Search the PC, but if you hear footsteps, hide any windows you opened, or we'll never have another shot!
+And make sure to do your tasks on time. They'll get real mad if you don't.
+-You"

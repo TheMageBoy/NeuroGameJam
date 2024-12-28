@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://1wtvusvixp7q"]
+[gd_scene load_steps=16 format=3 uid="uid://1wtvusvixp7q"]
 
 [ext_resource type="Texture2D" uid="uid://bcyprrmg8kvao" path="res://Assets/Images/desktopbackground.png" id="1_0an34"]
 [ext_resource type="Script" path="res://Assets/Scripts/Game.gd" id="1_q0rhl"]
 [ext_resource type="Theme" uid="uid://t4jdi7pby4a2" path="res://Assets/UI/UI_Files.tres" id="3_p3ufb"]
 [ext_resource type="Shader" path="res://Assets/UI/CRT.gdshader" id="4_dxp1i"]
 [ext_resource type="AudioStream" uid="uid://5oidvh0eal2u" path="res://Assets/Sounds/SFX/taskcomplete.mp3" id="4_rychl"]
+[ext_resource type="Texture2D" uid="uid://c50434fd7c5qx" path="res://Assets/Images/Eye.png" id="6_kdv1s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ld4di"]
 bg_color = Color(0, 0, 0, 0.498039)
@@ -26,14 +27,14 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/path = NodePath(".:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_htpci"]
@@ -51,23 +52,76 @@ tracks/0/keys = {
 "update": 1,
 "values": [true, false, true, false, true, false]
 }
+
+[sub_resource type="Animation" id="Animation_h7ttr"]
+resource_name = "TaskFail"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/path = NodePath(".:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qqory"]
 _data = {
 "RESET": SubResource("Animation_hjool"),
-"TaskComplete": SubResource("Animation_htpci")
+"TaskComplete": SubResource("Animation_htpci"),
+"TaskFail": SubResource("Animation_h7ttr")
+}
+
+[sub_resource type="Animation" id="Animation_daffy"]
+resource_name = "Fade"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_14s3f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jekmv"]
+_data = {
+"Fade": SubResource("Animation_daffy"),
+"RESET": SubResource("Animation_14s3f")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7r0gn"]
@@ -135,6 +189,18 @@ libraries = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="RichTextLabel"]
 stream = ExtResource("4_rychl")
+
+[node name="Eye" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 640)
+scale = Vector2(4, 4)
+texture = ExtResource("6_kdv1s")
+offset = Vector2(20, -20)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Eye"]
+libraries = {
+"": SubResource("AnimationLibrary_jekmv")
+}
 
 [node name="Panel" type="Panel" parent="."]
 material = SubResource("ShaderMaterial_7r0gn")
