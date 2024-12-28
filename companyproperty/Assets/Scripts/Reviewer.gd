@@ -35,7 +35,7 @@ func _ready():
 
 func like():
 	outcome = true;
-	likes.text = str_to_var(likes.text)+1
+	likes.text = var_to_str(str_to_var(likes.text)+1)
 	if (negative == outcome):
 		emit_signal("task_finish")
 	else:
@@ -44,7 +44,7 @@ func like():
 
 func dislike():
 	outcome = false;
-	dislikes.text = str_to_var(likes.text)+1
+	dislikes.text = var_to_str(str_to_var(likes.text)+1)
 	if (negative == outcome):
 		emit_signal("task_finish")
 	else:

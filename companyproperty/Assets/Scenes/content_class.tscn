@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://control.gd" id="1_hl31p"]
 
-[node name="Control" type="Control"]
+[node name="Control2" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
