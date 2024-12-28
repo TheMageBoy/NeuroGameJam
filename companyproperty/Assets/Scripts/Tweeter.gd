@@ -8,7 +8,7 @@ func _ready():
 	var file = FileAccess.open("res://Assets/Tweets.txt",FileAccess.READ)
 	var texts = file.get_as_text();
 	var texts2 = texts.split("\n");
-	var integer = randi() % texts2.size();
+	var integer = randi() % (texts2.size()-1);
 	#print(integer)
 	#print(texts2[integer])
 	rich_text_label_2.text = texts2[integer];
