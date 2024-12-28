@@ -26,7 +26,8 @@ var x_button = null
 var top = false; #if this is the topmost
 
 func _ready() -> void:
-	var content_inst = content.instantiate()
+	var content_inst : Content = content.instantiate()
+	content_inst.content_self = self
 	content_space.add_child(content_inst)
 	if lifespan:
 		content_inst.task_finish.connect(Callable(self, "task_finish")) # We connect the signal "task finish" to the function below, if the signal is called from the "content" node it will trigger the function below
