@@ -34,18 +34,22 @@ func _ready() -> void:
 		content_inst.task_finish.connect(Callable(self, "task_finish")) # We connect the signal "task finish" to the function below, if the signal is called from the "content" node it will trigger the function below
 		content_inst.task_fail.connect(Callable(self, "task_fail"))
 
+const TASKCOMPLETE = preload("res://Assets/Sounds/SFX/taskcomplete.mp3")
 func task_finish():
+	content_node.triggered = true
 	has_lifespan = false
 	game.rtl.text = "[center][b]- TASK COMPLETE -"
+	AudioManager.play(TASKCOMPLETE)
 	game.AP.play("TaskComplete")
-	content_node.triggered = true
 	print("TASK FINISHED")
 
+const BUZZER = preload("res://Assets/Sounds/SFX/buzzer.mp3")
 func task_fail():
+	content_node.triggered = true
 	has_lifespan = false
 	game.rtl.text = "[center][b][color=red]- TASK FAIL -"
+	AudioManager.play(BUZZER)
 	game.AP.play("TaskFail")
-	content_node.triggered = true
 	print("TASK FAILED")
 
 func setup_window(time):

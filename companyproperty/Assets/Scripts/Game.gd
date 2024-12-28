@@ -7,6 +7,8 @@ var rate = 10 # -quota per second
 @onready var desktop_files: GridContainer = $Background/DesktopFiles
 @onready var AP: AnimationPlayer = $RichTextLabel/AnimationPlayer
 @onready var rtl: RichTextLabel = $RichTextLabel
+@onready var eye: Sprite2D = $Eye
+@onready var eye_AP: AnimationPlayer = $Eye/AnimationPlayer
 
 @export var progress_bar: Node = null
 
@@ -17,7 +19,7 @@ var files := [
 		"name": "READ ME",
 		"icon": "paper",
 		"content": "read_me",
-		"size": Vector2i(256, 256),
+		"size": Vector2i(512, 256),
 		"life_span": false,
 		"visible": true
 	},
@@ -41,7 +43,7 @@ var files := [
 		"name": "reviewer",
 		"icon": "console",
 		"content": "reviewer",
-		"size": Vector2i(512, 160),
+		"size": Vector2i(576, 160),
 		"life_span": true,
 		"visible": false
 	}
@@ -98,24 +100,39 @@ func unlock_file():
 #
 # # # # # # # # #
 
-var check_timer := 60.0
+var check_timer := 10.0
 var checking := true
 func _process(delta: float) -> void:
+	if eye.visible:
+		check_on_task()
 	if !checking:
-		check_timer -= delta
+		check_timer -= delta *2
 		if check_timer < 0:
 			checking = true
 			check_queue()
 
-const STEPS = preload("res://Assets/Sounds/SFX/Steps.wav")
+const STEPS = preload("res://Assets/Sounds/SFX/steps.wav")
 func check_queue():
-	await AudioManager.play(STEPS)
-	await check_on_task()
-	check_timer = randf_range(30, 120)
-	checking = false
+	var stream := AudioManager.play(STEPS)
+	await get_tree().create_timer(5).timeout
+	eye.visible = true
+	eye_AP.play_backwards("Fade")
+	await stream.finished
+	if checking:
+		check_timer = randf_range(30, 120)
+		checking = false
+		eye_AP.play("Fade")
+		await eye_AP.animation_finished
+		eye.visible = false
+	
 
 func check_on_task(): # so we can see if neuro is off task
 	for window in window_node.get_children():
 		if !window.work_task:
 			print("LIFE LOST, AHHHHH")
+			checking = false
+			check_timer = randf_range(30, 120)
+			eye_AP.play("Fade")
+			await eye_AP.animation_finished
+			eye.visible = false
 			break
