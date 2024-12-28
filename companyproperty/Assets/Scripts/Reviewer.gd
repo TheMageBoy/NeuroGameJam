@@ -36,12 +36,15 @@ func like():
 	if (negative == outcome):
 		emit_signal("task_finish")
 	else:
-		emit_signal("task_failed")
-
+		emit_signal("task_fail")
+	button.disabled = true
+	button_2.disabled = true
 
 func dislike():
 	outcome = false;
 	if (negative == outcome):
 		emit_signal("task_finish")
 	else:
-		emit_signal("task_failed")
+		emit_signal("task_fail")
+	button.disabled = true
+	button_2.disabled = true

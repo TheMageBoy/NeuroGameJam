@@ -17,6 +17,6 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		# do tweet stuff
 		print(event.as_text())
-		if tweet_index+1 == tweet.length():
+		if tweet_index+1 == tweet.length() and !triggered:
 			emit_signal("task_finish")
 			return

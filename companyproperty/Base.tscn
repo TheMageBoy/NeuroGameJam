@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://1wtvusvixp7q"]
+[gd_scene load_steps=12 format=3 uid="uid://1wtvusvixp7q"]
 
 [ext_resource type="Texture2D" uid="uid://bcyprrmg8kvao" path="res://Assets/Images/desktopbackground.png" id="1_0an34"]
 [ext_resource type="Script" path="res://Assets/Scripts/Game.gd" id="1_q0rhl"]
@@ -35,6 +35,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_htpci"]
 resource_name = "TaskComplete"
@@ -64,10 +76,38 @@ tracks/1/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_h7ttr"]
+resource_name = "TaskFail"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qqory"]
 _data = {
 "RESET": SubResource("Animation_hjool"),
-"TaskComplete": SubResource("Animation_htpci")
+"TaskComplete": SubResource("Animation_htpci"),
+"TaskFail": SubResource("Animation_h7ttr")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7r0gn"]

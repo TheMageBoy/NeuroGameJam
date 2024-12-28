@@ -6,6 +6,7 @@ var rate = 10 # -quota per second
 @onready var window_node: Control = $WindowNode
 @onready var desktop_files: GridContainer = $Background/DesktopFiles
 @onready var AP: AnimationPlayer = $RichTextLabel/AnimationPlayer
+@onready var rtl: RichTextLabel = $RichTextLabel
 
 @export var progress_bar: Node = null
 
@@ -36,6 +37,14 @@ var files := [
 		"life_span": true,
 		"visible": true
 	},
+	{
+		"name": "reviewer",
+		"icon": "console",
+		"content": "reviewer",
+		"size": Vector2i(512, 160),
+		"life_span": true,
+		"visible": false
+	}
 ]
 
 const FILE = preload("res://Assets/Scenes/File.tscn")
@@ -90,7 +99,7 @@ func unlock_file():
 # # # # # # # # #
 
 var check_timer := 60.0
-var checking := false
+var checking := true
 func _process(delta: float) -> void:
 	if !checking:
 		check_timer -= delta
