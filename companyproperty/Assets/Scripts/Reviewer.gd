@@ -23,7 +23,7 @@ func _ready():
 	review.text = texts2[integer];
 	
 	for words in negativeswords:
-		if review.text.find(words):
+		if (review.text.contains(words)):
 			negative = true;
 		else:
 			negative = false;
