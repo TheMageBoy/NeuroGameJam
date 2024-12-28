@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://1wtvusvixp7q"]
+[gd_scene load_steps=5 format=3 uid="uid://1wtvusvixp7q"]
 
 [ext_resource type="Texture2D" uid="uid://bcyprrmg8kvao" path="res://Assets/Images/desktopbackground.png" id="1_0an34"]
 [ext_resource type="Script" path="res://Assets/Scripts/UI_Icon.gd" id="2_h77i7"]
 [ext_resource type="Script" path="res://Assets/Scripts/UI_Window.gd" id="3_rnds1"]
+[ext_resource type="Script" path="res://Assets/Scripts/X_Button.gd" id="4_fo3j6"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -26,3 +27,8 @@ offset_right = 182.0
 offset_bottom = 102.0
 script = ExtResource("3_rnds1")
 metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="WindowRoot/Panel"]
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("4_fo3j6")
