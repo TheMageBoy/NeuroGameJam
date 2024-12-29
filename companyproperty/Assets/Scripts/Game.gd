@@ -4,7 +4,7 @@ var window_array = []
 var quota = 10000
 var rate = 10 # -quota per second
 
-var lives := 1
+var lives := 5
 
 @onready var window_node: Control = $WindowNode
 @onready var desktop_files: GridContainer = $Background/DesktopFiles
