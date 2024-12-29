@@ -67,8 +67,8 @@ var vaild_content_array := []
 const FILE = preload("res://Assets/Scenes/File.tscn")
 const MONARCH = preload("res://Assets/Sounds/BGM/MONARCH.mp3")
 func _ready() -> void:
- toggle_Shader()
- for file in DirAccess.get_files_at("res://Assets/Scenes/Content/"):
+	toggle_Shader()
+	for file in DirAccess.get_files_at("res://Assets/Scenes/Content/"):
 		vaild_content_array.append(file.erase(file.length()-4, 4))
 	
 	AudioManager.play_bgm(MONARCH)
