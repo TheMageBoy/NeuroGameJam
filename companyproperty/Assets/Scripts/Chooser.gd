@@ -16,31 +16,30 @@ func _ready():
 	var texts = positives.get_as_text();
 	var texts2 = texts.split("\n");
 	
-	var integer = randi() % (texts2.size()-1)
-	
 	var correct = randi() % 3
-		
-	var texts3 = negatives.get_as_text();
-	var texts4 = texts.split("\n");
 	
+	var texts3 = negatives.get_as_text();
+	var texts4 = texts3.split("\n");
+	var integer = randi() % (texts4.size()-1)
+
 	var integer2 = 0;
 	
 	var integer3 = randi() % (texts2.size()-1)
-	while (integer2 != integer3):
+	while (integer2 == integer3):
 		integer2 = randi() % (texts2.size()-1)
 	
 	if (correct == 0):
-		button.text = texts2[integer]
-		button_2.text = texts4[integer2]
-		button_3.text = texts4[integer3]
+		button.text = texts4[integer]
+		button_2.text = texts2[integer2]
+		button_3.text = texts2[integer3]
 	elif (correct == 1):
-		button_2.text = texts2[integer]
-		button.text = texts4[integer2]
-		button_3.text = texts4[integer3]
+		button_2.text = texts4[integer]
+		button.text = texts2[integer2]
+		button_3.text = texts2[integer3]
 	else:
-		button_3.text = texts2[integer]
-		button.text = texts4[integer2]
-		button_2.text = texts4[integer3]
+		button_3.text = texts4[integer]
+		button.text = texts2[integer2]
+		button_2.text = texts2[integer3]
 
 	#print(integer)
 	#print(texts2[integer])
