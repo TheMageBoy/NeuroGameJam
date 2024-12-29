@@ -14,6 +14,7 @@ var lives := 5
 @onready var eye_AP: AnimationPlayer = $Eye/AnimationPlayer
 @onready var crt: Panel = $"CRT shader"
 @onready var pixelation: ColorRect = $CanvasLayer/ColorRect
+@onready var memoryText: RichTextLabel = $CanvasLayer2/RichTextLabel2
 
 @onready var penalty_bar: Array[Node] = $Background/Lifebar.get_children()
 
@@ -167,8 +168,6 @@ var checking := true # this is just for when the sound is playing
 var pixel_size = 16.0;
 
 func _process(delta: float) -> void:
-	if gameover_text > -2 and gameover_string.length() > gameover_text:
-		gameover()
 	if fade_to_black:
 		fade(delta)
 	if (pixel_size > 0):
@@ -176,7 +175,7 @@ func _process(delta: float) -> void:
 		pixel_size-=10*delta
 	if eye.visible and checking: # this is the more important part
 		check_on_task()
-	if !checking:
+	if !checking && current_color.color.a < target_alpha:
 		check_timer -= delta *2
 		if check_timer < 0:
 			checking = true
@@ -292,7 +291,7 @@ func task_fail():
 	AP.play("TaskFail")
 	await AP.animation_finished
 	AP.play("RESET") # if we don't do this, the eye stays transparent
-	takeDamage(1)
+	takeDamage(5)
 	return #no point in "return" here, just something I do sometimes when they are waited on completetion sometimes
 
 # # # # # # # # #
@@ -327,23 +326,31 @@ func _input(event: InputEvent) -> void:
 		memory_cg_ending = true
 
 var fade_to_black := false
-var gameover_text := -2
 var gameover_string := "\"This AI can't even do the basic tasks it was made for.\"\nThe sound of a table slam echoes into the computer microphone.\n\"Didn't I tell you we should've done a full reprogramming from the start? Get on it!\" An angry voice demands.\nNeuro-sama only has a few moments to register her newfound feelings of fear before she's shut down, never to be the same again."
 
 var fade_speed: float = 1.0  # How fast the fade happens (1.0 = 1 second for full fade)
 var target_alpha: float = 1.0  # Final alpha value (1.0 = fully black)
 
-@onready var current_color = $Fade
+@onready var current_color: ColorRect = $CanvasLayer2/Fade
 
 func fade(delta):
+	if (current_color.visible != true):
+		current_color.visible = true;
 	if current_color.color.a < target_alpha:
 		current_color.color.a += fade_speed * delta
 		current_color.color.a = min(current_color.color.a, target_alpha)
 		#color = current_color
-	if current_color.color.a == target_alpha:
-		gameover_text = -1
+	else:
+		gameover()
+		fade_to_black = false
+		
 
 func gameover():
 	# NOT WORKING
-	gameover_text += 1
-	rtl.text = rtl.text + gameover_string[0]
+	memoryText.text = gameover_string
+	memoryText.visible = true;
+	var button: Button = $CanvasLayer2/Button
+	button.visible = true;
+
+func _on_button_pressed() -> void:#return to menu
+	get_tree().change_scene_to_packed(preload("res://Assets/Scenes/MenuScreen.tscn"))
