@@ -221,7 +221,6 @@ func clear_forced_task(window):
 			forced_task_windows.erase(window)
 			return
 
-<<<<<<< Updated upstream
 func task_bar_free(node):
 	await get_tree().create_timer(2).timeout
 	var task_bar_ap = node.get_node("AnimationPlayer")
@@ -251,7 +250,7 @@ func task_fail():
 	AP.play("RESET") # if we don't do this, the eye stays transparent
 	takeDamage(1)
 	return #no point in "return" here, just something I do sometimes when they are waited on completetion sometimes
-=======
+
 # # # # # # # # #
 # Memory CG
 # # # # # # # # #
