@@ -12,6 +12,7 @@ var lives := 5
 @onready var rtl: RichTextLabel = $RichTextLabel
 @onready var eye: Sprite2D = $Eye
 @onready var eye_AP: AnimationPlayer = $Eye/AnimationPlayer
+@onready var crt: Panel = $Panel
 
 @export var progress_bar: Node = null
 @onready var penalty_bar: Array[Sprite2D] = [$Background/Lifebar/A, $Background/Lifebar/B, $Background/Lifebar/C, $Background/Lifebar/D, $Background/Lifebar/E]
@@ -57,6 +58,7 @@ const FILE = preload("res://Assets/Scenes/File.tscn")
 
 const MONARCH = preload("res://Assets/Sounds/BGM/MONARCH.mp3")
 func _ready() -> void:
+	toggle_Shader()
 	AudioManager.play_bgm(MONARCH)
 	
 	for file : Dictionary in files: # this loads the files into the desktop
@@ -187,3 +189,6 @@ func clear_forced_task(window):
 		if window == f_window:
 			forced_task_windows.erase(window)
 			return
+
+func toggle_Shader():
+	crt.visible = AudioManager.getCRT()

@@ -1,5 +1,8 @@
 extends Node
 
+var crtT : bool
+var volume : float
+
 
 func play(sound : AudioStream) -> AudioStreamPlayer:
 	var audio_player := AudioStreamPlayer.new()
@@ -18,3 +21,6 @@ func play_bgm(sound : AudioStream) -> void:
 		audio_player.playing = true
 		await audio_player.finished
 		await get_tree().create_timer(30).timeout
+
+func getCRT() -> bool:
+	return crtT;

@@ -1,0 +1,211 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwagmoe7k8br0"]
+
+[ext_resource type="Texture2D" uid="uid://c8rbm0cxa2d7m" path="res://Assets/Sprites/Background_Notebook.png" id="1_2len2"]
+[ext_resource type="Script" path="res://Assets/Scripts/menu_screen.gd" id="1_3ycpn"]
+[ext_resource type="Texture2D" uid="uid://cefaocad4cd8d" path="res://Assets/Sprites/Background_Console.png" id="3_hafgg"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_3ycpn")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="TextureRect" parent="Background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.317
+anchor_top = 0.175
+anchor_right = 0.684375
+anchor_bottom = 0.237
+offset_left = -0.320007
+offset_top = -1.00001
+offset_right = 3.05176e-05
+offset_bottom = 0.319992
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_2len2")
+expand_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Play" type="Button" parent="Background/Title"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.295
+anchor_top = 5.488
+anchor_right = 0.703
+anchor_bottom = 6.463
+offset_left = -0.135002
+offset_top = -0.00801086
+offset_right = -0.158997
+offset_bottom = 0.0169983
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+text = "Press Start"
+
+[node name="Options" type="Button" parent="Background/Title"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.295
+anchor_top = 7.244
+anchor_right = 0.703
+anchor_bottom = 8.22
+offset_left = -0.135002
+offset_top = -0.00402832
+offset_right = -0.158997
+offset_bottom = -0.0200195
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+text = "Options"
+
+[node name="Credits" type="Button" parent="Background/Title"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.295
+anchor_top = 9.0
+anchor_right = 0.703
+anchor_bottom = 9.976
+offset_left = -0.135002
+offset_right = -0.158997
+offset_bottom = -0.0160217
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+text = "Credits"
+
+[node name="Exit" type="Button" parent="Background/Title"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.295
+anchor_top = 10.756
+anchor_right = 0.703
+anchor_bottom = 11.732
+offset_left = -0.135002
+offset_top = 0.00396729
+offset_right = -0.158997
+offset_bottom = -0.0120239
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+text = "Exit to Desktop"
+
+[node name="OptionsT" type="TextureRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -198.383
+offset_right = 240.0
+offset_bottom = 198.383
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = ExtResource("3_hafgg")
+
+[node name="Options" type="VBoxContainer" parent="Background/OptionsT"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/OptionsT/Options"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/OptionsT/Options/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CheckButton" type="CheckButton" parent="Background/OptionsT/Options/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+button_pressed = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Background/OptionsT/Options/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(98.905, 24.055)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "CRT effects"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Background/OptionsT/Options"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/OptionsT/Options/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HSlider" type="HSlider" parent="Background/OptionsT/Options/MarginContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(143.08, 0)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Background/OptionsT/Options/MarginContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(91.825, 0)
+layout_mode = 2
+text = "Volume"
+
+[node name="MarginContainer3" type="MarginContainer" parent="Background/OptionsT/Options"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="Background/OptionsT/Options/MarginContainer3"]
+layout_mode = 2
+focus_mode = 0
+text = "Return to Menu"
+
+[node name="CreditsT" type="TextureRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -198.383
+offset_right = 240.0
+offset_bottom = 198.383
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = ExtResource("3_hafgg")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Background/CreditsT"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "THESE ARE CREDITS :O"
+
+[node name="Button2" type="Button" parent="Background/CreditsT"]
+layout_mode = 2
+offset_top = 266.0
+offset_right = 480.0
+offset_bottom = 396.0
+focus_mode = 0
+text = "Return to Menu"
+
+[connection signal="pressed" from="Background/Title/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Background/Title/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Background/Title/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Background/Title/Exit" to="." method="_on_exit_pressed"]
+[connection signal="toggled" from="Background/OptionsT/Options/MarginContainer/HBoxContainer/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="value_changed" from="Background/OptionsT/Options/MarginContainer2/HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="Background/OptionsT/Options/MarginContainer3/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Background/CreditsT/Button2" to="." method="_on_button_pressed"]
