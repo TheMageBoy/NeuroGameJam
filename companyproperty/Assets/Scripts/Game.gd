@@ -221,6 +221,7 @@ func clear_forced_task(window):
 			forced_task_windows.erase(window)
 			return
 
+<<<<<<< Updated upstream
 func task_bar_free(node):
 	await get_tree().create_timer(2).timeout
 	var task_bar_ap = node.get_node("AnimationPlayer")
@@ -250,3 +251,37 @@ func task_fail():
 	AP.play("RESET") # if we don't do this, the eye stays transparent
 	takeDamage(1)
 	return #no point in "return" here, just something I do sometimes when they are waited on completetion sometimes
+=======
+# # # # # # # # #
+# Memory CG
+# # # # # # # # #
+
+var in_memory_cg := false # while in a memory cg, tasks suspend
+var memories := []
+var memory_cg_ending := false
+@onready var cg_rect: TextureRect = $Memory_CG
+
+func start_memory_cg(character):
+	in_memory_cg = true;
+	# disable every window
+	for window in window_array:
+		window.suspended = true
+	# do something with cg_rect
+	cg_rect = cg_rect
+	memory_cg_ending = false
+	if !memories.has(character):
+		memories.append(character)
+
+func end_memory_cg():
+	if length(memories) == 5:
+		print("GOOD ENDING")
+	for window in window_array:
+		window.suspended = false
+	in_memory_cg = false
+	
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and in_memory_cg and !memory_cg_ending:
+		memory_cg_ending = true
+		
+	
+>>>>>>> Stashed changes

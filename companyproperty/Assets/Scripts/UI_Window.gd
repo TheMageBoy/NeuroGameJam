@@ -12,6 +12,8 @@ var dragging = false
 var drag_pos = Vector2()
 var offset = Vector2()
 
+var suspended := false
+
 var mouse_over = false;
 var last_higlihted = false; # for if input will register to the current window
 
@@ -58,6 +60,8 @@ func task_fail():
 
 
 func _input(event: InputEvent):
+	if suspended:
+		return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and !dragging and mouse_within(get_viewport().get_mouse_position()) and focus:
 			offset = panel.get_screen_position() - get_viewport().get_mouse_position();
@@ -67,20 +71,30 @@ func _input(event: InputEvent):
 			dragging = false;
 
 func _process(delta: float):#I hope this is equivalent to update?
+<<<<<<< Updated upstream
 	if has_lifespan:
 		print(lifespan, " --- ", progress_bar.value, " --- ")
 		progress_bar.value -= delta * 2.0
 		
 		if progress_bar.value <= 0:
+=======
+	if has_lifespan and !suspended:
+		lifespan += -1 * delta * 200
+		if lifespan <= 0:
+			get_tree().current_scene.failedTask(self)
+>>>>>>> Stashed changes
 			task_fail()
 			print("TIMER Induced Failure")
 
 		
 	if dragging == true:
+	if dragging == true and !suspended:
 		drag_pos = get_viewport().get_mouse_position() + offset;#Drag position is set to mouse position
 		panel.global_position = drag_pos#Thus, set transform position to drag position
 		
 func mouse_within(point):
+	if suspended:
+		return false
 	var x = panel.global_position.x
 	var y = panel.global_position.y
 	var x2 = x + self.size.x
@@ -106,6 +120,8 @@ func _on_progress_bar_mouse_exited() -> void:
 
 func _x_button_pressed() -> void:
 	#autofails if you try to X out of a task window (failed task closes it)
+	if suspended:
+		return
 	if has_lifespan:
 		get_tree().current_scene.failedTask(self)
 	else:
