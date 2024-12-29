@@ -5,12 +5,14 @@ class_name UI_Window
 
 var work_task := false
 var focus := false
-var has_lifespan = false
-var lifespan = 0 #miliseconds; 0 if no lifespan
+var has_lifespan := false
+var lifespan := 0.0 #miliseconds; 0 if no lifespan
 
 var dragging = false
 var drag_pos = Vector2()
 var offset = Vector2()
+
+var suspended := false
 
 var mouse_over = false;
 var last_higlihted = false; # for if input will register to the current window
@@ -22,50 +24,44 @@ var last_higlihted = false; # for if input will register to the current window
 
 @export var content : PackedScene
 var content_node = null
+var file = null
+var task_bar = null #this is only set ever when, it is a mandated task
 
 var top = false; #if this is the topmost
 
 func _ready() -> void:
+	lifespan = progress_bar.value
 	var content_inst : Content = content.instantiate()
 	content_inst.content_self = self
 	content_space.add_child(content_inst)
 	content_node = content_inst
-	if lifespan:
-		content_inst.task_finish.connect(Callable(self, "task_finish")) # We connect the signal "task finish" to the function below, if the signal is called from the "content" node it will trigger the function below
-		content_inst.task_fail.connect(Callable(self, "task_fail"))
+	content_inst.task_finish.connect(Callable(self, "task_finish")) # We connect the signal "task finish" to the function below, if the signal is called from the "content" node it will trigger the function below
+	content_inst.task_fail.connect(Callable(self, "task_fail"))
 
 const TASKCOMPLETE = preload("res://Assets/Sounds/SFX/taskcomplete.mp3")
 func task_finish():
 	content_node.triggered = true
 	has_lifespan = false
-	game.rtl.text = "[center][b]- TASK COMPLETE -"
-	AudioManager.play(TASKCOMPLETE)
-	game.AP.play("TaskComplete")
-	print("TASK FINISHED")
+	if task_bar:
+		task_bar.get_node("CheckBox/Complete").visible = true
+	await game.task_finish()
+	game.task_bar_free(task_bar)
 
 const BUZZER = preload("res://Assets/Sounds/SFX/buzzer.mp3")
 func task_fail():
 	content_node.triggered = true
 	has_lifespan = false
-	game.rtl.text = "[center][b][color=red]- TASK FAIL -"
-	#AudioManager.play(BUZZER)
-	game.AP.play("TaskFail")
-	await game.AP.animation_finished
-	game.AP.play("RESET")
-	print("TASK FAILED")
+	if task_bar:
+		task_bar.get_node("CheckBox/Fail").visible = true
+		task_bar.get_node("TaskName").text = "[center][color=red] FAILED"
+	await game.task_fail()
+	game.task_bar_free(task_bar)
 
-func setup_window(time):
-	lifespan = time
-	
-	if has_lifespan:
-		call_deferred("_setup_progress_bar", time) # this is here because otherwise it odesnt calc button size and return s 0
 
-func _setup_progress_bar(time):
-	# Configure progress bar lifespan
-	if time > 0:
-		progress_bar.max_value = time
 
 func _input(event: InputEvent):
+	if suspended:
+		return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and !dragging and mouse_within(get_viewport().get_mouse_position()) and focus:
 			offset = panel.get_screen_position() - get_viewport().get_mouse_position();
@@ -75,19 +71,30 @@ func _input(event: InputEvent):
 			dragging = false;
 
 func _process(delta: float):#I hope this is equivalent to update?
+<<<<<<< Updated upstream
 	if has_lifespan:
+		print(lifespan, " --- ", progress_bar.value, " --- ")
+		progress_bar.value -= delta * 2.0
+		
+		if progress_bar.value <= 0:
+=======
+	if has_lifespan and !suspended:
 		lifespan += -1 * delta * 200
 		if lifespan <= 0:
 			get_tree().current_scene.failedTask(self)
+>>>>>>> Stashed changes
 			task_fail()
-		else:
-			progress_bar.value = lifespan
+			print("TIMER Induced Failure")
+
 		
 	if dragging == true:
+	if dragging == true and !suspended:
 		drag_pos = get_viewport().get_mouse_position() + offset;#Drag position is set to mouse position
 		panel.global_position = drag_pos#Thus, set transform position to drag position
 		
 func mouse_within(point):
+	if suspended:
+		return false
 	var x = panel.global_position.x
 	var y = panel.global_position.y
 	var x2 = x + self.size.x
@@ -113,6 +120,8 @@ func _on_progress_bar_mouse_exited() -> void:
 
 func _x_button_pressed() -> void:
 	#autofails if you try to X out of a task window (failed task closes it)
+	if suspended:
+		return
 	if has_lifespan:
 		get_tree().current_scene.failedTask(self)
 	else:

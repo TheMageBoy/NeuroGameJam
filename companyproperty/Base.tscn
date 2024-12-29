@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://Assets/Scripts/Game.gd" id="1_q0rhl"]
 [ext_resource type="Theme" uid="uid://t4jdi7pby4a2" path="res://Assets/UI/UI_Files.tres" id="3_p3ufb"]
 [ext_resource type="Shader" path="res://Assets/UI/CRT.gdshader" id="4_dxp1i"]
+[ext_resource type="Texture2D" uid="uid://dluy222b8rd4l" path="res://Assets/Images/EyeStrike.png" id="4_o1ac3"]
 [ext_resource type="AudioStream" uid="uid://5oidvh0eal2u" path="res://Assets/Sounds/SFX/taskcomplete.mp3" id="4_rychl"]
-[ext_resource type="Texture2D" uid="uid://budqxqakunbke" path="res://Assets/Images/Life.png" id="4_sv8ej"]
 [ext_resource type="Texture2D" uid="uid://c50434fd7c5qx" path="res://Assets/Images/Eye.png" id="6_kdv1s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ld4di"]
@@ -165,26 +165,36 @@ theme = ExtResource("3_p3ufb")
 columns = 3
 
 [node name="Lifebar" type="Node2D" parent="Background"]
-position = Vector2(465, 621)
+position = Vector2(480, 608)
 
-[node name="A" type="Sprite2D" parent="Background/Lifebar"]
-texture = ExtResource("4_sv8ej")
+[node name="Strike1" type="Sprite2D" parent="Background/Lifebar"]
+position = Vector2(-80, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("4_o1ac3")
+vframes = 2
 
-[node name="B" type="Sprite2D" parent="Background/Lifebar"]
-position = Vector2(24, 0)
-texture = ExtResource("4_sv8ej")
+[node name="Strike2" type="Sprite2D" parent="Background/Lifebar"]
+position = Vector2(-40, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("4_o1ac3")
+vframes = 2
 
-[node name="C" type="Sprite2D" parent="Background/Lifebar"]
-position = Vector2(48, 0)
-texture = ExtResource("4_sv8ej")
+[node name="Strike3" type="Sprite2D" parent="Background/Lifebar"]
+scale = Vector2(2, 2)
+texture = ExtResource("4_o1ac3")
+vframes = 2
 
-[node name="D" type="Sprite2D" parent="Background/Lifebar"]
-position = Vector2(72, 0)
-texture = ExtResource("4_sv8ej")
+[node name="Strike4" type="Sprite2D" parent="Background/Lifebar"]
+position = Vector2(40, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("4_o1ac3")
+vframes = 2
 
-[node name="E" type="Sprite2D" parent="Background/Lifebar"]
-position = Vector2(96, 0)
-texture = ExtResource("4_sv8ej")
+[node name="Strike5" type="Sprite2D" parent="Background/Lifebar"]
+position = Vector2(80, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("4_o1ac3")
+vframes = 2
 
 [node name="WindowNode" type="Control" parent="."]
 layout_mode = 3
@@ -225,7 +235,17 @@ libraries = {
 "": SubResource("AnimationLibrary_jekmv")
 }
 
-[node name="Panel" type="Panel" parent="."]
+[node name="TaskList" type="VBoxContainer" parent="."]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -256.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CRT shader" type="Panel" parent="."]
 material = SubResource("ShaderMaterial_7r0gn")
 anchors_preset = 15
 anchor_right = 1.0
@@ -233,3 +253,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="Memory_CG" type="TextureRect" parent="."]
+z_index = 4096
+offset_right = 960.0
+offset_bottom = 640.0
+expand_mode = 5
