@@ -8,6 +8,8 @@ func _ready() -> void:
 	for file in DirAccess.get_files_at("res://Assets/TextFiles/Newspapers/"):
 		var file_content := FileAccess.open("res://Assets/TextFiles/Newspapers/"+file, FileAccess.READ).get_as_text()
 		var string_array := file_content.split("\n===\n")
+		if string_array.size() == 1:
+			string_array = file_content.split("\n===\r\n")
 		var news_file_inst := NEWSPAPER_FILE.instantiate()
 		
 		

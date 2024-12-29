@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8i815hjmrvn7"]
+[gd_scene load_steps=3 format=3 uid="uid://0tseum2fcwev"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/newspapers.gd" id="1_i2g4x"]
 [ext_resource type="Theme" uid="uid://t4jdi7pby4a2" path="res://Assets/UI/UI_Files.tres" id="2_pt2vf"]

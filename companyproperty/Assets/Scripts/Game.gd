@@ -68,7 +68,7 @@ var files := [
 		"visible": true
 	},
 	{
-		"name": "newspapers",
+		"name": "inbox",
 		"icon": "paper",
 		"content": "newspaper",
 		"size": Vector2i(512, 256),
