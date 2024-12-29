@@ -1,8 +1,7 @@
 extends Content
 
-@onready var files: VBoxContainer = $Files
+@onready var files: VBoxContainer = $ScrollContainer/Files
 const TEXT_FILE = preload("res://Assets/Scenes/Content/text_file.tscn")
-# Called when the node enters the scene tree for the first time.
 const JOURNAL_FILE = preload("res://Assets/Scenes/journal_file.tscn")
 func _ready() -> void:
 	for file in DirAccess.get_files_at("res://Assets/TextFiles/Journal/"):

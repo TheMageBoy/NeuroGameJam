@@ -182,7 +182,7 @@ func check_queue():
 	eye_AP.play_backwards("Fade")
 	await stream.finished
 	if checking:
-		check_timer = randf_range(30, 120)
+		check_timer = randf_range(45, 120)
 		checking = false
 		eye_AP.play("Fade")
 		await eye_AP.animation_finished
@@ -204,7 +204,7 @@ func check_on_task(): # so we can see if neuro is off task
 # Forced Task
 # # # # # # # # #
 
-var forced_task_timer := 2.00 # TODO change this / timer before a forced task is sent
+var forced_task_timer := 2.0 # TODO change this / timer before a forced task is sent
 var can_force_task := false # Cannot force tasks until readme has been read
 var forced_task_windows := []
 
@@ -214,7 +214,7 @@ func forced_timer(delta):
 	forced_task_timer -= delta * 2
 	if forced_task_timer <= 0:
 		send_forced_task()
-		forced_task_timer = 30.0 #probably going to be a randomized amount # you got that right king
+		forced_task_timer = randf_range(120, 240) / memories.size()+1 #probably going to be a randomized amount # you got that right king
 
 @onready var task_list: VBoxContainer = $TaskList
 const TASK_PROGRESS_BAR = preload("res://Assets/Scenes/task_progress_bar.tscn")
@@ -261,7 +261,7 @@ func task_finish():
 const BUZZER = preload("res://Assets/Sounds/SFX/buzzer.mp3")
 func task_fail():
 	rtl.text = "[center][b][color=red]- TASK FAIL -"
-	#AudioManager.play(BUZZER)
+	AudioManager.play(BUZZER)
 	AP.play("TaskFail")
 	await AP.animation_finished
 	AP.play("RESET") # if we don't do this, the eye stays transparent
