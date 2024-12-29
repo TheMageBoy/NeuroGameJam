@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://bovjm2k7nd5o"]
+
+[ext_resource type="PackedScene" uid="uid://pyfywe1pr3uu" path="res://Assets/Scenes/content_class.tscn" id="1_awmp8"]
+[ext_resource type="Script" path="res://Assets/Scripts/video_er.gd" id="2_20myo"]
+
+[node name="Control" instance=ExtResource("1_awmp8")]
+script = ExtResource("2_20myo")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." index="0"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.258
+anchor_bottom = 0.35
+offset_right = 0.319977
+offset_bottom = -1.52588e-05
+
+[node name="Button" type="Button" parent="VideoStreamPlayer" index="0"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -72.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 0
+text = "Skip>>"

@@ -66,6 +66,14 @@ var files := [
 		"size": Vector2i(512, 256),
 		"work": false,
 		"visible": true
+	},
+	{
+		"name": "newspapers",
+		"icon": "paper",
+		"content": "newspaper",
+		"size": Vector2i(512, 256),
+		"work": false,
+		"visible": true
 	}
 ]
 

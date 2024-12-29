@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://bluvw024m6dhn"]
+
+[ext_resource type="Theme" uid="uid://t4jdi7pby4a2" path="res://Assets/UI/UI_Files.tres" id="1_c4hri"]
+[ext_resource type="Script" path="res://Assets/Scenes/journal_file.gd" id="2_01kri"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m4dmr"]
+
+[node name="NewspaperFile" type="Button"]
+custom_minimum_size = Vector2(0, 27)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme = ExtResource("1_c4hri")
+script = ExtResource("2_01kri")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_c4hri")
+
+[node name="FileName" type="RichTextLabel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme = ExtResource("1_c4hri")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_m4dmr")
+bbcode_enabled = true
+text = " [img]res://Assets/Sprites/Icons/paper.png[/img] Journal Log #1"
