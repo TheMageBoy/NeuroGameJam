@@ -239,7 +239,10 @@ const NEWTASK = preload("res://Assets/Sounds/SFX/newtask.mp3")
 func send_forced_task():
 	var task_array : Array[String] = ["reviewer", "tweeter"] # "chooser"
 	var task_bar_inst := TASK_PROGRESS_BAR.instantiate()
+	
 	task_bar_inst.get_node("TaskName").text = "[center]"+task_array[randi() % task_array.size()]
+	task_bar_inst.max_value = randf_range(15, 30)
+	task_bar_inst.value = task_bar_inst.max_value
 	task_list.add_child(task_bar_inst)
 	task_list.move_child(task_bar_inst, 0)
 	AudioManager.play(NEWTASK)
