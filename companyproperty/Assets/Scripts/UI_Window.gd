@@ -80,7 +80,10 @@ func _process(delta: float):#I hope this is equivalent to update? It probably is
 	if dragging == true and !suspended:
 		drag_pos = get_viewport().get_mouse_position() + offset;#Drag position is set to mouse position
 		panel.global_position = drag_pos#Thus, set transform position to drag position
-		
+
+func setPos(pos:Vector2):
+	panel.global_position = pos;
+
 func mouse_within(point):
 	if suspended:
 		return false

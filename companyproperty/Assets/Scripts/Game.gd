@@ -125,6 +125,7 @@ func createWindow(file : Button, size, is_task : bool, content, content_data = n
 				new_window.has_lifespan = true
 				task_bar.value_changed.connect(Callable(new_window, "update_progress_bar"))
 				print("VALUES SET")
+		new_window.setPos(get_viewport().get_mouse_position())
 		return new_window
 
 func deleteWindow(window): #deletes a window after passing itself in
