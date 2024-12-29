@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://db13btf0hba6e"]
 
-[ext_resource type="PackedScene" uid="uid://pyfywe1pr3uu" path="res://Assets/Scenes/content_class.tscn" id="1_fqpi1"]
-[ext_resource type="Script" path="res://Assets/Scripts/Chooser.gd" id="2_umgsl"]
+[ext_resource type="PackedScene" uid="uid://pyfywe1pr3uu" path="res://Assets/Scenes/content_class.tscn" id="1_5w3p3"]
+[ext_resource type="Script" path="res://Assets/Scripts/Chooser.gd" id="2_yd8s8"]
 
-[node name="Control" instance=ExtResource("1_fqpi1")]
-script = ExtResource("2_umgsl")
+[node name="Control" instance=ExtResource("1_5w3p3")]
+script = ExtResource("2_yd8s8")
 text = ""
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." index="0"]
