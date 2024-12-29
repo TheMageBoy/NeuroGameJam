@@ -16,6 +16,7 @@ var suspended := false
 
 var mouse_over = false;
 var last_higlihted = false; # for if input will register to the current window
+var data = null # this is passed over to the content
 
 @onready var node: Node = $".."
 @onready var panel: Panel = $"."
@@ -33,10 +34,12 @@ func _ready() -> void:
 	lifespan = progress_bar.value
 	var content_inst : Content = content.instantiate()
 	content_inst.content_self = self
+	content_inst.data = data
+	content_inst.game = game
 	content_space.add_child(content_inst)
-	content_node = content_inst
 	content_inst.task_finish.connect(Callable(self, "task_finish")) # We connect the signal "task finish" to the function below, if the signal is called from the "content" node it will trigger the function below
 	content_inst.task_fail.connect(Callable(self, "task_fail"))
+	content_node = content_inst
 
 func update_progress_bar(value):
 	progress_bar.value = value

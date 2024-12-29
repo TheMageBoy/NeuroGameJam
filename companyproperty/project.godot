@@ -31,12 +31,13 @@ window/stretch/scale_mode="integer"
 [file_customization]
 
 folder_colors={
-"res://Assets/Code/": "yellow",
+"res://Assets/Code/": "orange",
 "res://Assets/Images/": "pink",
 "res://Assets/Scenes/": "red",
 "res://Assets/Scripts/": "purple",
 "res://Assets/Sounds/": "blue",
-"res://Assets/Sprites/": "green"
+"res://Assets/Sprites/": "green",
+"res://Assets/TextFiles/": "yellow"
 }
 
 [input]

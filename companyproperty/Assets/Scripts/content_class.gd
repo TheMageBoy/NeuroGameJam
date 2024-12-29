@@ -4,7 +4,8 @@ signal task_finish # call this when task complete using "emit_signal("task_finis
 signal task_fail
 var content_self = null
 var triggered := false
-
+var data = null
+var game = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
