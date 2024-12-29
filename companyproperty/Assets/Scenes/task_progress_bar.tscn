@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmpsadoj0xojy"]
+[gd_scene load_steps=8 format=3 uid="uid://bgit48xifyp4b"]
 
 [ext_resource type="Theme" uid="uid://bybsndb5yuor4" path="res://Assets/UI/UI_Window.tres" id="1_hfrdg"]
 [ext_resource type="Texture2D" uid="uid://b3fjufqi83bw8" path="res://Assets/Images/ban.png" id="2_ad8ds"]
@@ -72,8 +72,8 @@ custom_minimum_size = Vector2(0, 20)
 offset_right = 256.0
 offset_bottom = 20.0
 theme = ExtResource("1_hfrdg")
-max_value = 60.0
-value = 60.0
+max_value = 10.0
+value = 10.0
 show_percentage = false
 
 [node name="TaskName" type="RichTextLabel" parent="."]

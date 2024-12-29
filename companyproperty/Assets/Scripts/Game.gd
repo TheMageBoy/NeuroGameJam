@@ -100,10 +100,12 @@ func createWindow(file : Button, size, is_task : bool, content):
 			print(new_window.name, " vs ", task_name)
 			if new_window.name == task_name:
 				print("LINKED")
-				new_window.has_lifespan = true
 				new_window.task_bar = task_bar
 				new_window.progress_bar.max_value = task_bar.max_value
 				new_window.progress_bar.value = task_bar.value
+				new_window.lifespan = task_bar.value
+				new_window.has_lifespan = true
+				task_bar.value_changed.connect(Callable(new_window, "update_progress_bar"))
 				print("VALUES SET")
 		return new_window
 
@@ -150,18 +152,18 @@ func _process(delta: float) -> void:
 			check_queue()
 	forced_timer(delta)
 	
-	
 	# active madatory tasks
 	for progress_bar : ProgressBar in task_list.get_children():
 		
 		if !progress_bar.get_node("CheckBox/Complete").visible and !progress_bar.get_node("CheckBox/Fail").visible:
 			progress_bar.value -= delta * 2.0
 		
-		if progress_bar.value == 0:
+		if progress_bar.value == 0 and !progress_bar.get_node("CheckBox/Fail").visible:
 			progress_bar.get_node("CheckBox/Fail").visible = true
 			progress_bar.get_node("TaskName").text = "[center][color=red]FAILED"
 			await task_fail()
 			task_bar_free(progress_bar)
+
 
 const STEPS = preload("res://Assets/Sounds/SFX/steps.wav") # SFX
 func check_queue():

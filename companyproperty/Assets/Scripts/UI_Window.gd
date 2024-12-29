@@ -6,7 +6,7 @@ class_name UI_Window
 var work_task := false
 var focus := false
 var has_lifespan := false
-var lifespan := 0.0 #miliseconds; 0 if no lifespan
+var lifespan := 0.1 #miliseconds; 0 if no lifespan
 
 var dragging = false
 var drag_pos = Vector2()
@@ -37,6 +37,9 @@ func _ready() -> void:
 	content_node = content_inst
 	content_inst.task_finish.connect(Callable(self, "task_finish")) # We connect the signal "task finish" to the function below, if the signal is called from the "content" node it will trigger the function below
 	content_inst.task_fail.connect(Callable(self, "task_fail"))
+
+func update_progress_bar(value):
+	progress_bar.value = value
 
 const TASKCOMPLETE = preload("res://Assets/Sounds/SFX/taskcomplete.mp3")
 func task_finish():
@@ -71,12 +74,6 @@ func _input(event: InputEvent):
 			dragging = false;
 
 func _process(delta: float):#I hope this is equivalent to update? It probably is :)
-	if has_lifespan and !suspended:
-		lifespan += -1 * delta * 200
-		if lifespan <= 0:
-			get_tree().current_scene.failedTask(self)
-			task_fail()
-			print("TIMER Induced Failure")
 	if dragging == true and !suspended:
 		drag_pos = get_viewport().get_mouse_position() + offset;#Drag position is set to mouse position
 		panel.global_position = drag_pos#Thus, set transform position to drag position
