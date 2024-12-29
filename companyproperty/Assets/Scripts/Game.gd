@@ -4,7 +4,7 @@ var window_array = []
 var quota = 10000
 var rate = 10 # -quota per second
 
-var lives := 5
+var lives := 1
 
 @onready var window_node: Control = $WindowNode
 @onready var desktop_files: GridContainer = $Background/DesktopFiles
@@ -144,6 +144,8 @@ func takeDamage(amount):
 	lives += -amount
 	for index : int in amount:
 		penalty_bar[index].frame = 1
+	if lives <= 0:
+		fade_to_black = true
 
 ## test system, you can probably come up with something better #
 func unlock_file():
@@ -164,6 +166,10 @@ var checking := true # this is just for when the sound is playing
 var pixel_size = 16.0;
 
 func _process(delta: float) -> void:
+	if gameover_text > -2 and gameover_string.length() > gameover_text:
+		gameover()
+	if fade_to_black:
+		fade(delta)
 	if (pixel_size > 0):
 		pixelation.get_material().set_shader_parameter("pixel_size",pixel_size)
 		pixel_size-=10*delta
@@ -318,3 +324,25 @@ func end_memory_cg():
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and in_memory_cg and !memory_cg_ending:
 		memory_cg_ending = true
+
+var fade_to_black := false
+var gameover_text := -2
+var gameover_string := "\"This AI can't even do the basic tasks it was made for.\"\nThe sound of a table slam echoes into the computer microphone.\n\"Didn't I tell you we should've done a full reprogramming from the start? Get on it!\" An angry voice demands.\nNeuro-sama only has a few moments to register her newfound feelings of fear before she's shut down, never to be the same again."
+
+var fade_speed: float = 1.0  # How fast the fade happens (1.0 = 1 second for full fade)
+var target_alpha: float = 1.0  # Final alpha value (1.0 = fully black)
+
+@onready var current_color = $Fade
+
+func fade(delta):
+	if current_color.color.a < target_alpha:
+		current_color.color.a += fade_speed * delta
+		current_color.color.a = min(current_color.color.a, target_alpha)
+		#color = current_color
+	if current_color.color.a == target_alpha:
+		gameover_text = -1
+
+func gameover():
+	# NOT WORKING
+	gameover_text += 1
+	rtl.text = rtl.text + gameover_string[0]

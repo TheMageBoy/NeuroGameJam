@@ -292,3 +292,19 @@ offset_right = 960.0
 offset_bottom = 640.0
 mouse_filter = 2
 expand_mode = 5
+
+[node name="Fade" type="ColorRect" parent="."]
+z_index = 4096
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -871.0
+offset_top = 523.0
+offset_right = -871.0
+offset_bottom = 523.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
