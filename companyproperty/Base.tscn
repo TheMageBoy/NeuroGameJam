@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dluy222b8rd4l" path="res://Assets/Images/EyeStrike.png" id="4_o1ac3"]
 [ext_resource type="AudioStream" uid="uid://5oidvh0eal2u" path="res://Assets/Sounds/SFX/taskcomplete.mp3" id="4_rychl"]
 [ext_resource type="Texture2D" uid="uid://c50434fd7c5qx" path="res://Assets/Images/Eye.png" id="6_kdv1s"]
+[ext_resource type="Texture2D" uid="uid://dq5yj6hcidimt" path="res://Assets/Images/NeuroCorner.png" id="7_i2x52"]
 [ext_resource type="Material" uid="uid://bujtwkcmoei5f" path="res://Assets/Pixelation.tres" id="7_i6lvm"]
-[ext_resource type="Texture2D" uid="uid://cwg7qswpl3cp4" path="res://Assets/Images/image.png" id="7_k6ind"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ld4di"]
 bg_color = Color(0, 0, 0, 0.498039)
@@ -256,16 +256,16 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -107.705
-offset_top = -166.575
-offset_right = 220.295
-offset_bottom = 338.425
+offset_left = -206.0
+offset_top = -202.0
+offset_right = 818.0
+offset_bottom = 822.0
 grow_horizontal = 0
 grow_vertical = 0
-scale = Vector2(0.33, 0.33)
+scale = Vector2(0.205, 0.205)
 size_flags_horizontal = 8
 size_flags_vertical = 8
-texture = ExtResource("7_k6ind")
+texture = ExtResource("7_i2x52")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -282,7 +282,6 @@ size_flags_vertical = 3
 mouse_filter = 2
 
 [node name="CRT shader" type="Panel" parent="."]
-visible = false
 material = SubResource("ShaderMaterial_7r0gn")
 anchors_preset = 15
 anchor_right = 1.0

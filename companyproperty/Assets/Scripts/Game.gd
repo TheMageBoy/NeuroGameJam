@@ -85,6 +85,7 @@ const FILE = preload("res://Assets/Scenes/File.tscn")
 const MONARCH = preload("res://Assets/Sounds/BGM/MONARCH.mp3")
 func _ready() -> void:
 	toggle_Shader()
+	canBlink = true;
 	for file in DirAccess.get_files_at("res://Assets/Scenes/Content/"):
 		vaild_content_array.append(file.erase(file.length()-4, 4))
 	
@@ -168,11 +169,16 @@ var checking := true # this is just for when the sound is playing
 var pixel_size = 16.0;
 
 func _process(delta: float) -> void:
+	if (canBlink):
+		blink()
 	if fade_to_black:
 		fade(delta)
 	if (pixel_size > 0):
+		pixelation.visible = true;
 		pixelation.get_material().set_shader_parameter("pixel_size",pixel_size)
 		pixel_size-=10*delta
+	else:
+		pixelation.visible = false;
 	if eye.visible and checking: # this is the more important part
 		check_on_task()
 	if !checking && current_color.color.a < target_alpha:
@@ -291,8 +297,24 @@ func task_fail():
 	AP.play("TaskFail")
 	await AP.animation_finished
 	AP.play("RESET") # if we don't do this, the eye stays transparent
-	takeDamage(5)
+	takeDamage(1)
 	return #no point in "return" here, just something I do sometimes when they are waited on completetion sometimes
+
+
+@onready var texture_rect: TextureRect = $TextureRect
+const NEURO_CORNER = preload("res://Assets/Images/NeuroCorner.png")
+const NEURO_CORNER_2 = preload("res://Assets/Images/NeuroCorner2.png")
+var canBlink : bool
+# # # # # # # ## # # # # #
+#Mewo's blinking Nwero :SMILE:
+func blink():
+	canBlink = false
+	texture_rect.texture = NEURO_CORNER_2
+	await get_tree().create_timer(1).timeout
+	texture_rect.texture = NEURO_CORNER
+	await get_tree().create_timer(randi_range(1,20)).timeout
+	canBlink = true;
+
 
 # # # # # # # # #
 # Memory CG
