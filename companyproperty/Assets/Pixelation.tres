@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bujtwkcmoei5f"]
+
+[ext_resource type="Shader" path="res://pixelation.gdshader" id="1_ms8xj"]
+
+[resource]
+shader = ExtResource("1_ms8xj")
+shader_parameter/pixel_size = 16.0

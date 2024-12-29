@@ -9,7 +9,7 @@ extends Content
 var negative : bool
 var outcome : bool
 
-var negativeswords : PackedStringArray = ["sucks","garbage","shit","fuck","shot","screw","crashes","scam","no point","Unfollowing","butt","DELETE","Marry me","Fuck","I'm leaving","drain","regret","disappointing","PLEASE"]
+var negativeswords : PackedStringArray = ["sucks","garbage","shit","fuck","shot","screw","crashes","scam","No point","Unfollowing","butt","DELETE","Marry me","Fuck","I'm leaving","drain","regret","disappointing","PLEASE","sold","used to be"]
 
 signal next
 var score := 0
@@ -25,27 +25,32 @@ func _ready():
 		#print(integer)
 		#print(texts2[integer])
 		review.text = texts2[integer];
-		
+		negative = false;
 		for words in negativeswords:
-			if (review.text.to_lower().contains(words)):
+			if (review.text.contains(words)):
 				negative = true;
-			else:
-				negative = false;
 		await next
 	finish_review()
 
 func like():
-	if (negative == true):
+	if (negative == false):
 		score += 1
+		print("correct")
+	else:
+		print("incorrect")
 	emit_signal("next")
 
 func dislike():
-	if (negative == false):
+	if (negative == true):
+		print("correct")
 		score += 1
+	else:
+		print("incorrect")
 	emit_signal("next")
 
 
 func finish_review():
+	print(score)
 	if score > 2:
 		emit_signal("task_finish")
 	else:

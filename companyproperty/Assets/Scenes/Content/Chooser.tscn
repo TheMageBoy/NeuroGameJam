@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://db13btf0hba6e"]
+[gd_scene load_steps=4 format=3 uid="uid://db13btf0hba6e"]
 
 [ext_resource type="PackedScene" uid="uid://pyfywe1pr3uu" path="res://Assets/Scenes/content_class.tscn" id="1_5w3p3"]
 [ext_resource type="Script" path="res://Assets/Scripts/Chooser.gd" id="2_yd8s8"]
+
+[sub_resource type="Theme" id="Theme_0nepf"]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
 
 [node name="Control" instance=ExtResource("1_5w3p3")]
 script = ExtResource("2_yd8s8")
@@ -16,16 +21,19 @@ offset_bottom = 128.0
 layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 0
+theme = SubResource("Theme_0nepf")
 flat = true
 
 [node name="Button2" type="Button" parent="VBoxContainer" index="1"]
 layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 0
+theme = SubResource("Theme_0nepf")
 flat = true
 
 [node name="Button3" type="Button" parent="VBoxContainer" index="2"]
 layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 0
+theme = SubResource("Theme_0nepf")
 flat = true

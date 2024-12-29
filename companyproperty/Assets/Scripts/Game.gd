@@ -13,6 +13,7 @@ var lives := 5
 @onready var eye: Sprite2D = $Eye
 @onready var eye_AP: AnimationPlayer = $Eye/AnimationPlayer
 @onready var crt: Panel = $"CRT shader"
+@onready var pixelation: ColorRect = $CanvasLayer/ColorRect
 
 @onready var penalty_bar: Array[Node] = $Background/Lifebar.get_children()
 
@@ -157,9 +158,15 @@ func unlock_file():
 #
 # # # # # # # # #
 
-var check_timer := 10.0
+var check_timer := 60.0
 var checking := true # this is just for when the sound is playing
+
+var pixel_size = 16.0;
+
 func _process(delta: float) -> void:
+	if (pixel_size > 0):
+		pixelation.get_material().set_shader_parameter("pixel_size",pixel_size)
+		pixel_size-=10*delta
 	if eye.visible and checking: # this is the more important part
 		check_on_task()
 	if !checking:
@@ -170,16 +177,17 @@ func _process(delta: float) -> void:
 	forced_timer(delta)
 	
 	# active madatory tasks
-	for progress_bar : ProgressBar in task_list.get_children():
+	if (task_list.get_children().size() != 0):
+		for progress_bar : ProgressBar in task_list.get_children():
 		
-		if !progress_bar.get_node("CheckBox/Complete").visible and !progress_bar.get_node("CheckBox/Fail").visible:
-			progress_bar.value -= delta * 2.0
-		
-		if progress_bar.value == 0 and !progress_bar.get_node("CheckBox/Fail").visible:
-			progress_bar.get_node("CheckBox/Fail").visible = true
-			progress_bar.get_node("TaskName").text = "[center][color=red]FAILED"
-			await task_fail()
-			task_bar_free(progress_bar)
+			if !progress_bar.get_node("CheckBox/Complete").visible and !progress_bar.get_node("CheckBox/Fail").visible:
+				progress_bar.value -= delta * 1.0
+			
+			if progress_bar.value == 0 and !progress_bar.get_node("CheckBox/Fail").visible:
+				progress_bar.get_node("CheckBox/Fail").visible = true
+				progress_bar.get_node("TaskName").text = "[center][color=red]FAILED"
+				await task_fail()
+				task_bar_free(progress_bar)
 
 
 const STEPS = preload("res://Assets/Sounds/SFX/steps.wav") # SFX
@@ -248,10 +256,11 @@ func toggle_Shader():
 
 func task_bar_free(node):
 	await get_tree().create_timer(2).timeout
-	var task_bar_ap = node.get_node("AnimationPlayer")
-	task_bar_ap.play("Squeeze")
-	await task_bar_ap.animation_finished 
-	node.queue_free()
+	if node != null:
+		var task_bar_ap = node.get_node("AnimationPlayer")
+		task_bar_ap.play("Squeeze")
+		await task_bar_ap.animation_finished 
+		node.queue_free()
 
 
 #  #  #  #  #  # 

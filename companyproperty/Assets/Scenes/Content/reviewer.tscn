@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ft5wylwddt2g"]
+[gd_scene load_steps=6 format=3 uid="uid://7vhupi3pmjun"]
 
 [ext_resource type="PackedScene" uid="uid://pyfywe1pr3uu" path="res://Assets/Scenes/content_class.tscn" id="1_omk36"]
 [ext_resource type="Script" path="res://Assets/Scripts/Reviewer.gd" id="2_jt7in"]
@@ -36,11 +36,23 @@ layout_mode = 2
 
 [node name="Button" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer" index="0"]
 layout_mode = 2
+focus_mode = 0
+icon = ExtResource("5_pjda1")
+flat = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/HBoxContainer" index="1"]
+custom_minimum_size = Vector2(77.545, 0)
+layout_mode = 2
+text = "Allow"
+
+[node name="Button2" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer" index="2"]
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
 icon = ExtResource("4_7t178")
 flat = true
 
-[node name="Button2" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer" index="1"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/HBoxContainer" index="3"]
+custom_minimum_size = Vector2(77.545, 0)
 layout_mode = 2
-size_flags_horizontal = 0
-icon = ExtResource("5_pjda1")
-flat = true
+text = "Ban"

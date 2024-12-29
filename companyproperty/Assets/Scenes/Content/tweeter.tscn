@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://br5725aqf673j"]
+[gd_scene load_steps=11 format=3 uid="uid://br5725aqf673j"]
 
 [ext_resource type="PackedScene" uid="uid://pyfywe1pr3uu" path="res://Assets/Scenes/content_class.tscn" id="1_ymwgs"]
 [ext_resource type="Texture2D" uid="uid://c53dw4gr1e82w" path="res://Assets/Sprites/Icons/console.png" id="2_5uurt"]
@@ -11,8 +11,29 @@
 RichTextLabel/colors/default_color = Color(0.351563, 0.351563, 0.351563, 1)
 RichTextLabel/font_sizes/normal_font_size = 17
 
-[sub_resource type="Theme" id="Theme_cw071"]
-RichTextLabel/font_sizes/normal_font_size = 12
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l8vnx"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.2, 0.545098, 0.776471, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pkc4h"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+
+[sub_resource type="Theme" id="Theme_xsden"]
+Button/font_sizes/font_size = 14
+Button/styles/hover = SubResource("StyleBoxFlat_l8vnx")
+Button/styles/normal = SubResource("StyleBoxEmpty_pkc4h")
+Button/styles/pressed = SubResource("StyleBoxFlat_l8vnx")
 
 [node name="Control" instance=ExtResource("1_ymwgs")]
 script = ExtResource("2_e3wdd")
@@ -49,9 +70,9 @@ text = "@NeuroSamaAI"
 [node name="RichTextLabel2" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/VBoxContainer" index="1"]
 custom_minimum_size = Vector2(0, 58.48)
 layout_mode = 2
-theme = SubResource("Theme_cw071")
+theme = SubResource("Theme_xsden")
 bbcode_enabled = true
-text = "I saw a beautiful bird outside my window today! I inveited it to come stream with me, but it just looked confused. Animals... why can't they be more like... me?"
+text = "Typing..."
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/VBoxContainer" index="2"]
 custom_minimum_size = Vector2(0, 26.24)
