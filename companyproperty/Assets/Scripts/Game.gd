@@ -113,6 +113,8 @@ func _process(delta: float) -> void:
 		if check_timer < 0:
 			checking = true
 			check_queue()
+	forced_timer(delta)
+	
 
 const STEPS = preload("res://Assets/Sounds/SFX/steps.wav") # SFX
 func check_queue():
@@ -139,3 +141,21 @@ func check_on_task(): # so we can see if neuro is off task
 			await eye_AP.animation_finished
 			eye.visible = false
 			break
+
+# # # # # # # # #
+# Forced Task
+# Subtracrting 
+# # # # # # # # #
+
+var forced_task_timer := 1.00 # TODO change this / timer before a forced task is sent
+func forced_timer(delta):
+	forced_task_timer -= delta *2
+	if forced_task_timer <= 0:
+		send_forced_task()
+
+func send_forced_task():
+	var file = files[1]
+	var game = file["content"]
+	var cont = load("res://Assets/Scenes/Content/"+game+".tscn")
+	createWindow(Vector2i(512, 160), true, cont)
+	#print("")
