@@ -70,24 +70,13 @@ func _input(event: InputEvent):
 		if event.button_index == MOUSE_BUTTON_LEFT and !event.pressed and dragging:
 			dragging = false;
 
-func _process(delta: float):#I hope this is equivalent to update?
-<<<<<<< Updated upstream
-	if has_lifespan:
-		print(lifespan, " --- ", progress_bar.value, " --- ")
-		progress_bar.value -= delta * 2.0
-		
-		if progress_bar.value <= 0:
-=======
+func _process(delta: float):#I hope this is equivalent to update? It probably is :)
 	if has_lifespan and !suspended:
 		lifespan += -1 * delta * 200
 		if lifespan <= 0:
 			get_tree().current_scene.failedTask(self)
->>>>>>> Stashed changes
 			task_fail()
 			print("TIMER Induced Failure")
-
-		
-	if dragging == true:
 	if dragging == true and !suspended:
 		drag_pos = get_viewport().get_mouse_position() + offset;#Drag position is set to mouse position
 		panel.global_position = drag_pos#Thus, set transform position to drag position

@@ -258,4 +258,5 @@ mouse_filter = 2
 z_index = 4096
 offset_right = 960.0
 offset_bottom = 640.0
+mouse_filter = 2
 expand_mode = 5

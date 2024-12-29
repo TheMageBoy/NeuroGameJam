@@ -12,8 +12,7 @@ var lives := 5
 @onready var rtl: RichTextLabel = $RichTextLabel
 @onready var eye: Sprite2D = $Eye
 @onready var eye_AP: AnimationPlayer = $Eye/AnimationPlayer
-
-@onready var crt: Panel = $Panel
+@onready var crt: Panel = $"CRT shader"
 
 @onready var penalty_bar: Array[Node] = $Background/Lifebar.get_children()
 
@@ -67,8 +66,8 @@ var vaild_content_array := []
 const FILE = preload("res://Assets/Scenes/File.tscn")
 const MONARCH = preload("res://Assets/Sounds/BGM/MONARCH.mp3")
 func _ready() -> void:
- toggle_Shader()
- for file in DirAccess.get_files_at("res://Assets/Scenes/Content/"):
+	toggle_Shader()
+	for file in DirAccess.get_files_at("res://Assets/Scenes/Content/"):
 		vaild_content_array.append(file.erase(file.length()-4, 4))
 	
 	AudioManager.play_bgm(MONARCH)
@@ -227,6 +226,7 @@ func clear_forced_task(window):
 
 func toggle_Shader():
 	crt.visible = AudioManager.getCRT()
+
 func task_bar_free(node):
 	await get_tree().create_timer(2).timeout
 	var task_bar_ap = node.get_node("AnimationPlayer")
@@ -278,7 +278,7 @@ func start_memory_cg(character):
 		memories.append(character)
 
 func end_memory_cg():
-	if length(memories) == 5:
+	if memories.size() == 5:
 		print("GOOD ENDING")
 	for window in window_array:
 		window.suspended = false
@@ -287,5 +287,3 @@ func end_memory_cg():
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and in_memory_cg and !memory_cg_ending:
 		memory_cg_ending = true
-		
-	

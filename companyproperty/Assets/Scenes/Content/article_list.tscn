@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://d07xk8ecj1mu5"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/article_list.gd" id="1_6s2hn"]
+
+[node name="ArticleList" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6s2hn")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="meta_clicked" from="RichTextLabel" to="." method="_on_rich_text_label_meta_clicked"]
