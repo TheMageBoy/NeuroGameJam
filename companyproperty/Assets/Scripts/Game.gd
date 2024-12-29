@@ -3,6 +3,9 @@ extends Node
 var window_array = []
 var quota = 10000
 var rate = 10 # -quota per second
+
+var lives := 5
+
 @onready var window_node: Control = $WindowNode
 @onready var desktop_files: GridContainer = $Background/DesktopFiles
 @onready var AP: AnimationPlayer = $RichTextLabel/AnimationPlayer
@@ -11,6 +14,7 @@ var rate = 10 # -quota per second
 @onready var eye_AP: AnimationPlayer = $Eye/AnimationPlayer
 
 @export var progress_bar: Node = null
+@onready var penalty_bar: Array[Sprite2D] = [$Background/Lifebar/A, $Background/Lifebar/B, $Background/Lifebar/C, $Background/Lifebar/D, $Background/Lifebar/E]
 
 const UI_WINDOW = preload("res://Assets/Scenes/UI_Window.tscn")
 
@@ -76,8 +80,10 @@ func createWindow(size, is_task : bool, content):
 	window_node.add_child(new_window)
 	new_window.progress_bar.show_percentage = is_task
 	window_array.append(new_window)
+	return new_window
 
 func deleteWindow(window): #deletes a window after passing itself in
+	
 	window_array.erase(window)
 	window.queue_free()
 	
@@ -87,11 +93,20 @@ func move_to_top(window):
 
 func failedTask(window):
 	print("RAN OUT OF TIME ON TASK")
+	takeDamage(1)
 	deleteWindow(window)
 
+func takeDamage(amount):
+	var current = lives
+	lives += -amount
+	for i in range(amount):
+		var j = current-1-i
+		if j >= 0:
+			penalty_bar[j].visible = false
 
 ## test system, you can probably come up with something better
 func unlock_file():
+	can_force_task = true
 	for file in desktop_files.get_children():
 		if !file.visible:
 			file.visible = true
@@ -144,18 +159,31 @@ func check_on_task(): # so we can see if neuro is off task
 
 # # # # # # # # #
 # Forced Task
-# Subtracrting 
 # # # # # # # # #
 
-var forced_task_timer := 1.00 # TODO change this / timer before a forced task is sent
+var forced_task_timer := 2.00 # TODO change this / timer before a forced task is sent
+var can_force_task := false # Cannot force tasks until readme has been read
+var forced_task_windows := []
+
 func forced_timer(delta):
+	if !can_force_task:
+		return
 	forced_task_timer -= delta *2
 	if forced_task_timer <= 0:
 		send_forced_task()
+		forced_task_timer += 10.00 #probably going to be a randomized amount
 
 func send_forced_task():
-	var file = files[1]
+	var forced_task_list := [2,3]
+	var task = forced_task_list[randi() % forced_task_list.size()]
+	var file = files[task]
 	var game = file["content"]
 	var cont = load("res://Assets/Scenes/Content/"+game+".tscn")
-	createWindow(Vector2i(512, 160), true, cont)
-	#print("")
+	var forced_task_window = createWindow(file["size"], true, cont)
+	forced_task_windows.append(forced_task_window)
+
+func clear_forced_task(window):
+	for f_window in forced_task_windows:
+		if window == f_window:
+			forced_task_windows.erase(window)
+			return

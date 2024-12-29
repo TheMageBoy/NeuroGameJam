@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://1wtvusvixp7q"]
+[gd_scene load_steps=17 format=3 uid="uid://1wtvusvixp7q"]
 
 [ext_resource type="Texture2D" uid="uid://bcyprrmg8kvao" path="res://Assets/Images/desktopbackground.png" id="1_0an34"]
 [ext_resource type="Script" path="res://Assets/Scripts/Game.gd" id="1_q0rhl"]
 [ext_resource type="Theme" uid="uid://t4jdi7pby4a2" path="res://Assets/UI/UI_Files.tres" id="3_p3ufb"]
 [ext_resource type="Shader" path="res://Assets/UI/CRT.gdshader" id="4_dxp1i"]
 [ext_resource type="AudioStream" uid="uid://5oidvh0eal2u" path="res://Assets/Sounds/SFX/taskcomplete.mp3" id="4_rychl"]
+[ext_resource type="Texture2D" uid="uid://budqxqakunbke" path="res://Assets/Images/Life.png" id="4_sv8ej"]
 [ext_resource type="Texture2D" uid="uid://c50434fd7c5qx" path="res://Assets/Images/Eye.png" id="6_kdv1s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ld4di"]
@@ -162,6 +163,28 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_p3ufb")
 columns = 3
+
+[node name="Lifebar" type="Node2D" parent="Background"]
+position = Vector2(465, 621)
+
+[node name="A" type="Sprite2D" parent="Background/Lifebar"]
+texture = ExtResource("4_sv8ej")
+
+[node name="B" type="Sprite2D" parent="Background/Lifebar"]
+position = Vector2(24, 0)
+texture = ExtResource("4_sv8ej")
+
+[node name="C" type="Sprite2D" parent="Background/Lifebar"]
+position = Vector2(48, 0)
+texture = ExtResource("4_sv8ej")
+
+[node name="D" type="Sprite2D" parent="Background/Lifebar"]
+position = Vector2(72, 0)
+texture = ExtResource("4_sv8ej")
+
+[node name="E" type="Sprite2D" parent="Background/Lifebar"]
+position = Vector2(96, 0)
+texture = ExtResource("4_sv8ej")
 
 [node name="WindowNode" type="Control" parent="."]
 layout_mode = 3

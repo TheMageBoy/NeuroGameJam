@@ -48,7 +48,7 @@ func task_fail():
 	content_node.triggered = true
 	has_lifespan = false
 	game.rtl.text = "[center][b][color=red]- TASK FAIL -"
-	AudioManager.play(BUZZER)
+	#AudioManager.play(BUZZER)
 	game.AP.play("TaskFail")
 	await game.AP.animation_finished
 	game.AP.play("RESET")
