@@ -30,7 +30,7 @@ var files := [
 	{
 		"name": "homework",
 		"icon": "paper",
-		"content": "test_content",
+		"content": "text_file",
 		"size": Vector2i(256, 256),
 		"work": false,
 		"visible": false
@@ -58,6 +58,14 @@ var files := [
 		"size": Vector2i(512, 256),
 		"work": true,
 		"visible": false
+	},
+	{
+		"name": "journal",
+		"icon": "paper",
+		"content": "journal",
+		"size": Vector2i(512, 256),
+		"work": false,
+		"visible": true
 	}
 ]
 
@@ -83,13 +91,14 @@ func _ready() -> void:
 		file_inst.content = load("res://Assets/Scenes/Content/"+file["content"]+".tscn")
 		file_inst.connect("pressed", Callable(self, "createWindow").bind(file_inst, file["size"], file["work"], file_inst.content))
 
-func createWindow(file : Button, size, is_task : bool, content):
+func createWindow(file : Button, size, is_task : bool, content, content_data = null):
 	if file.window == null:
 		var new_window = UI_WINDOW.instantiate()
 		new_window.name = file.rtl.text
 		new_window.size = size
 		new_window.work_task = is_task
 		new_window.content = content
+		new_window.data = content_data
 		window_node.add_child(new_window)
 		new_window.progress_bar.show_percentage = is_task
 		window_array.append(new_window)
