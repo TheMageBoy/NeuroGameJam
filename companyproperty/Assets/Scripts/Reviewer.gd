@@ -9,7 +9,7 @@ extends Content
 var negative : bool
 var outcome : bool
 
-var negativeswords : PackedStringArray = ["sucks","garbage","shit","fuck","shot","screw"]
+var negativeswords : PackedStringArray = ["sucks","garbage","shit","fuck","shot","screw","crashes","scam","no point","Unfollowing","butt","DELETE","Marry me","Fuck","I'm leaving","drain","regret","disappointing","PLEASE"]
 
 signal next
 var score := 0
