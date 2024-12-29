@@ -1,6 +1,6 @@
 [gd_resource type="RichTextEffect" script_class="RichTextJumble" load_steps=2 format=3 uid="uid://cmfqgtwg8yt55"]
 
-[ext_resource type="Script" path="res://RichTextEffect/RichTextTilt.gd" id="1_rshan"]
+[ext_resource type="Script" path="res://Assets/Font&RTE/RichTextEffect/RichTextTilt.gd" id="1_rshan"]
 
 [resource]
 resource_local_to_scene = true

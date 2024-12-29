@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=11 format=3 uid="uid://bybsndb5yuor4"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://bybsndb5yuor4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rtl0u"]
 bg_color = Color(0.635294, 0.113725, 0.137255, 1)
@@ -30,8 +30,6 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
-
-[sub_resource type="FontVariation" id="FontVariation_jt5on"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqbd4"]
 border_width_left = 2
@@ -82,17 +80,22 @@ corner_radius_bottom_left = 3
 
 [resource]
 Button/colors/font_color = Color(0, 0, 0, 1)
-Button/font_sizes/font_size = 12
+Button/font_sizes/font_size = 10
 Button/styles/hover = SubResource("StyleBoxFlat_rtl0u")
 Button/styles/normal = SubResource("StyleBoxFlat_61bqk")
 Button/styles/pressed = SubResource("StyleBoxFlat_g4pgt")
 Panel/styles/panel = SubResource("StyleBoxFlat_kxr44")
 ProgressBar/colors/font_color = Color(0, 0, 0, 1)
+ProgressBar/colors/font_outline_color = Color(0, 0, 0, 1)
+ProgressBar/constants/outline_size = 0
 ProgressBar/font_sizes/font_size = 12
-ProgressBar/fonts/font = SubResource("FontVariation_jt5on")
+ProgressBar/fonts/font = null
 ProgressBar/styles/background = SubResource("StyleBoxFlat_gqbd4")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_kd0gf")
 RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+RichTextLabel/font_sizes/bold_font_size = 16
+RichTextLabel/font_sizes/bold_italics_font_size = 16
+RichTextLabel/font_sizes/italics_font_size = 14
 RichTextLabel/font_sizes/normal_font_size = 14
 RichTextLabel/styles/normal = SubResource("StyleBoxFlat_t2skv")
 VScrollBar/styles/grabber = SubResource("StyleBoxFlat_kly0m")

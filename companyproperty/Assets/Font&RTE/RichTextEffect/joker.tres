@@ -1,6 +1,6 @@
 [gd_resource type="RichTextEffect" script_class="RichTextJoker" load_steps=2 format=3 uid="uid://dwrdd4infjx8e"]
 
-[ext_resource type="Script" path="res://RichTextEffect/RichTextJoker.gd" id="1_ml04s"]
+[ext_resource type="Script" path="res://Assets/Font&RTE/RichTextEffect/RichTextJoker.gd" id="1_ml04s"]
 
 [resource]
 resource_name = "joker"

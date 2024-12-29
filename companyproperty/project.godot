@@ -23,15 +23,14 @@ AudioManager="*res://Assets/Scenes/audio_manager.gd"
 
 window/size/viewport_width=960
 window/size/viewport_height=640
-window/size/resizable=false
 window/stretch/mode="canvas_items"
-window/stretch/aspect="ignore"
 window/stretch/scale_mode="integer"
 
 [file_customization]
 
 folder_colors={
 "res://Assets/Code/": "orange",
+"res://Assets/Font&RTE/": "blue",
 "res://Assets/Images/": "pink",
 "res://Assets/Scenes/": "red",
 "res://Assets/Scripts/": "purple",
