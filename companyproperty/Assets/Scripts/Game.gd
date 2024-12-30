@@ -30,7 +30,7 @@ var files := [
 		"visible": true
 	},
 		{
-		"name": "journal",
+		"name": "Journal",
 		"icon": "rawr",
 		"content": "journal",
 		"size": Vector2i(512, 256),
@@ -38,7 +38,7 @@ var files := [
 		"visible": true
 	},
 	{
-		"name": "inbox",
+		"name": "Inbox",
 		"icon": "mailbox",
 		"content": "newspaper",
 		"size": Vector2i(512, 256),
@@ -46,7 +46,7 @@ var files := [
 		"visible": true
 	},
 	{
-		"name": "tweeter",
+		"name": "Tweeter",
 		"icon": "internet",
 		"content": "tweeter",
 		"size": Vector2i(512, 160),
@@ -54,7 +54,7 @@ var files := [
 		"visible": false
 	},
 	{
-		"name": "reviewer",
+		"name": "Reviewer",
 		"icon": "internet",
 		"content": "reviewer",
 		"size": Vector2i(576, 160),
@@ -62,7 +62,7 @@ var files := [
 		"visible": false
 	},
 	{
-		"name": "chooser",
+		"name": "Chooser",
 		"icon": "internet",
 		"content": "chooser",
 		"size": Vector2i(553, 285),
@@ -73,6 +73,14 @@ var files := [
 		"name": "Logs",
 		"icon": "rawr",
 		"content": "companylogs",
+		"size": Vector2i(690, 256),
+		"work": false,
+		"visible": true
+	},
+	{
+		"name": "Console",
+		"icon": "console",
+		"content": "terminal",
 		"size": Vector2i(690, 256),
 		"work": false,
 		"visible": true

@@ -1,7 +1,7 @@
 extends Button
 var window = null
 
-@onready var file_name: RichTextLabel = $VBoxContainer/FileName
+@onready var file_name: RichTextLabel = $HBoxContainer/FileName
 #@onready var preview: RichTextLabel = $VBoxContainer/Preview
 
 # Called when the node enters the scene tree for the first time.
