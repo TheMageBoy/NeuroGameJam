@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://i4ituy4kmbvh"]
+[gd_scene load_steps=8 format=3 uid="uid://i4ituy4kmbvh"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/menu_screen.gd" id="1_3ycpn"]
-[ext_resource type="Texture2D" uid="uid://c0efr8dxdxapj" path="res://Assets/Images/Monarch.png" id="2_6i0nx"]
 [ext_resource type="Texture2D" uid="uid://16yt6huyjlm6" path="res://Assets/Images/Bloody_Sky.jpg" id="2_b3nn1"]
+[ext_resource type="Texture2D" uid="uid://cu5avg8wxrsv6" path="res://Assets/Images/MonarchCompanyProperty.png" id="3_by8dq"]
 [ext_resource type="Texture2D" uid="uid://cefaocad4cd8d" path="res://Assets/Sprites/Background_Console.png" id="3_hafgg"]
+[ext_resource type="Texture2D" uid="uid://ylpeqsby5h0r" path="res://Assets/Images/Evil.png" id="5_f306d"]
+[ext_resource type="Texture2D" uid="uid://d3uy8tasft42m" path="res://Assets/Images/Neuro.png" id="6_osx5r"]
+
+[sub_resource type="Theme" id="Theme_uggu6"]
+VBoxContainer/constants/separation = 21
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_3ycpn")
@@ -21,80 +26,57 @@ expand_mode = 3
 stretch_mode = 4
 
 [node name="Title" type="TextureRect" parent="Background"]
+custom_minimum_size = Vector2(0, 366.57)
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.25
-anchor_top = 0.087
-anchor_right = 0.733
-anchor_bottom = 0.352
-offset_top = 0.319996
-offset_right = 16.3199
-offset_bottom = -0.280045
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -330.0
+offset_top = 65.0
+offset_right = 617.0
+offset_bottom = 432.0
 grow_horizontal = 2
-texture = ExtResource("2_6i0nx")
-expand_mode = 2
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_by8dq")
+expand_mode = 1
 
-[node name="Play" type="Button" parent="Background/Title"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.295
-anchor_top = 5.488
-anchor_right = 0.703
-anchor_bottom = 6.463
-offset_left = 2.40001
-offset_top = -727.472
-offset_right = 2.37601
-offset_bottom = -831.012
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 306.0
+offset_top = 357.0
+offset_right = -319.778
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_uggu6")
+
+[node name="Play" type="Button" parent="Background/VBoxContainer"]
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+size_flags_horizontal = 4
 focus_mode = 0
 text = "Press Start"
 
-[node name="Options" type="Button" parent="Background/Title"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.295
-anchor_top = 7.244
-anchor_right = 0.703
-anchor_bottom = 8.22
-offset_left = 2.40001
-offset_top = -928.236
-offset_right = 2.37601
-offset_bottom = -1031.94
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Options" type="Button" parent="Background/VBoxContainer"]
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+size_flags_horizontal = 4
 focus_mode = 0
 text = "Options"
 
-[node name="Credits" type="Button" parent="Background/Title"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.295
-anchor_top = 9.0
-anchor_right = 0.703
-anchor_bottom = 9.976
-offset_left = 2.40001
-offset_top = -1129.0
-offset_right = 2.37601
-offset_bottom = -1232.71
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Credits" type="Button" parent="Background/VBoxContainer"]
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+size_flags_horizontal = 4
 focus_mode = 0
 text = "Credits"
 
-[node name="Exit" type="Button" parent="Background/Title"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.295
-anchor_top = 10.756
-anchor_right = 0.703
-anchor_bottom = 11.732
-offset_left = 2.40001
-offset_top = -1329.76
-offset_right = 2.37601
-offset_bottom = -1433.47
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Exit" type="Button" parent="Background/VBoxContainer"]
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+size_flags_horizontal = 4
 focus_mode = 0
 text = "Exit to Desktop"
 
@@ -156,7 +138,7 @@ custom_minimum_size = Vector2(143.08, 0)
 layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Background/OptionsT/Options/MarginContainer2/HBoxContainer"]
-custom_minimum_size = Vector2(227.115, 0)
+custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 text = "Master Volume"
 
@@ -173,7 +155,7 @@ custom_minimum_size = Vector2(143.08, 0)
 layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Background/OptionsT/Options/MarginContainer4/HBoxContainer"]
-custom_minimum_size = Vector2(181.065, 0)
+custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 text = "BGM Volume"
 
@@ -190,7 +172,7 @@ custom_minimum_size = Vector2(143.08, 0)
 layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Background/OptionsT/Options/MarginContainer5/HBoxContainer"]
-custom_minimum_size = Vector2(181.065, 0)
+custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 text = "SFX Volume"
 
@@ -238,13 +220,41 @@ offset_bottom = 396.0
 focus_mode = 0
 text = "Return to Menu"
 
-[connection signal="pressed" from="Background/Title/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Background/Title/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="Background/Title/Credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="Background/Title/Exit" to="." method="_on_exit_pressed"]
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -294.0
+offset_right = 807.0
+offset_bottom = 500.0
+grow_vertical = 0
+scale = Vector2(0.37, 0.37)
+texture = ExtResource("5_f306d")
+expand_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -299.0
+offset_top = -294.0
+offset_right = 508.0
+offset_bottom = 500.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.37, 0.37)
+texture = ExtResource("6_osx5r")
+expand_mode = 3
+
+[connection signal="pressed" from="Background/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Background/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
 [connection signal="toggled" from="Background/OptionsT/Options/MarginContainer/HBoxContainer/CheckButton" to="." method="_on_check_button_toggled"]
 [connection signal="value_changed" from="Background/OptionsT/Options/MarginContainer2/HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
-[connection signal="value_changed" from="Background/OptionsT/Options/MarginContainer4/HBoxContainer/HSlider" to="." method="BGMSliderChange"]
+[connection signal="value_changed" from="Background/OptionsT/Options/MarginContainer4/HBoxContainer/HSlider" to="." method="BGMSLIDERCHANGE"]
 [connection signal="value_changed" from="Background/OptionsT/Options/MarginContainer5/HBoxContainer/HSlider" to="." method="SFXChange"]
 [connection signal="pressed" from="Background/OptionsT/Options/MarginContainer3/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Background/CreditsT/Button2" to="." method="_on_button_pressed"]

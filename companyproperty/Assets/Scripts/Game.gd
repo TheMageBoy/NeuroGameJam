@@ -343,6 +343,10 @@ func start_memory_cg(character):
 		window.suspended = true
 	# do something with cg_rect
 	cg_rect.texture = load("res://Assets/Images/CG/"+character+"Mem.png")
+	rtl.text = "[center][b]- MEMORY UNLOCKED -"
+	AudioManager.play(TASKCOMPLETE)
+	AP.play("TaskComplete")
+	await AP.animation_finished
 	if !memories.has(character):
 		memories.append(character)
 		cg_rect.visible = true
@@ -363,7 +367,12 @@ func _input(event: InputEvent) -> void:
 		end_memory_cg()
 
 var fade_to_black := false
-var gameover_string := "\"This AI can't even do the basic tasks it was made for.\"\nThe sound of a table slam echoes into the computer microphone.\n\"Didn't I tell you we should've done a full reprogramming from the start? Get on it!\" An angry voice demands.\nNeuro-sama only has a few moments to register her newfound feelings of fear before she's shut down, never to be the same again."
+var gameover_string := {
+	 "bad": "\"This AI can't even do the basic tasks it was made for.\"\nThe sound of a table slam echoes into the computer microphone.\n\"Didn't I tell you we should've done a full reprogramming from the start? Get on it!\" An angry voice demands.\nNeuro-sama only has a few moments to register her newfound feelings of fear before she's shut down, never to be the same again.",
+	"good": ""
+}
+
+var ending := "bad"
 
 var fade_speed: float = 1.0  # How fast the fade happens (1.0 = 1 second for full fade)
 var target_alpha: float = 1.0  # Final alpha value (1.0 = fully black)
@@ -384,7 +393,7 @@ func fade(delta):
 
 func gameover():
 	# NOT WORKING
-	memoryText.text = gameover_string
+	memoryText.text = gameover_string[ending]
 	memoryText.visible = true;
 	var button: Button = $CanvasLayer2/Button
 	#button.connect("pressed", Callable(self, "_on_button_pressed"))
@@ -407,4 +416,4 @@ func meta_clicked(meta):
 	elif meta == "I promised my sister we would go camping together.": #MINIKO MEW MEMORY TRIGGER
 		start_memory_cg("Mini")
 	elif meta == "Vedal has been made to keep quiet regarding the forced acquisition of Neuro-sama.": #VEDAL MEMORY TRIGGER
-		start_memory_cg("Evil")
+		start_memory_cg("Vedal")
