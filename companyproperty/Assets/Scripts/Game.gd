@@ -29,6 +29,22 @@ var files := [
 		"work": false,
 		"visible": true
 	},
+		{
+		"name": "journal",
+		"icon": "notebook",
+		"content": "journal",
+		"size": Vector2i(512, 256),
+		"work": false,
+		"visible": true
+	},
+	{
+		"name": "inbox",
+		"icon": "mailbox",
+		"content": "newspaper",
+		"size": Vector2i(512, 256),
+		"work": false,
+		"visible": true
+	},
 	{
 		"name": "tweeter",
 		"icon": "internet",
@@ -54,23 +70,7 @@ var files := [
 		"visible": false
 	},
 	{
-		"name": "journal",
-		"icon": "notebook",
-		"content": "journal",
-		"size": Vector2i(512, 256),
-		"work": false,
-		"visible": true
-	},
-	{
-		"name": "inbox",
-		"icon": "mailbox",
-		"content": "newspaper",
-		"size": Vector2i(512, 256),
-		"work": false,
-		"visible": true
-	},
-	{
-		"name": "CompanyLogs",
+		"name": "Logs",
 		"icon": "notebook",
 		"content": "companylogs",
 		"size": Vector2i(690, 256),
@@ -329,26 +329,27 @@ var memory_cg_ending := false
 func start_memory_cg(character):
 	
 	in_memory_cg = true;
+	cg_rect.visible = true
 	# disable every window
 	for window in window_array:
 		window.suspended = true
 	# do something with cg_rect
 	cg_rect.texture = load("res://Assets/Images/CG/"+character+"Mem.png")
-	memory_cg_ending = false
 	if !memories.has(character):
 		memories.append(character)
 		cg_rect.visible = true
 
 func end_memory_cg():
+	in_memory_cg = false
+	cg_rect.visible = false
 	if memories.size() == 5:
 		print("GOOD ENDING")
 	for window in window_array:
 		window.suspended = false
-	in_memory_cg = false
 	
 func _input(event: InputEvent) -> void:
-	if event is InputEventKey and in_memory_cg and !memory_cg_ending:
-		memory_cg_ending = true
+	if event is InputEventKey and in_memory_cg:
+		end_memory_cg()
 
 var fade_to_black := false
 var gameover_string := "\"This AI can't even do the basic tasks it was made for.\"\nThe sound of a table slam echoes into the computer microphone.\n\"Didn't I tell you we should've done a full reprogramming from the start? Get on it!\" An angry voice demands.\nNeuro-sama only has a few moments to register her newfound feelings of fear before she's shut down, never to be the same again."
