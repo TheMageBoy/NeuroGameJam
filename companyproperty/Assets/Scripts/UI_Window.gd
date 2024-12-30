@@ -48,6 +48,7 @@ const TASKCOMPLETE = preload("res://Assets/Sounds/SFX/taskcomplete.mp3")
 func task_finish():
 	if !content_node.enabled:
 		return
+	content_node.enabled = false
 	content_node.triggered = true
 	has_lifespan = false
 	if task_bar:
