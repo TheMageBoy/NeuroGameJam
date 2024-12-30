@@ -76,6 +76,14 @@ var files := [
 		"size": Vector2i(512, 256),
 		"work": false,
 		"visible": true
+	},
+	{
+		"name": "CompanyLogs",
+		"icon": "paper",
+		"content": "companylogs",
+		"size": Vector2i(690, 256),
+		"work": false,
+		"visible": true
 	}
 ]
 

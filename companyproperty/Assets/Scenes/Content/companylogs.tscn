@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dfuuudvwmn5d6"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/newspapers.gd" id="1_14m2r"]
+[ext_resource type="Script" path="res://Assets/Scripts/companylogs.gd" id="1_2href"]
 [ext_resource type="Theme" uid="uid://t4jdi7pby4a2" path="res://Assets/UI/UI_Files.tres" id="2_oi8lw"]
 
 [node name="Journal" type="Control"]
@@ -10,7 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_14m2r")
+script = ExtResource("1_2href")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1

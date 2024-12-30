@@ -41,13 +41,5 @@ mouse_filter = 1
 theme = ExtResource("1_kiwpj")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_m4dmr")
 bbcode_enabled = true
-text = "30/12/2024 12:28 AM "
-
-[node name="FileType" type="RichTextLabel" parent="HBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-mouse_filter = 1
-theme = ExtResource("1_kiwpj")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_m4dmr")
-bbcode_enabled = true
-text = "TXT File"
+text = "MONARCH - ON OUR WINGS RESTS THE FUTURE
+"

@@ -38,7 +38,7 @@ func _ready() -> void:
 			news_file_inst.get_node("HBoxContainer/FileName").text = " "+news_title
 			files.add_child(news_file_inst)
 			
-			news_file_inst.pressed.connect(Callable(game, "createWindow").bind(news_file_inst, Vector2(256, 256), false, TEXT_FILE, string_array[1]))
+			news_file_inst.pressed.connect(Callable(game, "createWindow").bind(news_file_inst, Vector2(256, 256), false, TEXT_FILE, string_array[2]))
 
 func _on_rich_text_label_meta_clicked(meta: Variant) -> void:
 	print(meta)
