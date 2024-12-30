@@ -65,7 +65,7 @@ var files := [
 		"name": "chooser",
 		"icon": "internet",
 		"content": "chooser",
-		"size": Vector2i(512, 256),
+		"size": Vector2i(553, 285),
 		"work": true,
 		"visible": false
 	},
@@ -127,7 +127,6 @@ func createWindow(file : Button, size, is_task : bool, content, content_data = n
 				new_window.lifespan = task_bar.value
 				new_window.has_lifespan = true
 				task_bar.value_changed.connect(Callable(new_window, "update_progress_bar"))
-				print("VALUES SET")
 		new_window.setPos(get_viewport().get_mouse_position())
 		return new_window
 
@@ -253,7 +252,7 @@ const NEWTASK = preload("res://Assets/Sounds/SFX/newtask.mp3")
 func send_forced_task():
 	var task_array : Array[String] = ["reviewer", "tweeter", "chooser"] # "chooser"
 	var task_bar_inst := TASK_PROGRESS_BAR.instantiate()
-	
+	var task_name := "[center]"+task_array[randi() % task_array.size()]
 	task_bar_inst.get_node("TaskName").text = "[center]"+task_array[randi() % task_array.size()]
 	task_bar_inst.max_value = randf_range(15, 30)
 	task_bar_inst.value = task_bar_inst.max_value
@@ -261,6 +260,15 @@ func send_forced_task():
 	task_list.move_child(task_bar_inst, 0)
 	AudioManager.play(NEWTASK)
 	task_bar_inst.get_node("AnimationPlayer").play_backwards("Squeeze")
+	for window in window_node.get_children():
+		if window.name == task_name:
+			print("LINKED")
+			window.task_bar = task_bar_inst
+			window.progress_bar.max_value = task_bar_inst.max_value
+			window.progress_bar.value = task_bar_inst.value
+			window.lifespan = task_bar_inst.value
+			window.has_lifespan = true
+			task_bar_inst.value_changed.connect(Callable(window, "update_progress_bar"))
 
 func clear_forced_task(window):
 	for f_window in forced_task_windows:
@@ -386,6 +394,10 @@ func gameover():
 func _on_button_pressed(): # return to menu
 	print("Returning to main menu")
 	get_tree().change_scene_to_packed(preload("res://Assets/Scenes/MenuScreen.tscn"))
+
+# # # # # # # #
+# CG TRIGGER  #
+# # # # # # # #
 
 func meta_clicked(meta):
 	if meta == "WILL OUR YOUNG HEROINE BE ABLE TO STEER THIS PLANE FROM ITS FIERY DEMISE,": #EVIL MEMORY TRIGGER

@@ -2,16 +2,23 @@ extends Content
 
 @export var text : String
 
-@onready var button: Button = $VBoxContainer/Button
-@onready var button_2: Button = $VBoxContainer/Button2
-@onready var button_3: Button = $VBoxContainer/Button3
+@onready var button: Button = $HBoxContainer/VBoxContainer/Button
+@onready var button_2: Button = $HBoxContainer/VBoxContainer/Button2
+@onready var button_3: Button = $HBoxContainer/VBoxContainer/Button3
 
 var correct : int
+const LAVALAMP = preload("res://Assets/Images/lavalamp.png")
+const EVIL_PLUSH_2_0 = preload("res://Assets/Images/EvilPlush2.0.webp")
+const NEURO_PLUSH_2_0 = preload("res://Assets/Images/NeuroPlush2.0.webp")
+@onready var productimg: TextureRect = $HBoxContainer/TextureRect
 
+var products := [EVIL_PLUSH_2_0,NEURO_PLUSH_2_0,LAVALAMP]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var negatives = FileAccess.open("res://Assets/ChooserNegative.txt",FileAccess.READ)
 	var positives = FileAccess.open("res://Assets/ChooserPositive.txt",FileAccess.READ)
+	
+	productimg.texture = products[randi() % (products.size())]
 	
 	var texts = negatives.get_as_text();
 	var negat = texts.split("\n");

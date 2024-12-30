@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://i4ituy4kmbvh"]
 
-[ext_resource type="Texture2D" uid="uid://c8rbm0cxa2d7m" path="res://Assets/Sprites/Background_Notebook.png" id="1_2len2"]
 [ext_resource type="Script" path="res://Assets/Scripts/menu_screen.gd" id="1_3ycpn"]
+[ext_resource type="Texture2D" uid="uid://c0efr8dxdxapj" path="res://Assets/Images/Monarch.png" id="2_6i0nx"]
 [ext_resource type="Texture2D" uid="uid://cefaocad4cd8d" path="res://Assets/Sprites/Background_Console.png" id="3_hafgg"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
@@ -19,19 +19,16 @@ size_flags_vertical = 3
 [node name="Title" type="TextureRect" parent="Background"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.317
-anchor_top = 0.175
-anchor_right = 0.684375
-anchor_bottom = 0.237
-offset_left = -0.320007
-offset_top = -1.00001
-offset_right = 3.05176e-05
-offset_bottom = 0.319992
+anchor_left = 0.25
+anchor_top = 0.087
+anchor_right = 0.733
+anchor_bottom = 0.352
+offset_top = 0.319996
+offset_right = 16.3199
+offset_bottom = -0.280045
 grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_2len2")
+texture = ExtResource("2_6i0nx")
 expand_mode = 2
-metadata/_edit_use_anchors_ = true
 
 [node name="Play" type="Button" parent="Background/Title"]
 layout_mode = 1
@@ -40,10 +37,10 @@ anchor_left = 0.295
 anchor_top = 5.488
 anchor_right = 0.703
 anchor_bottom = 6.463
-offset_left = -0.135002
-offset_top = -0.00801086
-offset_right = -0.158997
-offset_bottom = 0.0169983
+offset_left = 2.40001
+offset_top = -727.472
+offset_right = 2.37601
+offset_bottom = -831.012
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
@@ -56,10 +53,10 @@ anchor_left = 0.295
 anchor_top = 7.244
 anchor_right = 0.703
 anchor_bottom = 8.22
-offset_left = -0.135002
-offset_top = -0.00402832
-offset_right = -0.158997
-offset_bottom = -0.0200195
+offset_left = 2.40001
+offset_top = -928.236
+offset_right = 2.37601
+offset_bottom = -1031.94
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
@@ -72,9 +69,10 @@ anchor_left = 0.295
 anchor_top = 9.0
 anchor_right = 0.703
 anchor_bottom = 9.976
-offset_left = -0.135002
-offset_right = -0.158997
-offset_bottom = -0.0160217
+offset_left = 2.40001
+offset_top = -1129.0
+offset_right = 2.37601
+offset_bottom = -1232.71
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
@@ -87,16 +85,17 @@ anchor_left = 0.295
 anchor_top = 10.756
 anchor_right = 0.703
 anchor_bottom = 11.732
-offset_left = -0.135002
-offset_top = 0.00396729
-offset_right = -0.158997
-offset_bottom = -0.0120239
+offset_left = 2.40001
+offset_top = -1329.76
+offset_right = 2.37601
+offset_bottom = -1433.47
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
 text = "Exit to Desktop"
 
 [node name="OptionsT" type="TextureRect" parent="Background"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -168,6 +167,7 @@ focus_mode = 0
 text = "Return to Menu"
 
 [node name="CreditsT" type="TextureRect" parent="Background"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

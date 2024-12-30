@@ -1,37 +1,115 @@
-[gd_scene load_steps=4 format=3 uid="uid://db13btf0hba6e"]
+[gd_scene load_steps=12 format=3 uid="uid://db13btf0hba6e"]
 
 [ext_resource type="PackedScene" uid="uid://pyfywe1pr3uu" path="res://Assets/Scenes/content_class.tscn" id="1_5w3p3"]
 [ext_resource type="Script" path="res://Assets/Scripts/Chooser.gd" id="2_yd8s8"]
+[ext_resource type="Texture2D" uid="uid://dp28ortsar04o" path="res://Assets/Images/NeuroPlush2.0.webp" id="3_3dmhr"]
+[ext_resource type="FontFile" uid="uid://d10i80r8yk7i5" path="res://Assets/Font&RTE/Fonts/RobotoSerif_120pt_Condensed-Medium.ttf" id="4_binby"]
+
+[sub_resource type="Theme" id="Theme_bcykk"]
+HBoxContainer/constants/separation = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1sm6b"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l8vnx"]
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.2, 0.545098, 0.776471, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pkc4h"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+
+[sub_resource type="Theme" id="Theme_plv8f"]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/font_sizes/font_size = 14
+Button/styles/hover = SubResource("StyleBoxFlat_l8vnx")
+Button/styles/normal = SubResource("StyleBoxEmpty_pkc4h")
+Button/styles/pressed = SubResource("StyleBoxFlat_l8vnx")
+RichTextLabel/font_sizes/normal_font_size = 16
+RichTextLabel/fonts/normal_font = ExtResource("4_binby")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qlejg"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Theme" id="Theme_0nepf"]
 Button/colors/font_color = Color(0, 0, 0, 1)
 Button/colors/font_hover_color = Color(0, 0, 0, 1)
 Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/styles/hover = SubResource("StyleBoxFlat_qlejg")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_qlejg")
+Button/styles/normal = SubResource("StyleBoxFlat_qlejg")
 
 [node name="Control2" instance=ExtResource("1_5w3p3")]
 script = ExtResource("2_yd8s8")
 text = ""
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." index="0"]
+[node name="HBoxContainer" type="HBoxContainer" parent="." index="0"]
 layout_mode = 0
-offset_right = 344.0
-offset_bottom = 128.0
+offset_right = 552.0
+offset_bottom = 264.0
+theme = SubResource("Theme_bcykk")
 
-[node name="Button" type="Button" parent="VBoxContainer" index="0"]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer" index="0"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("3_3dmhr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Panel" type="Panel" parent="HBoxContainer/TextureRect" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1sm6b")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer" index="0"]
+custom_minimum_size = Vector2(0, 118.255)
+layout_mode = 2
+theme = SubResource("Theme_plv8f")
+text = "MONARCH demands Neuro endorse this product ASAP"
+
+[node name="Button" type="Button" parent="HBoxContainer/VBoxContainer" index="1"]
 layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 0
 theme = SubResource("Theme_0nepf")
 flat = true
 
-[node name="Button2" type="Button" parent="VBoxContainer" index="1"]
+[node name="Button2" type="Button" parent="HBoxContainer/VBoxContainer" index="2"]
 layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 0
 theme = SubResource("Theme_0nepf")
 flat = true
 
-[node name="Button3" type="Button" parent="VBoxContainer" index="2"]
+[node name="Button3" type="Button" parent="HBoxContainer/VBoxContainer" index="3"]
 layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 0
