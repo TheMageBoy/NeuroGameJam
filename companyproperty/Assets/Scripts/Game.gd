@@ -1,6 +1,5 @@
 extends Node
 
-var window_array = []
 var quota = 10000
 var rate = 10 # -quota per second
 
@@ -121,7 +120,6 @@ func createWindow(file : Button, size, is_task : bool, content, content_data = n
 		new_window.data = content_data
 		window_node.add_child(new_window)
 		new_window.progress_bar.show_percentage = is_task
-		window_array.append(new_window)
 		file.window = new_window
 		new_window.file = file
 		for task_bar : ProgressBar in task_list.get_children():
@@ -140,12 +138,11 @@ func createWindow(file : Button, size, is_task : bool, content, content_data = n
 
 func deleteWindow(window): #deletes a window after passing itself in
 	window.file.window = null
-	window_array.erase(window)
 	window.queue_free()
 
-func move_to_top(window):
-	window_array.erase(window)
-	window_array.append(window)
+#func move_to_top(window):
+#	window_array.erase(window)
+#	window_array.append(window)
 
 func takeDamage(amount):
 	lives += -amount
@@ -343,7 +340,7 @@ func start_memory_cg(character):
 	in_memory_cg = true;
 	cg_rect.visible = true
 	# disable every window
-	for window in window_array:
+	for window in window_node.get_children():
 		window.suspended = true
 	# do something with cg_rect
 	cg_rect.texture = load("res://Assets/Images/CG/"+character+"Mem.png")
@@ -360,11 +357,8 @@ func start_memory_cg(character):
 func end_memory_cg():
 	in_memory_cg = false
 	cg_rect.visible = false
-	if memories.size() == 5:
-		ending = "good"
-		fade_to_black = true;
-		#print("GOOD ENDING")
-	for window in window_array:
+ 	#print("GOOD ENDING")
+	for window in window_node.get_children():
 		window.suspended = false
 	AudioManager.unpause()
 	

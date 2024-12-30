@@ -314,7 +314,7 @@ visible = false
 z_index = 9
 offset_right = 960.0
 offset_bottom = 640.0
-mouse_filter = 2
+mouse_filter = 0
 texture = ExtResource("10_ruj4q")
 expand_mode = 5
 
