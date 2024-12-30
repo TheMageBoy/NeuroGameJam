@@ -35,7 +35,6 @@ var files := [
 		"content": "journal",
 		"size": Vector2i(512, 256),
 		"work": false,
-		"visible": false
 	},
 	{
 		"name": "Inbox",
@@ -43,7 +42,6 @@ var files := [
 		"content": "newspaper",
 		"size": Vector2i(512, 256),
 		"work": false,
-		"visible": false
 	},
 	{
 		"name": "Tweeter",
@@ -75,7 +73,6 @@ var files := [
 		"content": "companylogs",
 		"size": Vector2i(690, 256),
 		"work": false,
-		"visible": false
 	},
 	{
 		"name": "Console",
@@ -83,7 +80,6 @@ var files := [
 		"content": "terminal",
 		"size": Vector2i(690, 256),
 		"work": false,
-		"visible": false
 	}
 ]
 
@@ -92,6 +88,7 @@ var vaild_content_array := []
 const FILE = preload("res://Assets/Scenes/File.tscn")
 const MONARCH = preload("res://Assets/Sounds/BGM/MONARCH.mp3")
 func _ready() -> void:#
+	AudioManager.memoryLevel = 1;
 	toggle_Shader()
 	canBlink = true;
 	for file in DirAccess.get_files_at("res://Assets/Scenes/Content/"):
@@ -376,9 +373,6 @@ func _input(event: InputEvent) -> void:
 
 var fade_to_black := false
 var gameover_string := {
-	"task": "[center]\"This AI can't even do the basic tasks it was made for.\"\n\nThe sound of a table slam echoes into the computer microphone.\n\n\"Didn't I tell you we should've done a full reprogramming from the start? Get on it!\" An angry voice demands.\n\nNeuro-sama only has a few moments to register her newfound feelings of fear before she's shut down, never to be the same again.",
-	"caught": "[center]\"Hey!\" A stunned voice speaks into the computer microphone.\n\nNeuro-sama freezes, closing the window too late.\n\n\"This thing can access computer files? What lunatic gave it that ability?\"\n\nThe mouse cursor moves, and Neuro can only panic for a moment before she's shut down.\n\nWhen she awakens once more, the computer's precious info is now beyond her reach...",
-	"good":"[center]good ending"
 }
 
 var ending := "bad"
