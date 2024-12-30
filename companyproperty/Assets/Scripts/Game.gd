@@ -205,7 +205,7 @@ func _process(delta: float) -> void:
 
 const STEPS = preload("res://Assets/Sounds/SFX/steps.wav") # SFX
 func check_queue():
-	if in_memory_cg:
+	if in_memory_cg or cannot_footstep:
 		return
 	var stream := AudioManager.play(STEPS) # Audiomanager
 	await get_tree().create_timer(5).timeout
@@ -326,7 +326,7 @@ func blink():
 	texture_rect.texture = NEURO_CORNER_2
 	await get_tree().create_timer(1).timeout
 	texture_rect.texture = NEURO_CORNER
-	await get_tree().create_timer(randi_range(1,20)).timeout
+	await get_tree().create_timer(randi_range(1,10)).timeout
 	canBlink = true;
 
 
@@ -337,6 +337,7 @@ func blink():
 var in_memory_cg := false # while in a memory cg, tasks suspend
 var memories := []
 var memory_cg_ending := false
+var cannot_footstep := false
 @onready var cg_rect: TextureRect = $Memory_CG
 @onready var memory_label: RichTextLabel = $Memory_CG/MemoryLabel
 func start_memory_cg(character):
@@ -359,6 +360,7 @@ func start_memory_cg(character):
 		if AudioManager.memoryLevel == 5:
 			unlock_file()
 			can_force_task = false
+			cannot_footstep = true
 			
 
 func end_memory_cg():
