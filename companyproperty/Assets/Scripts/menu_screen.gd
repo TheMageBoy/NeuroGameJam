@@ -1,10 +1,6 @@
 extends CanvasLayer
 
 @onready var title: TextureRect = $Background/Title
-@onready var play: Button = $Background/Title/Play
-@onready var options: Button = $Background/Title/Options
-@onready var credits: Button = $Background/Title/Credits
-@onready var exit: Button = $Background/Title/Exit
 @onready var Volume: RichTextLabel = $Background/OptionsT/Options/MarginContainer2/HBoxContainer/RichTextLabel
 @onready var check_button: CheckButton = $Background/OptionsT/Options/MarginContainer/HBoxContainer/CheckButton
 @onready var h_slider: HSlider = $Background/OptionsT/Options/MarginContainer2/HBoxContainer/HSlider
@@ -42,20 +38,16 @@ func _on_play_pressed() -> void:
 	AudioManager.kill()
 	get_tree().change_scene_to_packed(preload("res://Base.tscn"))
 
-
 func _on_options_pressed() -> void:
 	MainVisibleToggle()
 	optionsT.visible = true;
-
 
 func _on_credits_pressed() -> void:
 	MainVisibleToggle()
 	credits_t.visible = true;
 
-
 func _on_exit_pressed() -> void:
 	get_tree().quit()
-
 
 func _on_h_slider_value_changed(value: float) -> void:
 	#volume slider
@@ -72,7 +64,6 @@ func SFXChange(value: float) -> void:
 
 func _on_check_button_toggled(toggled_on: bool) -> void:
 	AudioManager.crtT = toggled_on;
-
 
 func _on_button_pressed() -> void:
 	MainVisibleToggle()

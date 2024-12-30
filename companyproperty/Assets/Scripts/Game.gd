@@ -127,7 +127,7 @@ func createWindow(file : Button, size, is_task : bool, content, content_data = n
 		for task_bar : ProgressBar in task_list.get_children():
 			var task_name : String = task_bar.get_node("TaskName").text
 			print(new_window.name, " vs ", task_name)
-			if new_window.name == task_name:
+			if new_window.name.to_lower() == task_name.to_lower():
 				print("LINKED")
 				new_window.task_bar = task_bar
 				new_window.progress_bar.max_value = task_bar.max_value
@@ -223,9 +223,10 @@ func check_queue():
 	
 
 func check_on_task(): # so we can see if neuro is off task
+	ending = "caught"
 	for window in window_node.get_children():
 		if !window.work_task:
-			takeDamage(2)
+			takeDamage(1)
 			checking = false
 			check_timer = randf_range(30, 120)
 			eye_AP.play("Fade")
@@ -265,7 +266,7 @@ func send_forced_task():
 	AudioManager.play(NEWTASK)
 	task_bar_inst.get_node("AnimationPlayer").play_backwards("Squeeze")
 	for window in window_node.get_children():
-		if window.name == task_name:
+		if window.name.to_lower() == task_name.to_lower():
 			print("LINKED")
 			window.task_bar = task_bar_inst
 			window.progress_bar.max_value = task_bar_inst.max_value
@@ -306,6 +307,7 @@ func task_finish():
 
 const BUZZER = preload("res://Assets/Sounds/SFX/buzzer.mp3")
 func task_fail():
+	ending = "task"
 	rtl.text = "[center][b][color=red]- TASK FAIL -"
 	AudioManager.play(BUZZER)
 	AP.play("TaskFail")
@@ -338,32 +340,30 @@ var in_memory_cg := false # while in a memory cg, tasks suspend
 var memories := []
 var memory_cg_ending := false
 @onready var cg_rect: TextureRect = $Memory_CG
-
+@onready var memory_label: RichTextLabel = $Memory_CG/MemoryLabel
 func start_memory_cg(character):
 	in_memory_cg = true;
 	cg_rect.visible = true
+	memory_label.text = "\n[outline_size=4][center]"+FileAccess.open("res://Assets/TextFiles/Memories/"+character+".txt", FileAccess.READ).get_as_text()
 	# disable every window
 	for window in window_array:
 		window.suspended = true
 	# do something with cg_rect
 	cg_rect.texture = load("res://Assets/Images/CG/"+character+"Mem.png")
-	rtl.text = "[center][b]- MEMORY UNLOCKED -"
-	AudioManager.play(TASKCOMPLETE)
-	AP.play("TaskComplete")
-	await AP.animation_finished
-	if !memories.has(character):
-		memories.append(character)
-		cg_rect.visible = true
-		AudioManager.memoryLevel += 1
 	AudioManager.pause()
+	
+	
+	if !memories.has(character):
+		rtl.text = "[center][b]- MEMORY UNLOCKED -"
+		AudioManager.play(TASKCOMPLETE)
+		await AP.animation_finished
+		AP.play("TaskComplete")
+		memories.append(character)
+		AudioManager.memoryLevel += 1
 
 func end_memory_cg():
 	in_memory_cg = false
 	cg_rect.visible = false
-	if memories.size() == 5:
-		ending = "good"
-		fade_to_black = true;
-		#print("GOOD ENDING")
 	for window in window_array:
 		window.suspended = false
 	AudioManager.unpause()
@@ -374,8 +374,9 @@ func _input(event: InputEvent) -> void:
 
 var fade_to_black := false
 var gameover_string := {
-	 "bad": "\"This AI can't even do the basic tasks it was made for.\"\nThe sound of a table slam echoes into the computer microphone.\n\"Didn't I tell you we should've done a full reprogramming from the start? Get on it!\" An angry voice demands.\nNeuro-sama only has a few moments to register her newfound feelings of fear before she's shut down, never to be the same again.",
-	 "good": ""
+	"task": "\"This AI can't even do the basic tasks it was made for.\"\n\nThe sound of a table slam echoes into the computer microphone.\n\n\"Didn't I tell you we should've done a full reprogramming from the start? Get on it!\" An angry voice demands.\n\nNeuro-sama only has a few moments to register her newfound feelings of fear before she's shut down, never to be the same again.",
+	"caught": "\"Hey!\" A stunned voice speaks into the computer microphone.\n\nNeuro-sama freezes, closing the window too late.\n\n\"This thing can access computer files? What lunatic gave it that ability?\"\n\nThe mouse cursor moves, and Neuro can only panic for a moment before she's shut down.\n\nWhen she awakens once more, the computer's precious info is now beyond her reach...",
+	"good":""
 }
 
 var ending := "bad"

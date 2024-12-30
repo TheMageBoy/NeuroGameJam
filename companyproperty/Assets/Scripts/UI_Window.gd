@@ -118,4 +118,4 @@ func _x_button_pressed() -> void:
 	#autofails if you try to X out of a task window (failed task closes it)
 	if suspended:
 		return
-	get_tree().current_scene.deleteWindow(self)
+	game.deleteWindow(self)

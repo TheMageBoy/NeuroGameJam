@@ -8,8 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://5oidvh0eal2u" path="res://Assets/Sounds/SFX/taskcomplete.mp3" id="4_rychl"]
 [ext_resource type="Texture2D" uid="uid://c50434fd7c5qx" path="res://Assets/Images/Eye.png" id="6_kdv1s"]
 [ext_resource type="Texture2D" uid="uid://dq5yj6hcidimt" path="res://Assets/Images/NeuroCorner.png" id="7_i2x52"]
-[ext_resource type="Material" uid="uid://bujtwkcmoei5f" path="res://Assets/Pixelation.tres" id="7_i6lvm"]
-[ext_resource type="Texture2D" uid="uid://cwg7qswpl3cp4" path="res://Assets/Images/image.png" id="10_ruj4q"]
+[ext_resource type="Material" path="res://Assets/Pixelation.tres" id="7_i6lvm"]
+[ext_resource type="Texture2D" uid="uid://o6l2lg4dyigt" path="res://Assets/Images/CG/VedalMem.png" id="9_sffuh"]
 [ext_resource type="Texture2D" uid="uid://cqtlcm6hhfk3" path="res://Assets/Images/CG/VedalHug.png" id="11_ebyrs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ld4di"]
@@ -138,6 +138,9 @@ height = 12
 fill_from = Vector2(0, 1)
 fill_to = Vector2(0, 0.0188679)
 
+[sub_resource type="Theme" id="Theme_4c3dp"]
+RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7r0gn"]
 shader = ExtResource("4_dxp1i")
 shader_parameter/resolution = Vector2(720, 480)
@@ -154,9 +157,6 @@ shader_parameter/roll_line_amount = 0.3
 shader_parameter/roll_speed = 1.0
 shader_parameter/scan_line_strength = -8.0
 shader_parameter/pixel_strength = -2.0
-
-[sub_resource type="Theme" id="Theme_4c3dp"]
-RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
 
 [node name="CanvasLayer2" type="CanvasLayer"]
 script = ExtResource("1_q0rhl")
@@ -300,23 +300,28 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="CRT shader" type="Panel" parent="."]
-material = SubResource("ShaderMaterial_7r0gn")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
 [node name="Memory_CG" type="TextureRect" parent="."]
 visible = false
 z_index = 9
+offset_top = -80.0
 offset_right = 960.0
 offset_bottom = 640.0
 mouse_filter = 2
-texture = ExtResource("10_ruj4q")
+texture = ExtResource("9_sffuh")
 expand_mode = 5
+
+[node name="MemoryLabel" type="RichTextLabel" parent="Memory_CG"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.111
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.0799942
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "
+[outline_size=4][center]"
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
@@ -379,5 +384,14 @@ grow_horizontal = 0
 grow_vertical = 0
 focus_mode = 0
 text = "Return to Menu"
+
+[node name="CRT shader" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_7r0gn")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="pressed" from="CanvasLayer2/Button" to="." method="_on_button_pressed"]

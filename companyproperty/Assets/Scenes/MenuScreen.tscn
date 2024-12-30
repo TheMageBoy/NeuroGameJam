@@ -210,7 +210,42 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
-text = "THESE ARE CREDITS :O"
+text = "Programming Lead:
+Dev!ant
+
+Programming:
+Dev!ant
+DDouble
+Mage Boy
+
+Project Coordinator:
+Shadrake
+
+Character Art:
+Meowzarts
+
+UI Design:
+Dev!ant
+Mage Boy
+
+Writers:
+Askonite, TheTastyPi, CrisQDavid, Intestines, Shadrake, Vovgus
+
+Music:
+MONARCH - by Dev!ant
+
+Sound Design:
+Dev!ant
+
+CRT Shader:
+https://godotshaders.com/shader/realistic-crt-shader/
+
+Additional Help:
+Sokutodesugd
+xkcdjerry
+
+Neuroverse Fanfic Community Discord:
+htttp://discord.gg/neuroversefanfics"
 
 [node name="Button2" type="Button" parent="Background/CreditsT"]
 layout_mode = 2
