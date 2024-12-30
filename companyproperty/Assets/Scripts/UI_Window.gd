@@ -55,6 +55,7 @@ func task_finish():
 
 const BUZZER = preload("res://Assets/Sounds/SFX/buzzer.mp3")
 func task_fail():
+	content_node.enabled = false
 	content_node.triggered = true
 	has_lifespan = false
 	if task_bar:
