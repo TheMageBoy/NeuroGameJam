@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://1wtvusvixp7q"]
+[gd_scene load_steps=24 format=3 uid="uid://1wtvusvixp7q"]
 
 [ext_resource type="Texture2D" uid="uid://bcyprrmg8kvao" path="res://Assets/Images/desktopbackground.png" id="1_0an34"]
 [ext_resource type="Script" path="res://Assets/Scripts/Game.gd" id="1_q0rhl"]
@@ -8,8 +8,9 @@
 [ext_resource type="AudioStream" uid="uid://5oidvh0eal2u" path="res://Assets/Sounds/SFX/taskcomplete.mp3" id="4_rychl"]
 [ext_resource type="Texture2D" uid="uid://c50434fd7c5qx" path="res://Assets/Images/Eye.png" id="6_kdv1s"]
 [ext_resource type="Texture2D" uid="uid://dq5yj6hcidimt" path="res://Assets/Images/NeuroCorner.png" id="7_i2x52"]
-[ext_resource type="Material" path="res://Assets/Pixelation.tres" id="7_i6lvm"]
+[ext_resource type="Material" uid="uid://bujtwkcmoei5f" path="res://Assets/Pixelation.tres" id="7_i6lvm"]
 [ext_resource type="Texture2D" uid="uid://cwg7qswpl3cp4" path="res://Assets/Images/image.png" id="10_ruj4q"]
+[ext_resource type="Texture2D" uid="uid://cqtlcm6hhfk3" path="res://Assets/Images/CG/VedalHug.png" id="11_ebyrs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ld4di"]
 bg_color = Color(0, 0, 0, 0.498039)
@@ -330,6 +331,21 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0, 0, 0, 0)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer2"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 58.56
+offset_right = -46.44
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("11_ebyrs")
+expand_mode = 2
+stretch_mode = 4
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer2"]
 visible = false

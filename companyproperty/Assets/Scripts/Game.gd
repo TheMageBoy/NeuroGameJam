@@ -361,7 +361,9 @@ func end_memory_cg():
 	in_memory_cg = false
 	cg_rect.visible = false
 	if memories.size() == 5:
-		print("GOOD ENDING")
+		ending = "good"
+		fade_to_black = true;
+		#print("GOOD ENDING")
 	for window in window_array:
 		window.suspended = false
 	AudioManager.unpause()
@@ -373,7 +375,7 @@ func _input(event: InputEvent) -> void:
 var fade_to_black := false
 var gameover_string := {
 	 "bad": "\"This AI can't even do the basic tasks it was made for.\"\nThe sound of a table slam echoes into the computer microphone.\n\"Didn't I tell you we should've done a full reprogramming from the start? Get on it!\" An angry voice demands.\nNeuro-sama only has a few moments to register her newfound feelings of fear before she's shut down, never to be the same again.",
-	"good": ""
+	 "good": ""
 }
 
 var ending := "bad"
@@ -382,13 +384,19 @@ var fade_speed: float = 1.0  # How fast the fade happens (1.0 = 1 second for ful
 var target_alpha: float = 1.0  # Final alpha value (1.0 = fully black)
 
 @onready var current_color: ColorRect = $CanvasLayer2/Fade
+@onready var goodendingCG: TextureRect = $CanvasLayer2/TextureRect
 
 func fade(delta):
 	if (current_color.visible != true):
 		current_color.visible = true;
+		if ending == "good":
+			goodendingCG.visible = true;
 	if current_color.color.a < target_alpha:
 		current_color.color.a += fade_speed * delta
 		current_color.color.a = min(current_color.color.a, target_alpha)
+		if ending == "good":
+			goodendingCG.modulate.a += fade_speed *delta;
+			goodendingCG.modulate.a = min(current_color.color.a, target_alpha)
 		#color = current_color
 	else:
 		gameover()

@@ -35,8 +35,8 @@ func _ready() -> void:
 				news_title += cur_part+" "
 			files.add_child(news_file_inst)
 			news_file_inst.file_name.text = " "+news_title
-			news_file_inst.get_node("VBoxContainer/Preview").text = "[font_size=10] "+string_array[2].trim_prefix("\n").trim_prefix("\r").left(32)+"[/font_size]..."
-			print("TEXT: "+var_to_str(news_file_inst.get_node("VBoxContainer/Preview").text))
+			news_file_inst.get_node("HBoxContainer/Preview").text = "[font_size=10] "+string_array[2].trim_prefix("\n").trim_prefix("\r").left(32)+"[/font_size]..."
+			print("TEXT: "+var_to_str(news_file_inst.get_node("HBoxContainer/Preview").text))
 			
 			
 			news_file_inst.pressed.connect(Callable(game, "createWindow").bind(news_file_inst, Vector2(256, 256), false, TEXT_FILE, string_array[2]))
