@@ -30,7 +30,7 @@ focus_mode = 0
 theme = ExtResource("1_c4hri")
 script = ExtResource("2_01kri")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="HBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,7 +40,7 @@ grow_vertical = 2
 theme = ExtResource("1_c4hri")
 theme_override_constants/separation = 0
 
-[node name="FileName" type="RichTextLabel" parent="VBoxContainer"]
+[node name="FileName" type="RichTextLabel" parent="HBoxContainer"]
 custom_minimum_size = Vector2(0, 21)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -55,7 +55,7 @@ bbcode_enabled = true
 text = "[i][b]LINE ONE"
 scroll_active = false
 
-[node name="Preview" type="RichTextLabel" parent="VBoxContainer"]
+[node name="Preview" type="RichTextLabel" parent="HBoxContainer"]
 custom_minimum_size = Vector2(0, 21)
 layout_mode = 2
 size_flags_horizontal = 3

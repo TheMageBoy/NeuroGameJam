@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 
 func _on_line_edit_text_submitted(new_text: String) -> void:
 	line_edit.text = ""
-	if new_text == "ssh security@server sudo rm -rf /*":
-		commands.append_text("> Executing command 'sudo rm -rf /*' remotely on security@server")
+	if new_text.to_lower().similarity("ssh security@server sudo rm -rf /") > .9 :
+		commands.append_text("\n> Executing command 'sudo rm -rf /' remotely on security@server")
 		await get_tree().create_timer(1).timeout
-		commands.append_text("[indent][indent]\\_Comannd successfully executed[/indent][/indent]")
+		commands.append_text("\n[indent][indent]\\_Comannd successfully executed[/indent][/indent]")
