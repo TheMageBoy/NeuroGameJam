@@ -190,7 +190,7 @@ func _process(delta: float) -> void:
 	forced_timer(delta)
 	
 	# active madatory tasks
-	if (task_list.get_children().size() != 0):
+	if (task_list.get_children().size() != 0) and !in_memory_cg:
 		for progress_bar : ProgressBar in task_list.get_children():
 		
 			if !progress_bar.get_node("CheckBox/Complete").visible and !progress_bar.get_node("CheckBox/Fail").visible:
@@ -327,7 +327,6 @@ var memory_cg_ending := false
 @onready var cg_rect: TextureRect = $Memory_CG
 
 func start_memory_cg(character):
-	
 	in_memory_cg = true;
 	cg_rect.visible = true
 	# disable every window
@@ -338,6 +337,7 @@ func start_memory_cg(character):
 	if !memories.has(character):
 		memories.append(character)
 		cg_rect.visible = true
+		AudioManager.memoryLevel += 1
 
 func end_memory_cg():
 	in_memory_cg = false
@@ -378,7 +378,7 @@ func gameover():
 	var button: Button = $CanvasLayer2/Button
 	button.visible = true;
 
-func _on_button_pressed() -> void:#return to menu
+func _on_button_pressed() -> void: # return to menu
 	get_tree().change_scene_to_packed(preload("res://Assets/Scenes/MenuScreen.tscn"))
 
 func meta_clicked(meta):

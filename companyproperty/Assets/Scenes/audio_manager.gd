@@ -22,5 +22,14 @@ func play_bgm(sound : AudioStream) -> void:
 		await audio_player.finished
 		await get_tree().create_timer(30).timeout
 
+func pause():
+	for audio_player : AudioStreamPlayer in get_children():
+		audio_player.stream_paused = true
+
+func unpause():
+	for audio_player : AudioStreamPlayer in get_children():
+		audio_player.stream_paused = false
+
+
 func getCRT() -> bool:
 	return crtT;

@@ -1,4 +1,8 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://bybsndb5yuor4"]
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://bybsndb5yuor4"]
+
+[ext_resource type="FontFile" uid="uid://cmf0dvmdpn2f5" path="res://Assets/Font&RTE/Fonts/RobotoSerif_120pt_Condensed-Bold.ttf" id="1_f1b8h"]
+[ext_resource type="FontFile" uid="uid://cvpydcsbrg4fa" path="res://Assets/Font&RTE/Fonts/RobotoSerif_120pt_Condensed-MediumItalic.ttf" id="2_7dhpq"]
+[ext_resource type="FontFile" uid="uid://d10i80r8yk7i5" path="res://Assets/Font&RTE/Fonts/RobotoSerif_120pt_Condensed-Medium.ttf" id="3_fgwb6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rtl0u"]
 bg_color = Color(0.635294, 0.113725, 0.137255, 1)
@@ -97,6 +101,10 @@ RichTextLabel/font_sizes/bold_font_size = 16
 RichTextLabel/font_sizes/bold_italics_font_size = 16
 RichTextLabel/font_sizes/italics_font_size = 14
 RichTextLabel/font_sizes/normal_font_size = 14
+RichTextLabel/fonts/bold_font = ExtResource("1_f1b8h")
+RichTextLabel/fonts/bold_italics_font = ExtResource("2_7dhpq")
+RichTextLabel/fonts/italics_font = ExtResource("2_7dhpq")
+RichTextLabel/fonts/normal_font = ExtResource("3_fgwb6")
 RichTextLabel/styles/normal = SubResource("StyleBoxFlat_t2skv")
 VScrollBar/styles/grabber = SubResource("StyleBoxFlat_kly0m")
 VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_3ambp")

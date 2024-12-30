@@ -1,4 +1,6 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://t4jdi7pby4a2"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://t4jdi7pby4a2"]
+
+[ext_resource type="FontFile" uid="uid://d10i80r8yk7i5" path="res://Assets/Font&RTE/Fonts/RobotoSerif_120pt_Condensed-Medium.ttf" id="1_wqph1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l8vnx"]
 bg_color = Color(1, 1, 1, 0)
@@ -24,3 +26,5 @@ Button/font_sizes/font_size = 14
 Button/styles/hover = SubResource("StyleBoxFlat_l8vnx")
 Button/styles/normal = SubResource("StyleBoxEmpty_pkc4h")
 Button/styles/pressed = SubResource("StyleBoxFlat_l8vnx")
+RichTextLabel/font_sizes/normal_font_size = 16
+RichTextLabel/fonts/normal_font = ExtResource("1_wqph1")
