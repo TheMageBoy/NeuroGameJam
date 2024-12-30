@@ -17,7 +17,7 @@ func _ready():
 	button.connect("pressed",Callable(self,"like"))
 	button_2.connect("pressed",Callable(self,"dislike"))
 	for _index in 3:
-		var file = FileAccess.open("res://Assets/Reviews.txt",FileAccess.READ)
+		var file = FileAccess.open("res://Assets/Reviews.tres",FileAccess.READ)
 		
 		var texts = file.get_as_text();
 		var texts2 = texts.split("\n");

@@ -340,7 +340,7 @@ var memory_cg_ending := false
 func start_memory_cg(character):
 	in_memory_cg = true;
 	cg_rect.visible = true
-	memory_label.text = "\n[outline_size=4][center]"+FileAccess.open("res://Assets/TextFiles/Memories/"+character+".txt", FileAccess.READ).get_as_text()
+	memory_label.text = "\n[outline_size=4][center]"+FileAccess.open("res://Assets/TextFiles/Memories/"+character+".tres", FileAccess.READ).get_as_text()
 	# disable every window
 	for window in window_node.get_children():
 		window.suspended = true

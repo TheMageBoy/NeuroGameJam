@@ -8,7 +8,7 @@ var finishedtext : String
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var file = FileAccess.open("res://Assets/Tweets.txt",FileAccess.READ)
+	var file = FileAccess.open("res://Assets/Tweets.tres",FileAccess.READ)
 	var texts = file.get_as_text();
 	var texts2 = texts.split("\n");
 	var integer = randi() % (texts2.size()-1);

@@ -15,8 +15,8 @@ const NEURO_PLUSH_2_0 = preload("res://Assets/Images/NeuroPlush2.0.webp")
 var products := [EVIL_PLUSH_2_0,NEURO_PLUSH_2_0,LAVALAMP]
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var negatives = FileAccess.open("res://Assets/ChooserNegative.txt",FileAccess.READ)
-	var positives = FileAccess.open("res://Assets/ChooserPositive.txt",FileAccess.READ)
+	var negatives = FileAccess.open("res://Assets/ChooserNegative.tres",FileAccess.READ)
+	var positives = FileAccess.open("res://Assets/ChooserPositive.tres",FileAccess.READ)
 	
 	productimg.texture = products[randi() % (products.size())]
 	
