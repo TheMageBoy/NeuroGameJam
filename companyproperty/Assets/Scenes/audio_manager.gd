@@ -2,7 +2,7 @@ extends Node
 
 var crtT : bool
 var volume : float
-
+var memoryLevel : int
 
 func play(sound : AudioStream) -> AudioStreamPlayer:
 	var audio_player := AudioStreamPlayer.new()

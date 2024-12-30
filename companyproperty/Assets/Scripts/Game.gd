@@ -83,7 +83,8 @@ var vaild_content_array := []
 
 const FILE = preload("res://Assets/Scenes/File.tscn")
 const MONARCH = preload("res://Assets/Sounds/BGM/MONARCH.mp3")
-func _ready() -> void:
+func _ready() -> void:#
+	AudioManager.memoryLevel = 1;
 	toggle_Shader()
 	canBlink = true;
 	for file in DirAccess.get_files_at("res://Assets/Scenes/Content/"):
