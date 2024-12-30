@@ -65,7 +65,7 @@ var files := [
 		"name": "chooser",
 		"icon": "internet",
 		"content": "chooser",
-		"size": Vector2i(512, 256),
+		"size": Vector2i(553, 285),
 		"work": true,
 		"visible": false
 	},

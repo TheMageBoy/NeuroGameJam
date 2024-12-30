@@ -2,9 +2,9 @@ extends Content
 
 @export var text : String
 
-@onready var button: Button = $VBoxContainer/Button
-@onready var button_2: Button = $VBoxContainer/Button2
-@onready var button_3: Button = $VBoxContainer/Button3
+@onready var button: Button = $HBoxContainer/VBoxContainer/Button
+@onready var button_2: Button = $HBoxContainer/VBoxContainer/Button2
+@onready var button_3: Button = $HBoxContainer/VBoxContainer/Button3
 
 var correct : int
 
