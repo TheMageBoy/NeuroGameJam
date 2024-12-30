@@ -21,18 +21,26 @@ const UI_WINDOW = preload("res://Assets/Scenes/UI_Window.tscn")
 
 var files := [
 	{
-		"name": "Tweeter",
-		"icon": "internet",
-		"content": "tweeter",
-		"size": Vector2i(512, 160),
-		"work": true,
-		"visible": false
+		"name": "READ ME",
+		"icon": "notebook",
+		"content": "read_me",
+		"size": Vector2i(512, 256),
+		"work": false,
+		"visible": true
 	},
 	{
 		"name": "Reviewer",
 		"icon": "internet",
 		"content": "reviewer",
 		"size": Vector2i(576, 160),
+		"work": true,
+		"visible": false
+	},
+	{
+		"name": "Tweeter",
+		"icon": "internet",
+		"content": "tweeter",
+		"size": Vector2i(512, 160),
 		"work": true,
 		"visible": false
 	},
@@ -75,14 +83,6 @@ var files := [
 		"size": Vector2i(690, 256),
 		"work": false,
 		"visible": false
-	},
-	{
-		"name": "READ ME",
-		"icon": "notebook",
-		"content": "read_me",
-		"size": Vector2i(512, 256),
-		"work": false,
-		"visible": true
 	}
 ]
 
@@ -226,7 +226,7 @@ func check_on_task(): # so we can see if neuro is off task
 		if !window.work_task:
 			takeDamage(1)
 			checking = false
-			check_timer = randf_range(30, 120)
+			check_timer = randf_range(60, 180)
 			eye_AP.play("Fade")
 			await eye_AP.animation_finished
 			eye.visible = false
@@ -358,6 +358,8 @@ func start_memory_cg(character):
 		AudioManager.memoryLevel += 1
 		if AudioManager.memoryLevel == 5:
 			unlock_file()
+			can_force_task = false
+			
 
 func end_memory_cg():
 	in_memory_cg = false
