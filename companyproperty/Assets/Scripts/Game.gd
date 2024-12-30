@@ -351,7 +351,6 @@ func start_memory_cg(character):
 	# do something with cg_rect
 	cg_rect.texture = load("res://Assets/Images/CG/"+character+"Mem.png")
 	AudioManager.pause()
-	AudioManager.memoryLevel += 1
 
 	
 	if !memories.has(character):
@@ -360,6 +359,7 @@ func start_memory_cg(character):
 		await AP.animation_finished
 		AP.play("TaskComplete")
 		memories.append(character)
+		AudioManager.memoryLevel += 1
 
 func end_memory_cg():
 	in_memory_cg = false
