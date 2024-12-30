@@ -1,6 +1,5 @@
 extends Node
 
-var window_array = []
 var quota = 10000
 var rate = 10 # -quota per second
 
@@ -73,7 +72,7 @@ var files := [
 		"name": "Logs",
 		"icon": "rawr",
 		"content": "companylogs",
-		"size": Vector2i(690, 256),
+		"size": Vector2i(800, 256),
 		"work": false,
 		"visible": true
 	},
@@ -121,14 +120,13 @@ func createWindow(file : Button, size, is_task : bool, content, content_data = n
 		new_window.data = content_data
 		window_node.add_child(new_window)
 		new_window.progress_bar.show_percentage = is_task
-		window_array.append(new_window)
 		file.window = new_window
 		new_window.file = file
 		for task_bar : ProgressBar in task_list.get_children():
 			var task_name : String = task_bar.get_node("TaskName").text
-			print(new_window.name, " vs ", task_name)
+			#print(new_window.name, " vs ", task_name)
 			if new_window.name.to_lower() == task_name.to_lower():
-				print("LINKED")
+				#print("LINKED")
 				new_window.task_bar = task_bar
 				new_window.progress_bar.max_value = task_bar.max_value
 				new_window.progress_bar.value = task_bar.value
@@ -140,12 +138,8 @@ func createWindow(file : Button, size, is_task : bool, content, content_data = n
 
 func deleteWindow(window): #deletes a window after passing itself in
 	window.file.window = null
-	window_array.erase(window)
+	#window_array.erase(window)
 	window.queue_free()
-
-func move_to_top(window):
-	window_array.erase(window)
-	window_array.append(window)
 
 func takeDamage(amount):
 	lives += -amount
@@ -174,6 +168,7 @@ var checking := true # this is just for when the sound is playing
 var pixel_size = 16.0;
 
 func _process(delta: float) -> void:
+	#print(AudioManager.memoryLevel)
 	if (canBlink):
 		blink()
 	if fade_to_black:
@@ -267,7 +262,7 @@ func send_forced_task():
 	task_bar_inst.get_node("AnimationPlayer").play_backwards("Squeeze")
 	for window in window_node.get_children():
 		if window.name.to_lower() == task_name.to_lower():
-			print("LINKED")
+			#print("LINKED")
 			window.task_bar = task_bar_inst
 			window.progress_bar.max_value = task_bar_inst.max_value
 			window.progress_bar.value = task_bar_inst.value
@@ -346,7 +341,7 @@ func start_memory_cg(character):
 	cg_rect.visible = true
 	memory_label.text = "\n[outline_size=4][center]"+FileAccess.open("res://Assets/TextFiles/Memories/"+character+".txt", FileAccess.READ).get_as_text()
 	# disable every window
-	for window in window_array:
+	for window in window_node.get_children():
 		window.suspended = true
 	# do something with cg_rect
 	cg_rect.texture = load("res://Assets/Images/CG/"+character+"Mem.png")
@@ -362,7 +357,7 @@ func start_memory_cg(character):
 func end_memory_cg():
 	in_memory_cg = false
 	cg_rect.visible = false
-	for window in window_array:
+	for window in window_node.get_children():
 		window.suspended = false
 	AudioManager.unpause()
 	

@@ -17,8 +17,8 @@ func _ready() -> void:
 			files.add_child(journal_file_inst)
 			journal_file_inst.pressed.connect(Callable(game, "createWindow").bind(journal_file_inst, Vector2(256, 256), false, TEXT_FILE, string_array[3]))
 
-func _on_rich_text_label_meta_clicked(meta: Variant) -> void:
-	print(meta)
+#func _on_rich_text_label_meta_clicked(meta: Variant) -> void:
+	#print(meta)
 
 func _on_tree_exiting() -> void:
 	for file in files.get_children():

@@ -35,22 +35,22 @@ func _ready():
 func like():
 	if (negative == false):
 		score += 1
-		print("correct")
-	else:
-		print("incorrect")
+		#print("correct")
+	#else:
+		#print("incorrect")
 	emit_signal("next")
 
 func dislike():
 	if (negative == true):
-		print("correct")
+		#print("correct")
 		score += 1
-	else:
-		print("incorrect")
+	#else:
+		#print("incorrect")
 	emit_signal("next")
 
 
 func finish_review():
-	print(score)
+	#print(score)
 	if score > 2:
 		emit_signal("task_finish")
 	else:
