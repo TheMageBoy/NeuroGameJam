@@ -46,6 +46,8 @@ func update_progress_bar(value):
 
 const TASKCOMPLETE = preload("res://Assets/Sounds/SFX/taskcomplete.mp3")
 func task_finish():
+	if !content.enabled:
+		return
 	content_node.triggered = true
 	has_lifespan = false
 	if task_bar:
