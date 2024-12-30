@@ -21,12 +21,12 @@ const UI_WINDOW = preload("res://Assets/Scenes/UI_Window.tscn")
 
 var files := [
 	{
-		"name": "READ ME",
-		"icon": "notebook",
-		"content": "read_me",
-		"size": Vector2i(512, 256),
+		"name": "Console",
+		"icon": "console",
+		"content": "terminal",
+		"size": Vector2i(690, 256),
 		"work": false,
-		"visible": true
+		"visible": false
 	},
 	{
 		"name": "Reviewer",
@@ -77,12 +77,12 @@ var files := [
 		"visible": false
 	},
 	{
-		"name": "Console",
-		"icon": "console",
-		"content": "terminal",
-		"size": Vector2i(690, 256),
+		"name": "READ ME",
+		"icon": "notebook",
+		"content": "read_me",
+		"size": Vector2i(512, 256),
 		"work": false,
-		"visible": false
+		"visible": true
 	}
 ]
 

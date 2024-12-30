@@ -5,9 +5,8 @@ func _enter_tree() -> void:
 	pass
 
 func _exit_tree() -> void: # When read me is closed, the node leaves the tree. so we can trigger stuff on close with this easy
-	for index in 6:
+	for index in 10:
 		game.unlock_file()
-	game.desktop_files.get_child(0).visible = false
 	get_tree().current_scene.checking = false
 	get_tree().current_scene.can_force_task = true
 

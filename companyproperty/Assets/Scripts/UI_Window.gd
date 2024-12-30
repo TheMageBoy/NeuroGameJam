@@ -73,9 +73,10 @@ func _input(event: InputEvent):
 	if suspended:
 		return
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and !dragging and mouse_within(get_viewport().get_mouse_position()) and focus:
-			offset = panel.get_screen_position() - get_viewport().get_mouse_position();
-			dragging = true;#Toggle Dragging when clicked
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and mouse_within(get_viewport().get_mouse_position()):
+			if !dragging and focus:
+				offset = panel.get_screen_position() - get_viewport().get_mouse_position();
+				dragging = true;#Toggle Dragging when clicked
 			get_parent().move_child(self, get_parent().get_child_count()-1)
 		if event.button_index == MOUSE_BUTTON_LEFT and !event.pressed and dragging:
 			dragging = false;
@@ -83,7 +84,7 @@ func _input(event: InputEvent):
 func _process(delta: float):#I hope this is equivalent to update? It probably is :)
 	if dragging == true and !suspended:
 		drag_pos = get_viewport().get_mouse_position() + offset;#Drag position is set to mouse position
-		panel.global_position = drag_pos#Thus, set transform position to drag position
+		panel.global_position = drag_pos.clamp(Vector2(0,0), Vector2(get_viewport().size)-self.size) #Thus, set transform position to drag position
 
 func setPos(pos:Vector2):
 	panel.global_position = pos;
