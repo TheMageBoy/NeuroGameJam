@@ -412,4 +412,4 @@ func meta_clicked(meta):
 	elif meta == "I promised my sister we would go camping together.": #MINIKO MEW MEMORY TRIGGER
 		start_memory_cg("Mini")
 	elif meta == "Vedal has been made to keep quiet regarding the forced acquisition of Neuro-sama.": #VEDAL MEMORY TRIGGER
-		start_memory_cg("Evil")
+		start_memory_cg("Vedal")
