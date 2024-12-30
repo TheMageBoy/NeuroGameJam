@@ -33,7 +33,7 @@ func _ready() -> void:
 				if !randi()%12:
 					cur_part = "[pulse]"+cur_part+"[/pulse]"
 				news_title += cur_part+" "
-			news_file_inst.get_node("HBoxContainer/FileName").text = " "+news_title+"[font_size=8]\n"+string_array[2].trim_suffix("\n").left(24)+"[/font_size]..."
+			news_file_inst.get_node("HBoxContainer/FileName").text = " "+news_title+"[font_size=12]\n"+string_array[2].trim_suffix("\n").left(24)+"[/font_size]..."
 			print("TEXT: "+var_to_str(news_file_inst.get_node("HBoxContainer/FileName").text))
 			files.add_child(news_file_inst)
 			
