@@ -1,0 +1,8 @@
+[gd_resource type="RichTextEffect" script_class="RichTextSpoiler" load_steps=2 format=3 uid="uid://cmfqgtwg8yt55"]
+
+[ext_resource type="Script" path="res://Assets/Font&RTE/RichTextEffect/RichTextSpoiler.gd" id="1_uo02r"]
+
+[resource]
+resource_local_to_scene = true
+resource_name = "spoiler"
+script = ExtResource("1_uo02r")

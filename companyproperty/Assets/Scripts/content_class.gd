@@ -6,6 +6,7 @@ var content_self = null
 var triggered := false
 var data = null
 var game = null
+var window : UI_Window = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

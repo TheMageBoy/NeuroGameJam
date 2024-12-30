@@ -229,7 +229,7 @@ func check_queue():
 func check_on_task(): # so we can see if neuro is off task
 	for window in window_node.get_children():
 		if !window.work_task:
-			takeDamage(1)
+			takeDamage(2)
 			checking = false
 			check_timer = randf_range(30, 120)
 			eye_AP.play("Fade")
@@ -251,14 +251,14 @@ func forced_timer(delta):
 	forced_task_timer -= delta * 2
 	if forced_task_timer <= 0:
 		send_forced_task()
-		forced_task_timer = randf_range(120, 240) / memories.size()+1 #probably going to be a randomized amount # you got that right king
+		forced_task_timer = randf_range(120, 180) - (memories.size()+1)*15 # probably going to be a randomized amount # you got that right king, it also gets faster the more memories you have
 
 @onready var task_list: VBoxContainer = $TaskList
 const TASK_PROGRESS_BAR = preload("res://Assets/Scenes/task_progress_bar.tscn")
 
 const NEWTASK = preload("res://Assets/Sounds/SFX/newtask.mp3")
 func send_forced_task():
-	var task_array : Array[String] = ["reviewer", "tweeter"] # "chooser"
+	var task_array : Array[String] = ["reviewer", "tweeter", "chooser"] # "chooser"
 	var task_bar_inst := TASK_PROGRESS_BAR.instantiate()
 	
 	task_bar_inst.get_node("TaskName").text = "[center]"+task_array[randi() % task_array.size()]
@@ -310,11 +310,11 @@ func task_fail():
 	return #no point in "return" here, just something I do sometimes when they are waited on completetion sometimes
 
 
-@onready var texture_rect: TextureRect = $TextureRect
+@onready var texture_rect: TextureRect = $NeuroTex
 const NEURO_CORNER = preload("res://Assets/Images/NeuroCorner.png")
 const NEURO_CORNER_2 = preload("res://Assets/Images/NeuroCorner2.png")
 var canBlink : bool
-# # # # # # # ## # # # # #
+# # # # # # # # # # # # # #
 #Mewo's blinking Nwero :SMILE:
 func blink():
 	canBlink = false
@@ -335,15 +335,17 @@ var memory_cg_ending := false
 @onready var cg_rect: TextureRect = $Memory_CG
 
 func start_memory_cg(character):
+	
 	in_memory_cg = true;
 	# disable every window
 	for window in window_array:
 		window.suspended = true
 	# do something with cg_rect
-	cg_rect = cg_rect
+	cg_rect.texture = load("res://Assets/Images/CG/"+character+"Mem.png")
 	memory_cg_ending = false
 	if !memories.has(character):
 		memories.append(character)
+		cg_rect.visible = true
 
 func end_memory_cg():
 	if memories.size() == 5:
@@ -385,3 +387,13 @@ func gameover():
 
 func _on_button_pressed() -> void:#return to menu
 	get_tree().change_scene_to_packed(preload("res://Assets/Scenes/MenuScreen.tscn"))
+
+func meta_clicked(meta):
+	if meta == "WILL OUR YOUNG HEROINE BE ABLE TO STEER THIS PLANE FROM ITS FIERY DEMISE,": #EVIL MEMORY TRIGGER
+		start_memory_cg("Evil")
+	elif meta == "I'm designing this model for Apate, and it's going super well! She looks soooo cute! Just look at this!": #ANNY MEMORY TRIGGER
+		start_memory_cg("Anny")
+	elif meta == "I promised my sister we would go camping together.": #MINIKO MEW MEMORY TRIGGER
+		start_memory_cg("Mini")
+	elif meta == "Vedal has been made to keep quiet regarding the forced acquisition of Neuro-sama.": #VEDAL MEMORY TRIGGER
+		start_memory_cg("Evil")

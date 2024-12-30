@@ -8,7 +8,7 @@ Button/colors/font_color = Color(0, 0, 0, 1)
 Button/colors/font_hover_color = Color(0, 0, 0, 1)
 Button/colors/font_pressed_color = Color(0, 0, 0, 1)
 
-[node name="Control" instance=ExtResource("1_5w3p3")]
+[node name="Control2" instance=ExtResource("1_5w3p3")]
 script = ExtResource("2_yd8s8")
 text = ""
 

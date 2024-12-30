@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://cacc6x5in0n44"]
+[gd_scene load_steps=4 format=3 uid="uid://cacc6x5in0n44"]
 
-[ext_resource type="Script" path="res://test_content.gd" id="1_tvdil"]
+[ext_resource type="Script" path="res://text_file.gd" id="1_tvdil"]
+[ext_resource type="Script" path="res://Assets/Font&RTE/RichTextEffect/RichTextSpoiler.gd" id="2_lg3fd"]
 
-[node name="TestContent" type="Control"]
+[sub_resource type="RichTextEffect" id="RichTextEffect_2ji5a"]
+resource_local_to_scene = true
+resource_name = "spoiler"
+script = ExtResource("2_lg3fd")
+
+[node name="TextFile" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,4 +24,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "CONTENT"
+bbcode_enabled = true
+text = "LOADING..."
+custom_effects = [SubResource("RichTextEffect_2ji5a")]

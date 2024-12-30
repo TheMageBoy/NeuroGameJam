@@ -13,12 +13,10 @@ func _ready() -> void:
 		var news_file_inst := NEWSPAPER_FILE.instantiate()
 		
 		if (str_to_var(string_array[1]) <= AudioManager.memoryLevel):
-
 			var news_title : String = ""
 			var news_title_parts := string_array[0].split(" ")
 			for part in news_title_parts:
 				var cur_part := part
-				
 				
 				if !randi()%3:
 					cur_part = "[i]"+cur_part+"[/i]"
@@ -35,7 +33,8 @@ func _ready() -> void:
 				if !randi()%12:
 					cur_part = "[pulse]"+cur_part+"[/pulse]"
 				news_title += cur_part+" "
-			news_file_inst.get_node("HBoxContainer/FileName").text = " "+news_title
+			news_file_inst.get_node("HBoxContainer/FileName").text = " "+news_title+"[font_size=8]\n"+string_array[2].trim_suffix("\n").left(24)+"[/font_size]..."
+			print("TEXT: "+var_to_str(news_file_inst.get_node("HBoxContainer/FileName").text))
 			files.add_child(news_file_inst)
 			
 			news_file_inst.pressed.connect(Callable(game, "createWindow").bind(news_file_inst, Vector2(256, 256), false, TEXT_FILE, string_array[2]))

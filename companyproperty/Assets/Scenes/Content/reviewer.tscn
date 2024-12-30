@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://7vhupi3pmjun"]
+[gd_scene load_steps=6 format=3 uid="uid://ft5wylwddt2g"]
 
 [ext_resource type="PackedScene" uid="uid://pyfywe1pr3uu" path="res://Assets/Scenes/content_class.tscn" id="1_omk36"]
 [ext_resource type="Script" path="res://Assets/Scripts/Reviewer.gd" id="2_jt7in"]

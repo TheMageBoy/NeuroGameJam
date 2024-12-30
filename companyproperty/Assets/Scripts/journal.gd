@@ -9,6 +9,7 @@ func _ready() -> void:
 		var string_array := file_content.split("\n===\n")
 		if string_array.size() == 1:
 			string_array = file_content.split("\n===\r\n")
+		
 		if (str_to_var(string_array[1]) <= AudioManager.memoryLevel):
 			var journal_file_inst := JOURNAL_FILE.instantiate()
 			journal_file_inst.get_node("HBoxContainer/FileName").text = " [img]res://Assets/Sprites/Icons/paper.png[/img] "+string_array[0]

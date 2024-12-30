@@ -6,7 +6,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m4dmr"]
 
 [node name="NewspaperFile" type="Button"]
-custom_minimum_size = Vector2(0, 27)
+custom_minimum_size = Vector2(0, 46)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -32,4 +32,7 @@ mouse_filter = 1
 theme = ExtResource("1_c4hri")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_m4dmr")
 bbcode_enabled = true
-text = " [img]res://Assets/Sprites/Icons/paper.png[/img] Journal Log #1"
+text = "LINE
+LINE TWO"
+fit_content = true
+scroll_active = false

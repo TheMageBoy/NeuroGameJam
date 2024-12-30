@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://1wtvusvixp7q"]
+[gd_scene load_steps=23 format=3 uid="uid://1wtvusvixp7q"]
 
 [ext_resource type="Texture2D" uid="uid://bcyprrmg8kvao" path="res://Assets/Images/desktopbackground.png" id="1_0an34"]
 [ext_resource type="Script" path="res://Assets/Scripts/Game.gd" id="1_q0rhl"]
@@ -8,7 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://5oidvh0eal2u" path="res://Assets/Sounds/SFX/taskcomplete.mp3" id="4_rychl"]
 [ext_resource type="Texture2D" uid="uid://c50434fd7c5qx" path="res://Assets/Images/Eye.png" id="6_kdv1s"]
 [ext_resource type="Texture2D" uid="uid://dq5yj6hcidimt" path="res://Assets/Images/NeuroCorner.png" id="7_i2x52"]
-[ext_resource type="Material" uid="uid://bujtwkcmoei5f" path="res://Assets/Pixelation.tres" id="7_i6lvm"]
+[ext_resource type="Material" path="res://Assets/Pixelation.tres" id="7_i6lvm"]
+[ext_resource type="Texture2D" uid="uid://cwg7qswpl3cp4" path="res://Assets/Images/image.png" id="10_ruj4q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ld4di"]
 bg_color = Color(0, 0, 0, 0.498039)
@@ -126,6 +127,15 @@ _data = {
 "Fade": SubResource("Animation_daffy"),
 "RESET": SubResource("Animation_14s3f")
 }
+
+[sub_resource type="Gradient" id="Gradient_xmnpp"]
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_shrrw"]
+gradient = SubResource("Gradient_xmnpp")
+height = 12
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0.0188679)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7r0gn"]
 shader = ExtResource("4_dxp1i")
@@ -250,7 +260,14 @@ grow_horizontal = 0
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Table" type="TextureRect" parent="."]
+offset_left = 828.005
+offset_top = 602.0
+offset_right = 935.005
+offset_bottom = 614.0
+texture = SubResource("GradientTexture2D_shrrw")
+
+[node name="NeuroTex" type="TextureRect" parent="."]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -291,10 +308,12 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Memory_CG" type="TextureRect" parent="."]
+visible = false
 z_index = 4096
 offset_right = 960.0
 offset_bottom = 640.0
 mouse_filter = 2
+texture = ExtResource("10_ruj4q")
 expand_mode = 5
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
