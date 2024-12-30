@@ -16,5 +16,6 @@ func _process_custom_fx(char_fx: CharFXTransform):
 	var time_int := int(time*5*speed)
 	
 	var temp := char_fx.glyph_index
-	char_fx.glyph_index = temp
+	char_fx.glyph_index = (temp+randi()%11+1)/(randi()%3+1)
+	char_fx.transform = char_fx.transform.translated_local(Vector2( randf_range(-4, 4),randf_range(-4, 4)))
 	return true

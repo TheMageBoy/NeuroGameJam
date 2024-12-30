@@ -1,12 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://bluvw024m6dhn"]
+[gd_scene load_steps=8 format=3 uid="uid://bluvw024m6dhn"]
 
 [ext_resource type="Theme" uid="uid://t4jdi7pby4a2" path="res://Assets/UI/UI_Files.tres" id="1_c4hri"]
 [ext_resource type="Script" path="res://Assets/Scenes/journal_file.gd" id="2_01kri"]
+[ext_resource type="FontFile" uid="uid://dyaamoas7dymh" path="res://Assets/Font&RTE/Fonts/OldNewspaperTypes.ttf" id="3_gn1c8"]
+
+[sub_resource type="FontVariation" id="FontVariation_vrvto"]
+base_font = ExtResource("3_gn1c8")
+variation_transform = Transform2D(1, 0.2, 0, 1, 0, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_f6iqv"]
+base_font = ExtResource("3_gn1c8")
+variation_embolden = 1.0
+variation_transform = Transform2D(1, 0.2, 0, 1, 0, 0)
+
+[sub_resource type="FontVariation" id="FontVariation_sbrss"]
+base_font = ExtResource("3_gn1c8")
+variation_embolden = 1.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m4dmr"]
 
 [node name="NewspaperFile" type="Button"]
-custom_minimum_size = Vector2(0, 46)
+custom_minimum_size = Vector2(0, 42)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -16,7 +30,7 @@ focus_mode = 0
 theme = ExtResource("1_c4hri")
 script = ExtResource("2_01kri")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,15 +38,34 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_c4hri")
+theme_override_constants/separation = 0
 
-[node name="FileName" type="RichTextLabel" parent="HBoxContainer"]
+[node name="FileName" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 21)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 1
 theme = ExtResource("1_c4hri")
+theme_override_fonts/normal_font = ExtResource("3_gn1c8")
+theme_override_fonts/italics_font = SubResource("FontVariation_vrvto")
+theme_override_fonts/bold_italics_font = SubResource("FontVariation_f6iqv")
+theme_override_fonts/bold_font = SubResource("FontVariation_sbrss")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_m4dmr")
 bbcode_enabled = true
-text = "LINE
-LINE TWO"
-fit_content = true
+text = "[i][b]LINE ONE"
+scroll_active = false
+
+[node name="Preview" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 21)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+theme = ExtResource("1_c4hri")
+theme_override_fonts/normal_font = ExtResource("3_gn1c8")
+theme_override_fonts/italics_font = SubResource("FontVariation_vrvto")
+theme_override_fonts/bold_italics_font = SubResource("FontVariation_f6iqv")
+theme_override_fonts/bold_font = SubResource("FontVariation_sbrss")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_m4dmr")
+bbcode_enabled = true
+text = "LINE TWO"
 scroll_active = false

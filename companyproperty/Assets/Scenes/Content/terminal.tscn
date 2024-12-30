@@ -1,9 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://4vj6tuf2isf5"]
+[gd_scene load_steps=5 format=3 uid="uid://4vj6tuf2isf5"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/terminal.gd" id="1_j1j2m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_unbpe"]
 bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h3lf6"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jrf6l"]
+content_margin_left = 5.0
+bg_color = Color(0, 0, 0, 1)
+border_width_top = 2
+border_color = Color(0.498039, 0.498039, 0.498039, 1)
 
 [node name="Terminal" type="Control"]
 layout_mode = 3
@@ -30,11 +42,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 0
 
-[node name="Comands" type="RichTextLabel" parent="Panel/VBoxContainer"]
+[node name="Commands" type="RichTextLabel" parent="Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/default_color = Color(0, 1, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_h3lf6")
+bbcode_enabled = true
 
 [node name="LineEdit" type="LineEdit" parent="Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_jrf6l")
 placeholder_text = "enter commands here"
+
+[connection signal="text_submitted" from="Panel/VBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]

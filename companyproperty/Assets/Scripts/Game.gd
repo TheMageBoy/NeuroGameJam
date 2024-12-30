@@ -98,7 +98,7 @@ func _ready() -> void:#
 		
 		file_inst.visible = file["visible"]
 		file_inst.name = file["name"]
-		file_inst.rtl.text = "[center]"+file["name"]
+		file_inst.file_name.text = "[center]"+file["name"]
 		file_inst.icon_sprite.texture = load("res://Assets/Sprites/Icons/"+file["icon"]+".png")
 		file_inst.content = load("res://Assets/Scenes/Content/"+file["content"]+".tscn")
 		file_inst.connect("pressed", Callable(self, "createWindow").bind(file_inst, file["size"], file["work"], file_inst.content))
@@ -106,7 +106,7 @@ func _ready() -> void:#
 func createWindow(file : Button, size, is_task : bool, content, content_data = null):
 	if file.window == null:
 		var new_window = UI_WINDOW.instantiate()
-		new_window.name = file.rtl.text
+		new_window.name = file.file_name.text
 		new_window.size = size
 		new_window.work_task = is_task
 		new_window.content = content

@@ -1,6 +1,6 @@
 extends Button
 
-@onready var rtl: RichTextLabel = $RichTextLabel
+@onready var file_name: RichTextLabel = $RichTextLabel
 @onready var icon_sprite: Sprite2D = $Icon
 
 const EMPTY_BOX = preload("res://Assets/UI/EmptyBox.tres")

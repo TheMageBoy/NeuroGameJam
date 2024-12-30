@@ -1,7 +1,8 @@
 extends Button
 var window = null
 
-@onready var rtl: RichTextLabel = $HBoxContainer/FileName
+@onready var file_name: RichTextLabel = $VBoxContainer/FileName
+#@onready var preview: RichTextLabel = $VBoxContainer/Preview
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
