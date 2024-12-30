@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://5oidvh0eal2u" path="res://Assets/Sounds/SFX/taskcomplete.mp3" id="4_rychl"]
 [ext_resource type="Texture2D" uid="uid://c50434fd7c5qx" path="res://Assets/Images/Eye.png" id="6_kdv1s"]
 [ext_resource type="Texture2D" uid="uid://dq5yj6hcidimt" path="res://Assets/Images/NeuroCorner.png" id="7_i2x52"]
-[ext_resource type="Material" uid="uid://bujtwkcmoei5f" path="res://Assets/Pixelation.tres" id="7_i6lvm"]
+[ext_resource type="Material" path="res://Assets/Pixelation.tres" id="7_i6lvm"]
 [ext_resource type="Texture2D" uid="uid://o6l2lg4dyigt" path="res://Assets/Images/CG/VedalMem.png" id="9_sffuh"]
 [ext_resource type="Texture2D" uid="uid://cqtlcm6hhfk3" path="res://Assets/Images/CG/VedalHug.png" id="11_ebyrs"]
 [ext_resource type="Theme" uid="uid://bybsndb5yuor4" path="res://Assets/UI/UI_Window.tres" id="11_gth4p"]

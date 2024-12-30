@@ -4,7 +4,7 @@ var crtT : bool
 var Mastervolume : float
 var BGMVolume : float
 var SFXVolume : float
-var memoryLevel : int
+var memoryLevel := 1
 
 func play(sound : AudioStream) -> AudioStreamPlayer:
 	var audio_player := AudioStreamPlayer.new()
