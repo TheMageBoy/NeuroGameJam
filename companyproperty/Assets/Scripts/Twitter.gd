@@ -14,6 +14,8 @@ func _process(delta: float) -> void:
 	pass
 
 func _input(event: InputEvent) -> void:
+	if !enabled:
+		return
 	if event is InputEventKey:
 		# do tweet stuff
 		print(event.as_text())

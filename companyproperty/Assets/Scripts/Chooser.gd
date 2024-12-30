@@ -49,6 +49,8 @@ func _ready():
 	button_3.connect("pressed",Callable(self,"chosen").bind(2))
 
 func chosen(val : int):
+	if !enabled:
+		return
 	if (val == correct):
 		emit_signal("task_finish")
 	else:

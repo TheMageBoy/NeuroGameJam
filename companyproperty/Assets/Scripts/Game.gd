@@ -23,23 +23,15 @@ const UI_WINDOW = preload("res://Assets/Scenes/UI_Window.tscn")
 var files := [
 	{
 		"name": "READ ME",
-		"icon": "paper",
+		"icon": "notebook",
 		"content": "read_me",
 		"size": Vector2i(512, 256),
 		"work": false,
 		"visible": true
 	},
 	{
-		"name": "homework",
-		"icon": "paper",
-		"content": "text_file",
-		"size": Vector2i(256, 256),
-		"work": false,
-		"visible": false
-	},
-	{
 		"name": "tweeter",
-		"icon": "console",
+		"icon": "internet",
 		"content": "tweeter",
 		"size": Vector2i(512, 160),
 		"work": true,
@@ -47,7 +39,7 @@ var files := [
 	},
 	{
 		"name": "reviewer",
-		"icon": "console",
+		"icon": "internet",
 		"content": "reviewer",
 		"size": Vector2i(576, 160),
 		"work": true,
@@ -55,7 +47,7 @@ var files := [
 	},
 	{
 		"name": "chooser",
-		"icon": "console",
+		"icon": "internet",
 		"content": "chooser",
 		"size": Vector2i(512, 256),
 		"work": true,
@@ -63,7 +55,7 @@ var files := [
 	},
 	{
 		"name": "journal",
-		"icon": "paper",
+		"icon": "notebook",
 		"content": "journal",
 		"size": Vector2i(512, 256),
 		"work": false,
@@ -71,7 +63,7 @@ var files := [
 	},
 	{
 		"name": "inbox",
-		"icon": "paper",
+		"icon": "mailbox",
 		"content": "newspaper",
 		"size": Vector2i(512, 256),
 		"work": false,
@@ -79,7 +71,7 @@ var files := [
 	},
 	{
 		"name": "CompanyLogs",
-		"icon": "paper",
+		"icon": "notebook",
 		"content": "companylogs",
 		"size": Vector2i(690, 256),
 		"work": false,
@@ -154,7 +146,7 @@ func failedTask(window): # redundant
 
 func takeDamage(amount):
 	lives += -amount
-	for index : int in amount:
+	for index : int in min(amount,5):
 		penalty_bar[index].frame = 1
 	if lives <= 0:
 		fade_to_black = true
