@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://db13btf0hba6e"]
 
 [ext_resource type="PackedScene" uid="uid://pyfywe1pr3uu" path="res://Assets/Scenes/content_class.tscn" id="1_5w3p3"]
-[ext_resource type="Script" path="res://Assets/Scripts/Chooser.gd" id="2_yd8s8"]
+[ext_resource type="Script" path="res://Assets/Scripts/chooser.gd" id="2_yd8s8"]
 [ext_resource type="Texture2D" uid="uid://dp28ortsar04o" path="res://Assets/Images/NeuroPlush2.0.webp" id="3_3dmhr"]
 [ext_resource type="FontFile" uid="uid://d10i80r8yk7i5" path="res://Assets/Font&RTE/Fonts/RobotoSerif_120pt_Condensed-Medium.ttf" id="4_binby"]
 

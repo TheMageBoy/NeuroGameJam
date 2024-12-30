@@ -34,9 +34,10 @@ func MainVisibleToggle():
 		optionsT.visible = false;
 		credits_t.visible = false;
 
+
 func _on_play_pressed() -> void:
 	AudioManager.kill()
-	get_tree().change_scene_to_packed(preload("res://Base.tscn"))
+	get_tree().change_scene_to_file("res://Base.tscn")
 
 func _on_options_pressed() -> void:
 	MainVisibleToggle()
