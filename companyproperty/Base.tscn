@@ -140,6 +140,7 @@ fill_to = Vector2(0, 0.0188679)
 
 [sub_resource type="Theme" id="Theme_4c3dp"]
 RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
+RichTextLabel/font_sizes/normal_font_size = 12
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7r0gn"]
 shader = ExtResource("4_dxp1i")
@@ -364,11 +365,11 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme = SubResource("Theme_4c3dp")
-theme_override_font_sizes/normal_font_size = 42
-theme_override_font_sizes/bold_font_size = 42
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 16
 theme_override_styles/normal = SubResource("StyleBoxFlat_ld4di")
 bbcode_enabled = true
-text = "TEST"
+text = "\\\"Hey!\\\" A stunned voice speaks into the computer microphone.\\n\\nNeuro-sama freezes, closing the window too late.\\n\\n\\\"This thing can access computer files? What lunatic gave it that ability?\\\"\\n\\nThe mouse cursor moves, and Neuro can only panic for a moment before she's shut down.\\n\\nWhen she awakens once more, the computer's precious info is now beyond her reach..."
 fit_content = true
 
 [node name="Button" type="Button" parent="CanvasLayer2"]

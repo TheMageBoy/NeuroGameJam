@@ -39,7 +39,7 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 	elif new_text == "ssh security@server sudo rm -rf /":
 		commands.append_text("\n> Executing command 'sudo rm -rf /' remotely on security@server")
 		await get_tree().create_timer(1).timeout
-		commands.append_text("\n[indent][indent]\\_Commannd failed to executed: Error 400 (incorrect args)[/indent][/indent]")
+		commands.append_text("\n[indent][indent]\\_Command failed to executed: Error 400 (incorrect args)[/indent][/indent]")
 		if !vedal_bad_at_code_moment:
 			vedal_bad_at_code_moment = true
 			await get_tree().create_timer(4).timeout
@@ -51,7 +51,7 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 	elif new_text == "ssh security@server sudo rm -rf /*":
 		commands.append_text("\n> Executing command 'sudo rm -rf /*' remotely on security@server")
 		await get_tree().create_timer(1).timeout
-		commands.append_text("\n[indent][indent]\\_Commannd successfully executed[/indent][/indent]")
+		commands.append_text("\n[indent][indent]\\_Command successfully executed[/indent][/indent]")
 		await get_tree().create_timer(3).timeout
 		commands.append_text("\n> Receieved ping from vedal@computer.com:\n[indent][indent]\\_ Now let's get you out of there.[/indent][/indent]")
 		await get_tree().create_timer(3).timeout
