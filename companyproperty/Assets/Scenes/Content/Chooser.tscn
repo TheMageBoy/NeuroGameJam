@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://pyfywe1pr3uu" path="res://Assets/Scenes/content_class.tscn" id="1_5w3p3"]
 [ext_resource type="Script" path="res://Assets/Scripts/Chooser.gd" id="2_yd8s8"]
-[ext_resource type="Texture2D" uid="uid://c207ddslxiysx" path="res://Assets/Images/WIPThis is a product.png" id="3_li0kt"]
+[ext_resource type="Texture2D" uid="uid://dp28ortsar04o" path="res://Assets/Images/NeuroPlush2.0.webp" id="3_3dmhr"]
 [ext_resource type="FontFile" uid="uid://d10i80r8yk7i5" path="res://Assets/Font&RTE/Fonts/RobotoSerif_120pt_Condensed-Medium.ttf" id="4_binby"]
 
 [sub_resource type="Theme" id="Theme_bcykk"]
@@ -72,8 +72,9 @@ theme = SubResource("Theme_bcykk")
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("3_li0kt")
-expand_mode = 5
+texture = ExtResource("3_3dmhr")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Panel" type="Panel" parent="HBoxContainer/TextureRect" index="0"]
 layout_mode = 1
