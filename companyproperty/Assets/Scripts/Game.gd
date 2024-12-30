@@ -343,6 +343,10 @@ func start_memory_cg(character):
 		window.suspended = true
 	# do something with cg_rect
 	cg_rect.texture = load("res://Assets/Images/CG/"+character+"Mem.png")
+	rtl.text = "[center][b]- MEMORY UNLOCKED -"
+	AudioManager.play(TASKCOMPLETE)
+	AP.play("TaskComplete")
+	await AP.animation_finished
 	if !memories.has(character):
 		memories.append(character)
 		cg_rect.visible = true
