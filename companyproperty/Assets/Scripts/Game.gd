@@ -349,15 +349,9 @@ func start_memory_cg(character):
 	for window in window_array:
 		window.suspended = true
 	# do something with cg_rect
-	cg_rect.texture = load("res://Assets/Images/CG/"+character+"Mem.png")
-	
+	cg_rect.texture = load("res://Assets/Images/CG/"+character+"Mem.png")	
 	AudioManager.pause()
-<<<<<<< Updated upstream
-	AudioManager.memoryLevel += 1
-
 	
-=======
->>>>>>> Stashed changes
 	if !memories.has(character):
 		print("SCRIMBO")
 		rtl.text = "[center][b]- MEMORY UNLOCKED -"
@@ -365,12 +359,9 @@ func start_memory_cg(character):
 		await AP.animation_finished
 		AP.play("TaskComplete")
 		memories.append(character)
-<<<<<<< Updated upstream
-=======
 		AudioManager.memoryLevel += 1
 		if AudioManager.memoryLevel == 4:
 			unlock_file()
->>>>>>> Stashed changes
 
 func end_memory_cg():
 	in_memory_cg = false
