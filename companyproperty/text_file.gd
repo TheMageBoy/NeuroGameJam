@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 		load_speed = clampf(load_speed, 8.0, 32.0)
 		load_speed += randf_range(-4, 4)
 		if content_self.progress_bar.value > 95:
-			load_speed -= 4
+			load_speed -= 3.5
 	elif !triggered:
 		triggered = true
 		rtl.text = data
