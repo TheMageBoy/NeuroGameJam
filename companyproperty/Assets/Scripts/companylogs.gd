@@ -12,7 +12,7 @@ func _ready() -> void:
 			string_array = file_content.split("\n===\r\n")
 		if (str_to_var(string_array[1]) <= AudioManager.memoryLevel):
 			var comp_log_inst := company_log.instantiate()
-			comp_log_inst.get_node("HBoxContainer/FileName").text = " [img]res://Assets/Sprites/Icons/paper.png[/img] "+string_array[0]
+			comp_log_inst.get_node("HBoxContainer/FileName").text = " [img]res://Assets/Sprites/Icons/notebook.png[/img] "+string_array[0]
 			comp_log_inst.get_node("HBoxContainer/Corpa").text = string_array[2]
 			files.add_child(comp_log_inst)
 			comp_log_inst.pressed.connect(Callable(game, "createWindow").bind(comp_log_inst, Vector2(256, 256), false, TEXT_FILE, string_array[3]))

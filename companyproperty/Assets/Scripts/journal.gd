@@ -12,7 +12,7 @@ func _ready() -> void:
 		
 		if (str_to_var(string_array[1]) <= AudioManager.memoryLevel):
 			var journal_file_inst := JOURNAL_FILE.instantiate()
-			journal_file_inst.get_node("HBoxContainer/FileName").text = " [img]res://Assets/Sprites/Icons/paper.png[/img] "+string_array[0]
+			journal_file_inst.get_node("HBoxContainer/FileName").text = " [img]res://Assets/Sprites/Icons/notebook.png[/img] "+string_array[0]
 			journal_file_inst.get_node("HBoxContainer/Date").text = string_array[2]
 			files.add_child(journal_file_inst)
 			journal_file_inst.pressed.connect(Callable(game, "createWindow").bind(journal_file_inst, Vector2(256, 256), false, TEXT_FILE, string_array[3]))

@@ -31,7 +31,7 @@ var files := [
 	},
 		{
 		"name": "journal",
-		"icon": "notebook",
+		"icon": "rawr",
 		"content": "journal",
 		"size": Vector2i(512, 256),
 		"work": false,
@@ -71,7 +71,7 @@ var files := [
 	},
 	{
 		"name": "Logs",
-		"icon": "notebook",
+		"icon": "rawr",
 		"content": "companylogs",
 		"size": Vector2i(690, 256),
 		"work": false,
@@ -146,7 +146,8 @@ func failedTask(window): # redundant
 
 func takeDamage(amount):
 	lives += -amount
-	for index : int in min(amount,5):
+	lives = max(0,lives)
+	for index : int in 5-lives:
 		penalty_bar[index].frame = 1
 	if lives <= 0:
 		fade_to_black = true
@@ -338,6 +339,7 @@ func start_memory_cg(character):
 		memories.append(character)
 		cg_rect.visible = true
 		AudioManager.memoryLevel += 1
+	AudioManager.pause()
 
 func end_memory_cg():
 	in_memory_cg = false
@@ -346,6 +348,7 @@ func end_memory_cg():
 		print("GOOD ENDING")
 	for window in window_array:
 		window.suspended = false
+	AudioManager.unpause()
 	
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and in_memory_cg:
@@ -376,9 +379,12 @@ func gameover():
 	memoryText.text = gameover_string
 	memoryText.visible = true;
 	var button: Button = $CanvasLayer2/Button
+	button.connect("pressed", Callable(self, "_on_button_pressed"))
 	button.visible = true;
+	
 
-func _on_button_pressed() -> void: # return to menu
+func _on_button_pressed(): # return to menu
+	print("Returning to main menu")
 	get_tree().change_scene_to_packed(preload("res://Assets/Scenes/MenuScreen.tscn"))
 
 func meta_clicked(meta):
