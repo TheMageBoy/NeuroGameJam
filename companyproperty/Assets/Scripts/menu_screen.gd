@@ -62,7 +62,7 @@ func _on_h_slider_value_changed(value: float) -> void:
 	AudioManager.Mastervolume = value;
 	AudioManager.updateSound()
 
-func BGMSliderChange(value: float) -> void:
+func BGMSLIDERCHANGE(value: float) -> void:
 	AudioManager.BGMVolume = value;
 	AudioManager.updateSound()
 
