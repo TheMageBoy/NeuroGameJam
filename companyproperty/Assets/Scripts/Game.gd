@@ -21,14 +21,6 @@ const UI_WINDOW = preload("res://Assets/Scenes/UI_Window.tscn")
 
 var files := [
 	{
-		"name": "READ ME",
-		"icon": "notebook",
-		"content": "read_me",
-		"size": Vector2i(512, 256),
-		"work": false,
-		"visible": true
-	},
-	{
 		"name": "Tweeter",
 		"icon": "internet",
 		"content": "tweeter",
@@ -83,6 +75,14 @@ var files := [
 		"size": Vector2i(690, 256),
 		"work": false,
 		"visible": false
+	},
+	{
+		"name": "READ ME",
+		"icon": "notebook",
+		"content": "read_me",
+		"size": Vector2i(512, 256),
+		"work": false,
+		"visible": true
 	}
 ]
 
@@ -205,6 +205,8 @@ func _process(delta: float) -> void:
 
 const STEPS = preload("res://Assets/Sounds/SFX/steps.wav") # SFX
 func check_queue():
+	if in_memory_cg:
+		return
 	var stream := AudioManager.play(STEPS) # Audiomanager
 	await get_tree().create_timer(5).timeout
 	eye.visible = true # refer to the when I said that was the important part
@@ -354,6 +356,8 @@ func start_memory_cg(character):
 		await AP.animation_finished
 		memories.append(character)
 		AudioManager.memoryLevel += 1
+		if AudioManager.memoryLevel == 5:
+			unlock_file()
 
 func end_memory_cg():
 	in_memory_cg = false
