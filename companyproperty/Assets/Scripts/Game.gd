@@ -387,13 +387,13 @@ func gameover():
 	memoryText.text = gameover_string
 	memoryText.visible = true;
 	var button: Button = $CanvasLayer2/Button
-	button.connect("pressed", Callable(self, "_on_button_pressed"))
+	#button.connect("pressed", Callable(self, "_on_button_pressed"))
 	button.visible = true;
 	
-
+const MENU_SCREEN = preload("res://Assets/Scenes/MenuScreen.tscn")
 func _on_button_pressed(): # return to menu
-	print("Returning to main menu")
-	get_tree().change_scene_to_packed(preload("res://Assets/Scenes/MenuScreen.tscn"))
+	#print("Returning to main menu")
+	get_tree().change_scene_to_packed(MENU_SCREEN)
 
 # # # # # # # #
 # CG TRIGGER  #

@@ -360,6 +360,7 @@ offset_left = -8.0
 offset_top = -8.0
 grow_horizontal = 0
 grow_vertical = 0
+focus_mode = 0
 text = "Return to Menu"
 
 [connection signal="pressed" from="CanvasLayer2/Button" to="." method="_on_button_pressed"]

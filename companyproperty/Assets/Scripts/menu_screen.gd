@@ -10,9 +10,10 @@ extends CanvasLayer
 @onready var h_slider: HSlider = $Background/OptionsT/Options/MarginContainer2/HBoxContainer/HSlider
 @onready var optionsT: TextureRect = $Background/OptionsT
 @onready var credits_t: TextureRect = $Background/CreditsT
-
+const WIND_44100_27055 = preload("res://Assets/Sounds/BGM/wind_44100-27055.mp3")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	AudioManager.play_bgm(WIND_44100_27055)
 	if !title.visible:
 		MainVisibleToggle()
 	optionsT.visible = false;
@@ -32,6 +33,7 @@ func MainVisibleToggle():
 		credits_t.visible = false;
 
 func _on_play_pressed() -> void:
+	AudioManager.kill()
 	get_tree().change_scene_to_packed(preload("res://Base.tscn"))
 
 
