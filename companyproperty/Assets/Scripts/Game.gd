@@ -407,7 +407,8 @@ func fade(delta):
 func gameover():
 	# NOT WORKING
 	memoryText.text = gameover_string[ending]
-	memoryText.visible = true;
+	if !ending == "good":
+		memoryText.visible = true;
 	var button: Button = $CanvasLayer2/Button
 	#button.connect("pressed", Callable(self, "_on_button_pressed"))
 	button.visible = true;
