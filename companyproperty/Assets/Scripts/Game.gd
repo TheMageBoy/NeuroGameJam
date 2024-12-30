@@ -28,22 +28,6 @@ var files := [
 		"work": false,
 		"visible": true
 	},
-		{
-		"name": "Journal",
-		"icon": "rawr",
-		"content": "journal",
-		"size": Vector2i(512, 256),
-		"work": false,
-		"visible": true
-	},
-	{
-		"name": "Inbox",
-		"icon": "mailbox",
-		"content": "newspaper",
-		"size": Vector2i(512, 256),
-		"work": false,
-		"visible": true
-	},
 	{
 		"name": "Tweeter",
 		"icon": "internet",
@@ -74,7 +58,23 @@ var files := [
 		"content": "companylogs",
 		"size": Vector2i(800, 256),
 		"work": false,
-		"visible": true
+		"visible": false
+	},
+	{
+		"name": "Journal",
+		"icon": "rawr",
+		"content": "journal",
+		"size": Vector2i(512, 256),
+		"work": false,
+		"visible": false
+	},
+	{
+		"name": "Inbox",
+		"icon": "mailbox",
+		"content": "newspaper",
+		"size": Vector2i(512, 256),
+		"work": false,
+		"visible": false
 	},
 	{
 		"name": "Console",
@@ -82,7 +82,7 @@ var files := [
 		"content": "terminal",
 		"size": Vector2i(690, 256),
 		"work": false,
-		"visible": true
+		"visible": false
 	}
 ]
 
@@ -92,6 +92,7 @@ const FILE = preload("res://Assets/Scenes/File.tscn")
 const MONARCH = preload("res://Assets/Sounds/BGM/MONARCH.mp3")
 func _ready() -> void:#
 	AudioManager.memoryLevel = 1;
+	
 	toggle_Shader()
 	canBlink = true;
 	for file in DirAccess.get_files_at("res://Assets/Scenes/Content/"):
