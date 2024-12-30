@@ -147,10 +147,6 @@ func move_to_top(window):
 	window_array.erase(window)
 	window_array.append(window)
 
-func failedTask(window): # redundant
-	print("window closing")
-	deleteWindow(window)
-
 func takeDamage(amount):
 	lives += -amount
 	lives = max(0,lives)

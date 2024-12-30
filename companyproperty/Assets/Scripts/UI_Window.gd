@@ -118,7 +118,4 @@ func _x_button_pressed() -> void:
 	#autofails if you try to X out of a task window (failed task closes it)
 	if suspended:
 		return
-	if has_lifespan:
-		get_tree().current_scene.failedTask(self)
-	else:
-		get_tree().current_scene.deleteWindow(self)
+	get_tree().current_scene.deleteWindow(self)
