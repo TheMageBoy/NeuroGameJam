@@ -99,7 +99,6 @@ focus_mode = 0
 text = "Exit to Desktop"
 
 [node name="OptionsT" type="TextureRect" parent="Background"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -157,9 +156,43 @@ custom_minimum_size = Vector2(143.08, 0)
 layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Background/OptionsT/Options/MarginContainer2/HBoxContainer"]
-custom_minimum_size = Vector2(91.825, 0)
+custom_minimum_size = Vector2(227.115, 0)
 layout_mode = 2
-text = "Volume"
+text = "Master Volume"
+
+[node name="MarginContainer4" type="MarginContainer" parent="Background/OptionsT/Options"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/OptionsT/Options/MarginContainer4"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HSlider" type="HSlider" parent="Background/OptionsT/Options/MarginContainer4/HBoxContainer"]
+custom_minimum_size = Vector2(143.08, 0)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Background/OptionsT/Options/MarginContainer4/HBoxContainer"]
+custom_minimum_size = Vector2(181.065, 0)
+layout_mode = 2
+text = "BGM Volume"
+
+[node name="MarginContainer5" type="MarginContainer" parent="Background/OptionsT/Options"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/OptionsT/Options/MarginContainer5"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HSlider" type="HSlider" parent="Background/OptionsT/Options/MarginContainer5/HBoxContainer"]
+custom_minimum_size = Vector2(143.08, 0)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Background/OptionsT/Options/MarginContainer5/HBoxContainer"]
+custom_minimum_size = Vector2(181.065, 0)
+layout_mode = 2
+text = "SFX Volume"
 
 [node name="MarginContainer3" type="MarginContainer" parent="Background/OptionsT/Options"]
 layout_mode = 2
@@ -211,5 +244,7 @@ text = "Return to Menu"
 [connection signal="pressed" from="Background/Title/Exit" to="." method="_on_exit_pressed"]
 [connection signal="toggled" from="Background/OptionsT/Options/MarginContainer/HBoxContainer/CheckButton" to="." method="_on_check_button_toggled"]
 [connection signal="value_changed" from="Background/OptionsT/Options/MarginContainer2/HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="Background/OptionsT/Options/MarginContainer4/HBoxContainer/HSlider" to="." method="BGMSliderChange"]
+[connection signal="value_changed" from="Background/OptionsT/Options/MarginContainer5/HBoxContainer/HSlider" to="." method="SFXChange"]
 [connection signal="pressed" from="Background/OptionsT/Options/MarginContainer3/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Background/CreditsT/Button2" to="." method="_on_button_pressed"]

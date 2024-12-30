@@ -1,7 +1,9 @@
 extends Node
 
 var crtT : bool
-var volume : float
+var Mastervolume : float
+var BGMVolume : float
+var SFXVolume : float
 var memoryLevel : int
 
 func play(sound : AudioStream) -> AudioStreamPlayer:
@@ -33,6 +35,13 @@ func pause():
 func unpause():
 	for audio_player : AudioStreamPlayer in get_children():
 		audio_player.stream_paused = false
+
+func updateSound():
+	#print(lerpf(-40,0,Mastervolume/100))
+	AudioServer.set_bus_volume_db(0,lerpf(-40,0,Mastervolume/100))
+	AudioServer.set_bus_volume_db(1,lerpf(-40,0,BGMVolume/100))
+	AudioServer.set_bus_volume_db(2,lerpf(-40,0,SFXVolume/100))
+	
 
 
 func getCRT() -> bool:
