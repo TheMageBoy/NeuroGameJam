@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://hbj6xn0p20jl"
-path="res://.godot/imported/BaskervilleBoldBT.ttf-09b175d3e97467ea4ac3bf15d288720c.fontdata"
+uid="uid://d10i80r8yk7i5"
+path="res://.godot/imported/RobotoSerif_120pt_Condensed-Medium.ttf-bfa9ba830ef08cb92c9a8a3f4edff0d8.fontdata"
 
 [deps]
 
-source_file="res://Assets/Font&RTE/Fonts/BaskervilleBoldBT.ttf"
-dest_files=["res://.godot/imported/BaskervilleBoldBT.ttf-09b175d3e97467ea4ac3bf15d288720c.fontdata"]
+source_file="res://Assets/Font&RTE/Fonts/RobotoSerif_120pt_Condensed-Medium.ttf"
+dest_files=["res://.godot/imported/RobotoSerif_120pt_Condensed-Medium.ttf-bfa9ba830ef08cb92c9a8a3f4edff0d8.fontdata"]
 
 [params]
 

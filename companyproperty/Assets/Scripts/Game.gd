@@ -198,7 +198,7 @@ func _process(delta: float) -> void:
 	forced_timer(delta)
 	
 	# active madatory tasks
-	if (task_list.get_children().size() != 0):
+	if (task_list.get_children().size() != 0) and !in_memory_cg:
 		for progress_bar : ProgressBar in task_list.get_children():
 		
 			if !progress_bar.get_node("CheckBox/Complete").visible and !progress_bar.get_node("CheckBox/Fail").visible:
@@ -335,7 +335,6 @@ var memory_cg_ending := false
 @onready var cg_rect: TextureRect = $Memory_CG
 
 func start_memory_cg(character):
-	
 	in_memory_cg = true;
 	# disable every window
 	for window in window_array:
@@ -346,6 +345,7 @@ func start_memory_cg(character):
 	if !memories.has(character):
 		memories.append(character)
 		cg_rect.visible = true
+		AudioManager.memoryLevel += 1
 
 func end_memory_cg():
 	if memories.size() == 5:
@@ -357,6 +357,7 @@ func end_memory_cg():
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and in_memory_cg and !memory_cg_ending:
 		memory_cg_ending = true
+		cg_rect.visible = false
 
 var fade_to_black := false
 var gameover_string := "\"This AI can't even do the basic tasks it was made for.\"\nThe sound of a table slam echoes into the computer microphone.\n\"Didn't I tell you we should've done a full reprogramming from the start? Get on it!\" An angry voice demands.\nNeuro-sama only has a few moments to register her newfound feelings of fear before she's shut down, never to be the same again."
@@ -385,7 +386,7 @@ func gameover():
 	var button: Button = $CanvasLayer2/Button
 	button.visible = true;
 
-func _on_button_pressed() -> void:#return to menu
+func _on_button_pressed() -> void: # return to menu
 	get_tree().change_scene_to_packed(preload("res://Assets/Scenes/MenuScreen.tscn"))
 
 func meta_clicked(meta):
