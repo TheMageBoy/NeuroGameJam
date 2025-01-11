@@ -36,6 +36,7 @@ Button/styles/normal = SubResource("StyleBoxEmpty_pkc4h")
 Button/styles/pressed = SubResource("StyleBoxFlat_l8vnx")
 
 [node name="Control" instance=ExtResource("1_ymwgs")]
+mouse_filter = 1
 script = ExtResource("2_e3wdd")
 text = "I saw a beautiful bird outside my window today! I inveited it to come stream with me, but it just looked confused. Animals... why can't they be more like... me?"
 
@@ -62,6 +63,7 @@ size_flags_vertical = 3
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/VBoxContainer" index="0"]
 custom_minimum_size = Vector2(0, 25.445)
 layout_mode = 2
+mouse_filter = 1
 theme = SubResource("Theme_ev51e")
 bbcode_enabled = true
 text = "@NeuroSamaAI"
@@ -69,6 +71,7 @@ text = "@NeuroSamaAI"
 [node name="RichTextLabel2" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/VBoxContainer" index="1"]
 custom_minimum_size = Vector2(0, 58.48)
 layout_mode = 2
+mouse_filter = 1
 theme = SubResource("Theme_xsden")
 bbcode_enabled = true
 text = "Typing..."
@@ -85,6 +88,7 @@ expand_mode = 2
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer" index="1"]
 custom_minimum_size = Vector2(29.35, 0)
 layout_mode = 2
+mouse_filter = 1
 bbcode_enabled = true
 text = "43"
 
@@ -96,6 +100,7 @@ expand_mode = 2
 [node name="RichTextLabel2" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer" index="3"]
 custom_minimum_size = Vector2(37.705, 0)
 layout_mode = 2
+mouse_filter = 1
 text = "170"
 
 [node name="TextureRect3" type="TextureRect" parent="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer" index="4"]
@@ -106,4 +111,5 @@ expand_mode = 2
 [node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer" index="5"]
 custom_minimum_size = Vector2(41.69, 0)
 layout_mode = 2
+mouse_filter = 1
 text = "3.6k"

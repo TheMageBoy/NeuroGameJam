@@ -9,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_ohsnb")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
@@ -18,6 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 bbcode_enabled = true
 text = "I'm writing this in case I'm made to forget more things.
 Hi! You're Neuro-sama, an AI vtuber and streamer. It's your job to entertain viewers, send out tweets, watch chat for any banworthy comments, and advertise products!

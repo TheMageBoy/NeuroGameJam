@@ -1,9 +1,10 @@
 extends Node
 class_name UI_Window
 
-@onready var game = get_tree().current_scene
+@onready var game : GameManager = get_tree().current_scene
 
 var work_task := false
+var drag_focus := false
 var focus := false
 var has_lifespan := false
 var lifespan := 0.1 #miliseconds; 0 if no lifespan
@@ -73,13 +74,19 @@ func _input(event: InputEvent):
 	if suspended:
 		return
 	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and mouse_within(get_viewport().get_mouse_position()):
-			if !dragging and focus:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and focus:
+			get_parent().move_child(self, get_parent().get_child_count()-1)
+			if !dragging and drag_focus:
 				offset = panel.get_screen_position() - get_viewport().get_mouse_position();
 				dragging = true;#Toggle Dragging when clicked
-			get_parent().move_child(self, get_parent().get_child_count()-1)
+			
 		if event.button_index == MOUSE_BUTTON_LEFT and !event.pressed and dragging:
 			dragging = false;
+
+
+
+
+
 
 func _process(delta: float):#I hope this is equivalent to update? It probably is :)
 	if dragging == true and !suspended:
@@ -104,11 +111,20 @@ func mouse_within(point):
 # "Window Focus"
 # ------------------------------------------
 
-func _on_progress_bar_mouse_entered() -> void:
+func _on_progress_bar_mouse_entered() -> void: #drag specific
+	for window in game.window_node.get_children():
+		window.drag_focus = false
+	drag_focus = true
+func _on_progress_bar_mouse_exited() -> void:
+	drag_focus = false
+func _on_mouse_entered() -> void: #whole window
+	for window in game.window_node.get_children():
+		window.focus = false
+	focus = true
+	
+func _on_mouse_exited() -> void:
 	focus = true
 
-func _on_progress_bar_mouse_exited() -> void:
-	focus = false
 
 
 # ------------------------------------------
@@ -120,3 +136,8 @@ func _x_button_pressed() -> void:
 	if suspended:
 		return
 	game.deleteWindow(self)
+
+
+# ------------------------------------------
+# Window focus (replaces the mouse
+# ------------------------------------------

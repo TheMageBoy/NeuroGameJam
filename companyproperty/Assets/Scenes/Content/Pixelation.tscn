@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dvirijilxih34"]
+[gd_scene load_steps=2 format=3 uid="uid://cx5rqou3r1k6l"]
 
-[ext_resource type="Material" uid="uid://bujtwkcmoei5f" path="res://Assets/Pixelation.tres" id="1_agbqw"]
+[ext_resource type="Material" path="res://Assets/Pixelation.tres" id="1_agbqw"]
 
 [node name="Control" type="CanvasLayer"]
 

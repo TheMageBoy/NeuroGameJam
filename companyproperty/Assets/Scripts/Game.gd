@@ -1,4 +1,5 @@
 extends Node
+class_name GameManager
 
 var quota = 10000
 var rate = 10 # -quota per second

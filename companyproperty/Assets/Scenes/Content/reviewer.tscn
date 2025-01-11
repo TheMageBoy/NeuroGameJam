@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ci7i1tvsfvy14" path="res://Assets/Images/approve.png" id="5_pjda1"]
 
 [node name="Control" instance=ExtResource("1_omk36")]
+mouse_filter = 1
 script = ExtResource("2_jt7in")
 text = "Dude, this sucks. Neuro was such a fun streamer before, but now she is just churning out this corporate ad garbage, I mean, look at all this trash! Not a single person even cares about this slop. Lets face it, Neuro is dead, and the most merciful thing we can do is to finally let her fizzle out completely."
 
@@ -28,6 +29,7 @@ size_flags_horizontal = 3
 custom_minimum_size = Vector2(41.055, 116.695)
 layout_mode = 2
 size_flags_vertical = 0
+mouse_filter = 1
 text = "“Dude, this sucks. Neuro was such a fun streamer before, but now she is just churning out this corporate ad garbage, I mean, look at all this trash! Not a single person even cares about this slop. Lets face it, Neuro is dead, and the most merciful thing we can do is to finally let her fizzle out completely.”
 "
 
@@ -37,22 +39,26 @@ layout_mode = 2
 [node name="Button" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer" index="0"]
 layout_mode = 2
 focus_mode = 0
+mouse_filter = 1
 icon = ExtResource("5_pjda1")
 flat = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/HBoxContainer" index="1"]
 custom_minimum_size = Vector2(77.545, 0)
 layout_mode = 2
+mouse_filter = 1
 text = "Allow"
 
 [node name="Button2" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer" index="2"]
 layout_mode = 2
 size_flags_horizontal = 0
 focus_mode = 0
+mouse_filter = 1
 icon = ExtResource("4_7t178")
 flat = true
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/HBoxContainer" index="3"]
 custom_minimum_size = Vector2(77.545, 0)
 layout_mode = 2
+mouse_filter = 1
 text = "Ban"
