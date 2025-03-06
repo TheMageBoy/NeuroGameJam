@@ -10,9 +10,11 @@ func _ready() -> void:
 		var string_array := file_content.split("\n===\n")
 		if string_array.size() == 1:
 			string_array = file_content.split("\n===\r\n")
-		var news_file_inst := NEWSPAPER_FILE.instantiate()
+		
 		
 		if (str_to_var(string_array[1]) <= AudioManager.memoryLevel):
+			var news_file_inst := NEWSPAPER_FILE.instantiate()
+			news_file_inst.name = string_array[0]
 			var news_title : String = ""
 			var news_title_parts := string_array[0].split(" ")
 			for part in news_title_parts:
@@ -43,8 +45,3 @@ func _ready() -> void:
 
 #func _on_rich_text_label_meta_clicked(meta: Variant) -> void:#
 	#print(meta)
-
-func _on_tree_exiting() -> void:
-	for file in files.get_children():
-		if file.window:
-			file.window.queue_free()

@@ -12,6 +12,7 @@ func _ready() -> void:
 		
 		if (str_to_var(string_array[1]) <= AudioManager.memoryLevel):
 			var journal_file_inst := JOURNAL_FILE.instantiate()
+			journal_file_inst.name = string_array[0]
 			journal_file_inst.get_node("HBoxContainer/FileName").text = " [img]res://Assets/Sprites/Icons/notebook.png[/img] "+string_array[0]
 			journal_file_inst.get_node("HBoxContainer/Date").text = string_array[2]
 			files.add_child(journal_file_inst)
@@ -19,8 +20,3 @@ func _ready() -> void:
 
 #func _on_rich_text_label_meta_clicked(meta: Variant) -> void:
 	#print(meta)
-
-func _on_tree_exiting() -> void:
-	for file in files.get_children():
-		if file.window:
-			file.window.queue_free()

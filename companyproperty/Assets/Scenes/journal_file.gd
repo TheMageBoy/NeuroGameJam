@@ -1,6 +1,5 @@
 extends Button
-var window = null
-
+var access_level : int
 @onready var file_name: RichTextLabel = $HBoxContainer/FileName
 #@onready var preview: RichTextLabel = $VBoxContainer/Preview
 

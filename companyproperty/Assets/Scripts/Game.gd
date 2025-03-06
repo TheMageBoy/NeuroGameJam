@@ -90,10 +90,10 @@ var files := [
 var vaild_content_array := []
 
 const FILE = preload("res://Assets/Scenes/File.tscn")
-const MONARCH = preload("res://Assets/Sounds/BGM/MONARCH.mp3")
+const MONARCH = preload("res://Assets/Sounds/BGM/MONARCHv2.6.mp3")
 func _ready() -> void:#
 	AudioManager.memoryLevel = 1;
-	
+	get_window().size_changed.connect(Callable(self, "crt_resize"))
 	toggle_Shader()
 	canBlink = true;
 	for file in DirAccess.get_files_at("res://Assets/Scenes/Content/"):
@@ -112,34 +112,41 @@ func _ready() -> void:#
 		file_inst.content = load("res://Assets/Scenes/Content/"+file["content"]+".tscn")
 		file_inst.connect("pressed", Callable(self, "createWindow").bind(file_inst, file["size"], file["work"], file_inst.content))
 
+func crt_resize():
+	if crt.visible:
+		crt.material.set_shader_parameter("resolution", get_window().size/4*3)
+
+
 func createWindow(file : Button, size, is_task : bool, content, content_data = null):
-	if file.window == null:
-		var new_window = UI_WINDOW.instantiate()
-		new_window.name = file.file_name.text
-		new_window.size = size
-		new_window.work_task = is_task
-		new_window.content = content
-		new_window.data = content_data
-		window_node.add_child(new_window)
-		new_window.progress_bar.show_percentage = is_task
-		file.window = new_window
-		new_window.file = file
-		for task_bar : ProgressBar in task_list.get_children():
-			var task_name : String = task_bar.get_node("TaskName").text
-			#print(new_window.name, " vs ", task_name)
-			if new_window.name.to_lower() == task_name.to_lower():
-				#print("LINKED")
-				new_window.task_bar = task_bar
-				new_window.progress_bar.max_value = task_bar.max_value
-				new_window.progress_bar.value = task_bar.value
-				new_window.lifespan = task_bar.value
-				new_window.has_lifespan = true
-				task_bar.value_changed.connect(Callable(new_window, "update_progress_bar"))
-		new_window.setPos(get_viewport().get_mouse_position())
-		return new_window
+	for window in window_node.get_children():
+		if window.name == file.name:
+			print(window.name, "!!!")
+			return
+		print(window.name, " : ", file.name)
+	var new_window = UI_WINDOW.instantiate()
+	new_window.name = file.name
+	new_window.size = size
+	new_window.work_task = is_task
+	new_window.content = content
+	new_window.data = content_data
+	window_node.add_child(new_window)
+	new_window.progress_bar.show_percentage = is_task
+	new_window.file = file
+	for task_bar : ProgressBar in task_list.get_children():
+		var task_name : String = task_bar.get_node("TaskName").text
+		#print(new_window.name, " vs ", task_name)
+		if new_window.name.to_lower() == task_name.to_lower().trim_prefix("[center]"):
+			#print("LINKED")
+			new_window.task_bar = task_bar
+			new_window.progress_bar.max_value = task_bar.max_value
+			new_window.progress_bar.value = task_bar.value
+			new_window.lifespan = task_bar.value
+			new_window.has_lifespan = true
+			task_bar.value_changed.connect(Callable(new_window, "update_progress_bar"))
+	new_window.setPos(get_viewport().get_mouse_position())
+	return new_window
 
 func deleteWindow(window): #deletes a window after passing itself in
-	window.file.window = null
 	#window_array.erase(window)
 	window.queue_free()
 
@@ -265,7 +272,7 @@ func send_forced_task():
 	AudioManager.play(NEWTASK)
 	task_bar_inst.get_node("AnimationPlayer").play_backwards("Squeeze")
 	for window in window_node.get_children():
-		if window.name.to_lower() == task_name.to_lower():
+		if window.name.to_lower() == task_name.to_lower().trim_prefix("[center]"):
 			#print("LINKED")
 			window.task_bar = task_bar_inst
 			window.progress_bar.max_value = task_bar_inst.max_value
@@ -282,6 +289,7 @@ func clear_forced_task(window):
 
 func toggle_Shader():
 	crt.visible = AudioManager.getCRT()
+	crt.material.set_shader_parameter("resolution", get_window().size/6*5)
 
 func task_bar_free(node):
 	await get_tree().create_timer(2).timeout
