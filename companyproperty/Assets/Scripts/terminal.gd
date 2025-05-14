@@ -27,12 +27,13 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 		if ping_target:
 			commands.append_text("\n> Pinging"+ping_target+"with 32 bytes of data")
 			await get_tree().create_timer(.05).timeout
-			if new_text.trim_prefix("ping") == " vedal@computer.com":
+			var args := new_text.trim_prefix("ping")
+			if args == " vedal@computer.com":
 				commands.append_text("\n[indent][indent]\\_ Reply from vedal@computer.com: bytes=32 time=50ms TTL=57[/indent][/indent]")
 				if !vedal_respond:
 					vedal_respond = true
 					commands.append_text("\n> Receieved ping from vedal@computer.com:\n[indent][indent]\\_ That's crazy, that's actually crazy, that's messed up![/indent][/indent]")
-			elif new_text.trim_prefix("ping") == " security@server":
+			elif args == " security@server":
 				commands.append_text("\n[indent][indent]\\_ Reply from security@server: bytes=32 time=50ms TTL=57[/indent][/indent]")
 				game.takeDamage(1) # lmao, bro pinged the security server
 			else:

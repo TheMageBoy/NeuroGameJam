@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cacc6x5in0n44"]
 
-[ext_resource type="Script" path="res://text_file.gd" id="1_tvdil"]
-[ext_resource type="Script" path="res://Assets/Font&RTE/RichTextEffect/RichTextSpoiler.gd" id="2_lg3fd"]
+[ext_resource type="Script" uid="uid://vpm0jwkknsyx" path="res://text_file.gd" id="1_tvdil"]
+[ext_resource type="Script" uid="uid://dau6s13jeaar5" path="res://Assets/Font&RTE/RichTextEffect/RichTextSpoiler.gd" id="2_lg3fd"]
 
 [sub_resource type="RichTextEffect" id="RichTextEffect_2ji5a"]
 resource_local_to_scene = true

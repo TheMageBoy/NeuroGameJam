@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dutkxkdijv53m"]
 
 [ext_resource type="PackedScene" uid="uid://pyfywe1pr3uu" path="res://Assets/Scenes/content_class.tscn" id="1_awmp8"]
-[ext_resource type="Script" path="res://Assets/Scripts/video_er.gd" id="2_20myo"]
+[ext_resource type="Script" uid="uid://vataafjfd6ws" path="res://Assets/Scripts/video_er.gd" id="2_20myo"]
 
 [node name="Control" instance=ExtResource("1_awmp8")]
 mouse_filter = 1

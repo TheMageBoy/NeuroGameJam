@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dccoiidwda5xt"]
 
 [ext_resource type="Theme" uid="uid://bybsndb5yuor4" path="res://Assets/UI/UI_Window.tres" id="1_dwip4"]
-[ext_resource type="Script" path="res://Assets/Scripts/UI_Window.gd" id="1_rpjxb"]
+[ext_resource type="Script" uid="uid://d156yelskvbcn" path="res://Assets/Scripts/UI_Window.gd" id="1_rpjxb"]
 
 [node name="UI_Window" type="Panel"]
 offset_right = 256.0

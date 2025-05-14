@@ -135,7 +135,7 @@ func createWindow(file : Button, size, is_task : bool, content, content_data = n
 	for task_bar : ProgressBar in task_list.get_children():
 		var task_name : String = task_bar.get_node("TaskName").text
 		#print(new_window.name, " vs ", task_name)
-		if new_window.name.to_lower() == task_name.to_lower().trim_prefix("[center]"):
+		if new_window.name.to_lower() == task_name.to_lower().trim_prefix("[center]") and !task_bar.get_node("CheckBox/Complete").visible == true and !task_bar.get_node("CheckBox/Complete").visible == true:
 			#print("LINKED")
 			new_window.task_bar = task_bar
 			new_window.progress_bar.max_value = task_bar.max_value
@@ -188,7 +188,7 @@ func _process(delta: float) -> void:
 		pixel_size-=10*delta
 	else:
 		pixelation.visible = false;
-	if eye.visible and checking: # this is the more important part
+	if eye.visible and eye.frame and checking: # this is the more important part
 		check_on_task()
 	if !checking && current_color.color.a < target_alpha:
 		check_timer -= delta *2
@@ -215,9 +215,11 @@ const STEPS = preload("res://Assets/Sounds/SFX/steps.wav") # SFX
 func check_queue():
 	if in_memory_cg or cannot_footstep:
 		return
+	eye.frame = 0
+	eye.visible = true
 	var stream := AudioManager.play(STEPS) # Audiomanager
 	await get_tree().create_timer(5).timeout
-	eye.visible = true # refer to the when I said that was the important part
+	eye.frame = 1 # refer to the when I said that was the important part
 	eye_AP.play_backwards("Fade")
 	await stream.finished
 	if checking:

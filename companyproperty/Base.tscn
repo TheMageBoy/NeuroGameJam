@@ -1,14 +1,14 @@
 [gd_scene load_steps=24 format=3 uid="uid://1wtvusvixp7q"]
 
 [ext_resource type="Texture2D" uid="uid://bcyprrmg8kvao" path="res://Assets/Images/desktopbackground.png" id="1_0an34"]
-[ext_resource type="Script" path="res://Assets/Scripts/Game.gd" id="1_q0rhl"]
+[ext_resource type="Script" uid="uid://c0hsg8gxcx1m7" path="res://Assets/Scripts/Game.gd" id="1_q0rhl"]
 [ext_resource type="Theme" uid="uid://t4jdi7pby4a2" path="res://Assets/UI/UI_Files.tres" id="3_p3ufb"]
-[ext_resource type="Shader" path="res://Assets/UI/CRT.gdshader" id="4_dxp1i"]
+[ext_resource type="Shader" uid="uid://drt8ewqfiffm3" path="res://Assets/UI/CRT.gdshader" id="4_dxp1i"]
 [ext_resource type="Texture2D" uid="uid://dluy222b8rd4l" path="res://Assets/Images/EyeStrike.png" id="4_o1ac3"]
 [ext_resource type="AudioStream" uid="uid://5oidvh0eal2u" path="res://Assets/Sounds/SFX/taskcomplete.mp3" id="4_rychl"]
 [ext_resource type="Texture2D" uid="uid://c50434fd7c5qx" path="res://Assets/Images/Eye.png" id="6_kdv1s"]
 [ext_resource type="Texture2D" uid="uid://dq5yj6hcidimt" path="res://Assets/Images/NeuroCorner.png" id="7_i2x52"]
-[ext_resource type="Material" path="res://Assets/Pixelation.tres" id="7_i6lvm"]
+[ext_resource type="Material" uid="uid://bujtwkcmoei5f" path="res://Assets/Pixelation.tres" id="7_i6lvm"]
 [ext_resource type="Texture2D" uid="uid://o6l2lg4dyigt" path="res://Assets/Images/CG/VedalMem.png" id="9_sffuh"]
 [ext_resource type="Texture2D" uid="uid://cqtlcm6hhfk3" path="res://Assets/Images/CG/VedalHug.png" id="11_ebyrs"]
 
@@ -87,9 +87,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qqory"]
 _data = {
-"RESET": SubResource("Animation_hjool"),
-"TaskComplete": SubResource("Animation_htpci"),
-"TaskFail": SubResource("Animation_h7ttr")
+&"RESET": SubResource("Animation_hjool"),
+&"TaskComplete": SubResource("Animation_htpci"),
+&"TaskFail": SubResource("Animation_h7ttr")
 }
 
 [sub_resource type="Animation" id="Animation_daffy"]
@@ -125,8 +125,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jekmv"]
 _data = {
-"Fade": SubResource("Animation_daffy"),
-"RESET": SubResource("Animation_14s3f")
+&"Fade": SubResource("Animation_daffy"),
+&"RESET": SubResource("Animation_14s3f")
 }
 
 [sub_resource type="Gradient" id="Gradient_xmnpp"]
@@ -234,7 +234,7 @@ fit_content = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="RichTextLabel"]
 libraries = {
-"": SubResource("AnimationLibrary_qqory")
+&"": SubResource("AnimationLibrary_qqory")
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="RichTextLabel"]
@@ -246,10 +246,11 @@ position = Vector2(0, 640)
 scale = Vector2(4, 4)
 texture = ExtResource("6_kdv1s")
 offset = Vector2(20, -20)
+vframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Eye"]
 libraries = {
-"": SubResource("AnimationLibrary_jekmv")
+&"": SubResource("AnimationLibrary_jekmv")
 }
 
 [node name="TaskList" type="VBoxContainer" parent="."]

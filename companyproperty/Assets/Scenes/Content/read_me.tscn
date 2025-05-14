@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dm1t6joacr6dx"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/read_me.gd" id="1_ohsnb"]
+[ext_resource type="Script" uid="uid://b8sg5r4yxutlk" path="res://Assets/Scripts/read_me.gd" id="1_ohsnb"]
 
 [node name="ReadMe" type="Control"]
 layout_mode = 3

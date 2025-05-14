@@ -11,17 +11,19 @@ func play(sound : AudioStream) -> AudioStreamPlayer:
 	audio_player.bus = "SFX"
 	audio_player.stream = sound
 	audio_player.autoplay = true
+	audio_player.finished.connect(Callable(audio_player, "queue_free"))
 	add_child(audio_player)
 	return audio_player
 
 func play_bgm(sound : AudioStream) -> void:
-	var audio_player := AudioStreamPlayer.new()
-	audio_player.stream = sound
-	audio_player.bus = "BGM"
-	add_child(audio_player)
 	while true:
+		var audio_player := AudioStreamPlayer.new()
+		audio_player.stream = sound
+		audio_player.bus = "BGM"
+		add_child(audio_player)
 		audio_player.playing = true
 		await audio_player.finished
+		audio_player.queue_free()
 		await get_tree().create_timer(30).timeout
 
 func kill():

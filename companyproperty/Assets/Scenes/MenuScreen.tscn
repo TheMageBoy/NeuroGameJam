@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://i4ituy4kmbvh"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/menu_screen.gd" id="1_3ycpn"]
+[ext_resource type="Script" uid="uid://cvvtctuwvoprm" path="res://Assets/Scripts/menu_screen.gd" id="1_3ycpn"]
 [ext_resource type="Texture2D" uid="uid://16yt6huyjlm6" path="res://Assets/Images/Bloody_Sky.jpg" id="2_b3nn1"]
 [ext_resource type="Texture2D" uid="uid://cu5avg8wxrsv6" path="res://Assets/Images/MonarchCompanyProperty.png" id="3_by8dq"]
 [ext_resource type="Texture2D" uid="uid://cefaocad4cd8d" path="res://Assets/Sprites/Background_Console.png" id="3_hafgg"]

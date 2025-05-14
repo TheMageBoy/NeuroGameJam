@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ce227lcemy5n2"]
 
-[ext_resource type="Script" path="res://Assets/Scripts/journal.gd" id="1_cw7t3"]
+[ext_resource type="Script" uid="uid://bq8e4h3h8lyif" path="res://Assets/Scripts/journal.gd" id="1_cw7t3"]
 [ext_resource type="Theme" uid="uid://t4jdi7pby4a2" path="res://Assets/UI/UI_Files.tres" id="2_bpjva"]
 
 [node name="Journal" type="Control"]

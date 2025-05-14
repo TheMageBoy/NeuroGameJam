@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bluvw024m6dhn"]
 
 [ext_resource type="Theme" uid="uid://t4jdi7pby4a2" path="res://Assets/UI/UI_Files.tres" id="1_c4hri"]
-[ext_resource type="Script" path="res://Assets/Scenes/journal_file.gd" id="2_01kri"]
+[ext_resource type="Script" uid="uid://djbg4bedxlt1t" path="res://Assets/Scenes/journal_file.gd" id="2_01kri"]
 [ext_resource type="FontFile" uid="uid://dyaamoas7dymh" path="res://Assets/Font&RTE/Fonts/OldNewspaperTypes.ttf" id="3_gn1c8"]
 
 [sub_resource type="FontVariation" id="FontVariation_vrvto"]

@@ -63,8 +63,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_62r6a"]
 _data = {
-"RESET": SubResource("Animation_vl0ml"),
-"Squeeze": SubResource("Animation_ty077")
+&"RESET": SubResource("Animation_vl0ml"),
+&"Squeeze": SubResource("Animation_ty077")
 }
 
 [node name="ProgressBar" type="ProgressBar"]
@@ -104,5 +104,5 @@ offset = Vector2(10, 10)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_62r6a")
+&"": SubResource("AnimationLibrary_62r6a")
 }
