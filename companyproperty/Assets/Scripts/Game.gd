@@ -91,6 +91,12 @@ var vaild_content_array := []
 
 const FILE = preload("res://Assets/Scenes/File.tscn")
 const MONARCH = preload("res://Assets/Sounds/BGM/MONARCHv2.6.mp3")
+
+@onready var master_slider: HSlider = $OptionsT/Options/MarginContainer2/HBoxContainer/MasterSlider
+@onready var bgm_slider: HSlider = $OptionsT/Options/MarginContainer4/HBoxContainer/BgmSlider
+@onready var sfx_slider: HSlider = $OptionsT/Options/MarginContainer5/HBoxContainer/SfxSlider
+@onready var crt_toggle: CheckButton = $OptionsT/Options/MarginContainer/HBoxContainer/CrtToggle
+
 func _ready() -> void:#
 	AudioManager.memoryLevel = 1;
 	get_window().size_changed.connect(Callable(self, "crt_resize"))
@@ -99,7 +105,7 @@ func _ready() -> void:#
 	for file in DirAccess.get_files_at("res://Assets/Scenes/Content/"):
 		vaild_content_array.append(file.erase(file.length()-4, 4))
 	
-	AudioManager.play_bgm(MONARCH)
+	AudioManager.fade_bgm(MONARCH)
 	
 	for file : Dictionary in files: # this loads the files into the desktop
 		var file_inst := FILE.instantiate()
@@ -111,6 +117,12 @@ func _ready() -> void:#
 		file_inst.icon_sprite.texture = load("res://Assets/Sprites/Icons/"+file["icon"]+".png")
 		file_inst.content = load("res://Assets/Scenes/Content/"+file["content"]+".tscn")
 		file_inst.connect("pressed", Callable(self, "createWindow").bind(file_inst, file["size"], file["work"], file_inst.content))
+	
+	# Setting up options #
+	master_slider.value = AudioManager.Mastervolume
+	bgm_slider.value = AudioManager.BGMVolume
+	sfx_slider.value = AudioManager.SFXVolume
+	crt_toggle.button_pressed = AudioManager.crtT
 
 func crt_resize():
 	if crt.visible:
@@ -165,11 +177,11 @@ func unlock_file():
 			file.visible = true
 			break
 
-# # # # # # # # #
-#
-# Staying on task
-#
-# # # # # # # # #
+# # # # # # # # # #
+#                 #
+# Staying on task #
+#                 #
+# # # # # # # # # #
 
 var check_timer := 60.0
 var checking := true # this is just for when the sound is playing
@@ -384,6 +396,8 @@ func end_memory_cg():
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and in_memory_cg:
 		end_memory_cg()
+	if event.is_action_pressed("Escape"):
+		toggle_options()
 
 var fade_to_black := false
 var gameover_string := {
@@ -444,3 +458,29 @@ func meta_clicked(meta):
 		start_memory_cg("Mini")
 	elif meta == "Vedal has been made to keep quiet regarding the forced acquisition of Neuro-sama.": #VEDAL MEMORY TRIGGER
 		start_memory_cg("Vedal")
+
+
+# # # # # #
+# OPTIONS #
+# # # # # #
+
+func _on_check_button_toggled(toggled_on: bool) -> void: #CRT
+	AudioManager.crtT = toggled_on;
+	crt.visible = toggled_on
+
+func MASTER_update(value: float) -> void: #MASTER volume slider
+	AudioManager.Mastervolume = value;
+	AudioManager.updateSound()
+
+func BGM_update(value: float) -> void: #BGM volume slider
+	AudioManager.BGMVolume = value;
+	AudioManager.updateSound()
+
+func SFX_update(value: float) -> void: #SFX volume slider
+	AudioManager.SFXVolume = value;
+	AudioManager.updateSound()
+
+@onready var options_t: TextureRect = $OptionsT
+func toggle_options() -> void: #Toggle Options
+	get_tree().paused = !options_t.visible
+	options_t.visible = !options_t.visible;

@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://i4ituy4kmbvh"]
+[gd_scene load_steps=9 format=3 uid="uid://i4ituy4kmbvh"]
 
 [ext_resource type="Script" uid="uid://cvvtctuwvoprm" path="res://Assets/Scripts/menu_screen.gd" id="1_3ycpn"]
 [ext_resource type="Texture2D" uid="uid://16yt6huyjlm6" path="res://Assets/Images/Bloody_Sky.jpg" id="2_b3nn1"]
+[ext_resource type="Theme" uid="uid://yv5eqgmv2e5v" path="res://Assets/UI/UI.tres" id="2_wk64g"]
 [ext_resource type="Texture2D" uid="uid://cu5avg8wxrsv6" path="res://Assets/Images/MonarchCompanyProperty.png" id="3_by8dq"]
 [ext_resource type="Texture2D" uid="uid://cefaocad4cd8d" path="res://Assets/Sprites/Background_Console.png" id="3_hafgg"]
 [ext_resource type="Texture2D" uid="uid://ylpeqsby5h0r" path="res://Assets/Images/Evil.png" id="5_f306d"]
@@ -21,6 +22,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("2_wk64g")
 texture = ExtResource("2_b3nn1")
 expand_mode = 3
 stretch_mode = 4

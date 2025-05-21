@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://1wtvusvixp7q"]
+[gd_scene load_steps=25 format=3 uid="uid://1wtvusvixp7q"]
 
 [ext_resource type="Texture2D" uid="uid://bcyprrmg8kvao" path="res://Assets/Images/desktopbackground.png" id="1_0an34"]
 [ext_resource type="Script" uid="uid://c0hsg8gxcx1m7" path="res://Assets/Scripts/Game.gd" id="1_q0rhl"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dq5yj6hcidimt" path="res://Assets/Images/NeuroCorner.png" id="7_i2x52"]
 [ext_resource type="Material" uid="uid://bujtwkcmoei5f" path="res://Assets/Pixelation.tres" id="7_i6lvm"]
 [ext_resource type="Texture2D" uid="uid://o6l2lg4dyigt" path="res://Assets/Images/CG/VedalMem.png" id="9_sffuh"]
+[ext_resource type="Texture2D" uid="uid://cefaocad4cd8d" path="res://Assets/Sprites/Background_Console.png" id="11_2racw"]
 [ext_resource type="Texture2D" uid="uid://cqtlcm6hhfk3" path="res://Assets/Images/CG/VedalHug.png" id="11_ebyrs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ld4di"]
@@ -386,6 +387,112 @@ grow_vertical = 0
 focus_mode = 0
 text = "Return to Menu"
 
+[node name="OptionsT" type="TextureRect" parent="."]
+process_mode = 3
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -198.383
+offset_right = 240.0
+offset_bottom = 198.383
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = ExtResource("11_2racw")
+
+[node name="Options" type="VBoxContainer" parent="OptionsT"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="OptionsT/Options"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OptionsT/Options/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CrtToggle" type="CheckButton" parent="OptionsT/Options/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+button_pressed = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OptionsT/Options/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(98.905, 24.055)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "CRT effects"
+
+[node name="MarginContainer2" type="MarginContainer" parent="OptionsT/Options"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OptionsT/Options/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MasterSlider" type="HSlider" parent="OptionsT/Options/MarginContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(143.08, 0)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OptionsT/Options/MarginContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "Master Volume"
+
+[node name="MarginContainer4" type="MarginContainer" parent="OptionsT/Options"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OptionsT/Options/MarginContainer4"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BgmSlider" type="HSlider" parent="OptionsT/Options/MarginContainer4/HBoxContainer"]
+custom_minimum_size = Vector2(143.08, 0)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OptionsT/Options/MarginContainer4/HBoxContainer"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "BGM Volume"
+
+[node name="MarginContainer5" type="MarginContainer" parent="OptionsT/Options"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OptionsT/Options/MarginContainer5"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SfxSlider" type="HSlider" parent="OptionsT/Options/MarginContainer5/HBoxContainer"]
+custom_minimum_size = Vector2(143.08, 0)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="OptionsT/Options/MarginContainer5/HBoxContainer"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "SFX Volume"
+
+[node name="MarginContainer3" type="MarginContainer" parent="OptionsT/Options"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CloseButton" type="Button" parent="OptionsT/Options/MarginContainer3"]
+layout_mode = 2
+focus_mode = 0
+text = "Close Options"
+
 [node name="CRT shader" type="Panel" parent="."]
 material = SubResource("ShaderMaterial_7r0gn")
 anchors_preset = 15
@@ -396,3 +503,8 @@ grow_vertical = 2
 mouse_filter = 2
 
 [connection signal="pressed" from="CanvasLayer2/Button" to="." method="_on_button_pressed"]
+[connection signal="toggled" from="OptionsT/Options/MarginContainer/HBoxContainer/CrtToggle" to="." method="_on_check_button_toggled"]
+[connection signal="value_changed" from="OptionsT/Options/MarginContainer2/HBoxContainer/MasterSlider" to="." method="MASTER_update"]
+[connection signal="value_changed" from="OptionsT/Options/MarginContainer4/HBoxContainer/BgmSlider" to="." method="BGM_update"]
+[connection signal="value_changed" from="OptionsT/Options/MarginContainer5/HBoxContainer/SfxSlider" to="." method="SFX_update"]
+[connection signal="pressed" from="OptionsT/Options/MarginContainer3/CloseButton" to="." method="toggle_options"]

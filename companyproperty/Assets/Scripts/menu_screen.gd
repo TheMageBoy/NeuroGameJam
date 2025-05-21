@@ -8,18 +8,18 @@ extends CanvasLayer
 @onready var h_slider2: HSlider = $Background/OptionsT/Options/MarginContainer5/HBoxContainer/HSlider
 @onready var optionsT: TextureRect = $Background/OptionsT
 @onready var credits_t: TextureRect = $Background/CreditsT
-const WIND_44100_27055 = preload("res://Assets/Sounds/BGM/wind_44100-27055.mp3")
+const THE_WAITING_FACTORY = preload("res://Assets/Sounds/BGM/The Waiting Factory.mp3")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	AudioManager.play_bgm(WIND_44100_27055)
+	AudioManager.play_bgm(THE_WAITING_FACTORY)
 	if !title.visible:
 		MainVisibleToggle()
 	optionsT.visible = false;
 	credits_t.visible = false;
 	AudioManager.crtT = check_button.button_pressed;
-	h_slider.value = 70.0
-	h_slider1.value = 70.0
-	h_slider2.value = 70.0
+	h_slider.value = 90.0
+	h_slider1.value = 90.0
+	h_slider2.value = 90.0
 	AudioManager.Mastervolume = h_slider.value
 	AudioManager.BGMVolume = h_slider1.value
 	AudioManager.SFXVolume = h_slider2.value
@@ -36,7 +36,6 @@ func MainVisibleToggle():
 
 
 func _on_play_pressed() -> void:
-	AudioManager.kill()
 	get_tree().change_scene_to_file("res://Base.tscn")
 
 func _on_options_pressed() -> void:
